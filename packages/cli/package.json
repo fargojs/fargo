@@ -1,5 +1,5 @@
 {
-  "name": "@fargo/fargo-express",
+  "name": "@fargo/cli",
   "version": "0.0.1",
   "description": "",
   "exports": {
@@ -15,6 +15,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "bin": {
+    "fargo": "./bin/fargo"
+  },
   "typesVersions": {
     "*": {
       "*": [
@@ -26,20 +29,23 @@
   "files": [
     "dist"
   ],
-  "scripts": {},
-  "repository": "https://github.com/fargojs/fargo/blob/main/packages/express",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "repository": "https://github.com/fargojs/fargo/blob/main/packages/cli",
   "keywords": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fargojs/fargo/issues"
   },
-  "homepage": "https://github.com/fargojs/fargo/blob/main/packages/express#readme",
-  "dependencies": {
-    "@fargo/fargo": "workspace:*",
-    "express": "^4.18.1"
+  "homepage": "https://github.com/fargojs/fargo/blob/main/packages/cli#readme",
+  "author": {
+    "name": "Lucas Norgaard",
+    "email": "lucasnrgaard@gmail.com",
+    "url": "https://luxass.dev"
   },
-  "devDependencies": {
-    "@types/express": "^4.17.13",
-    "typescript": "^4.7.4"
+  "dependencies": {
+    "clipanion": "3.2.0-rc.11"
   }
 }

@@ -13,7 +13,11 @@
   },
   "references": [
     {
-      "path": "../core"
+      "path": "../types"
+    },
+    {
+      "path": "../config"
     }
   ]
+
 }

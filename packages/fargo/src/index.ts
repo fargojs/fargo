@@ -1,1 +1,1 @@
-export type { FargoOptions } from "./types";
+export { createApp } from "@fargo/core";

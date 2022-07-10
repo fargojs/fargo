@@ -4,8 +4,11 @@
   "scripts": {},
   "license": "MIT",
   "devDependencies": {
-    "@luxass/eslint-config": "^1.0.0",
+    "@luxass/eslint-config": "^1.0.2",
+    "@luxass/prettier-config": "^1.0.4",
     "eslint": "^8.19.0",
+    "prettier": "^2.7.1",
+    "tsup": "^6.1.3",
     "typescript": "^4.7.4"
   }
 }

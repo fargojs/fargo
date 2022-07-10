@@ -9,11 +9,7 @@
     "strict": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true
-  },
-  "references": [
-    {
-      "path": "../core"
-    }
-  ]
+    "skipLibCheck": true,
+    "emitDeclarationOnly": true
+  }
 }

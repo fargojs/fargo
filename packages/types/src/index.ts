@@ -1,4 +1,4 @@
-export interface FargoOptions {
+export interface FargoConfig {
   /**
    * Logging options
    */

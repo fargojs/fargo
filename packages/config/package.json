@@ -1,7 +1,7 @@
 {
-  "name": "@fargo/fargo",
+  "name": "@fargo/config",
   "version": "0.0.1",
-  "description": "A private registry for VSIX extensions.",
+  "description": "",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -15,9 +15,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "bin": {
-    "fargo": "./bin/fargo"
-  },
   "typesVersions": {
     "*": {
       "*": [
@@ -27,28 +24,30 @@
     }
   },
   "files": [
-    "dist",
-    "bin"
+    "dist"
   ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch"
   },
-  "repository": "https://github.com/fargojs/fargo/blob/main/packages/fargo",
+  "repository": "https://github.com/fargojs/fargo/blob/main/packages/config",
   "keywords": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fargojs/fargo/issues"
   },
-  "homepage": "https://github.com/fargojs/fargo/blob/main/packages/fargo#readme",
+  "homepage": "https://github.com/fargojs/fargo/blob/main/packages/config#readme",
   "author": {
     "name": "Lucas Norgaard",
     "email": "lucasnrgaard@gmail.com",
     "url": "https://luxass.dev"
   },
   "dependencies": {
-    "@fargo/cli": "workspace:*",
-    "@fargo/core": "workspace:*"
-
+    "debug": "^4.3.4",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@fargo/types": "workspace:*",
+    "@types/debug": "^4.1.7"
   }
 }
