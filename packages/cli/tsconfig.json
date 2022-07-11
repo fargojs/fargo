@@ -10,5 +10,13 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "skipLibCheck": true
-  }
+  },
+  "references": [
+    {
+      "path": "../core"
+    },
+    {
+      "path": "../config"
+    }
+  ]
 }
