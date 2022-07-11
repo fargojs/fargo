@@ -1,9 +1,7 @@
 import { Command } from '@oclif/core';
 
-export default class Publish extends Command {
-  static description = 'Publish an extension to a Zotera Registry';
-
-  static examples = [];
+export default class List extends Command {
+  static description = 'List all plugins';
 
   async run(): Promise<void> {
     // const { flags } = await this.parse(Publish);

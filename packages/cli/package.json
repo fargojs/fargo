@@ -52,6 +52,12 @@
     "plugins": [
       "@oclif/plugin-help",
       "@oclif/plugin-not-found"
-    ]
+    ],
+    "topicSeparator": " ",
+    "topics": {
+      "plugins": {
+        "description": "manage zotera community plugins"
+      }
+    }
   }
 }
