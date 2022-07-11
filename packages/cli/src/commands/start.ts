@@ -3,29 +3,34 @@ import { createApp } from '@fargo/core';
 import { Command, Flags } from '@oclif/core';
 
 export default class Start extends Command {
-  static description = 'Say hello';
+  static description = 'Start Fargo Server';
 
   static examples = [
-    `$ oex hello friend --from oclif
-hello friend from oclif! (./src/commands/hello/index.ts)
-`
+    '$ fargo start',
+    '$ fargo start --port 5050',
+    '$ fargo start --config ./fargo.yaml'
   ];
 
   static flags = {
-    port: Flags.integer({ char: 'p', description: 'The port to use' })
+    port: Flags.string({ char: 'p', description: 'The port to use', default: '4000' }),
+    config: Flags.string({
+      char: 'c',
+      description: 'The configuration file to use',
+      default: './fargo.yaml'
+    })
   };
 
   async run(): Promise<void> {
     const { flags } = await this.parse(Start);
 
-    const parsedConfiguration = parseConfiguration();
+    const parsedConfiguration = parseConfiguration(flags.config);
 
     process.title = 'fargo';
 
     const app = await createApp(parsedConfiguration);
 
     await app.listen({
-      port: flags.port || parseInt(process.env.PORT || '4000')
+      port: parseInt(process.env.PORT || flags.port)
     });
   }
 }
