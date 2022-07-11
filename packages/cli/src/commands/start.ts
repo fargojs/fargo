@@ -1,14 +1,14 @@
-import { parseConfiguration } from '@fargo/config';
-import { createApp } from '@fargo/core';
+import { parseConfiguration } from '@zotera/config';
+import { createApp } from '@zotera/core';
 import { Command, Flags } from '@oclif/core';
 
 export default class Start extends Command {
-  static description = 'Start Fargo Server';
+  static description = 'Start Zotera Server';
 
   static examples = [
-    '$ fargo start',
-    '$ fargo start --port 5050',
-    '$ fargo start --config ./fargo.yaml'
+    '$ zotera start',
+    '$ zotera start --port 5050',
+    '$ zotera start --config ./zotera.yaml'
   ];
 
   static flags = {
@@ -16,7 +16,7 @@ export default class Start extends Command {
     config: Flags.string({
       char: 'c',
       description: 'The configuration file to use',
-      default: './fargo.yaml'
+      default: './zotera.yaml'
     })
   };
 
@@ -25,7 +25,7 @@ export default class Start extends Command {
 
     const parsedConfiguration = parseConfiguration(flags.config);
 
-    process.title = 'fargo';
+    process.title = 'zotera';
 
     const app = await createApp(parsedConfiguration);
 

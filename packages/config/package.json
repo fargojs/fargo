@@ -1,5 +1,5 @@
 {
-  "name": "@fargo/config",
+  "name": "@zotera/config",
   "version": "0.0.1",
   "description": "",
   "exports": {
@@ -19,13 +19,13 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
-  "repository": "https://github.com/fargojs/fargo/blob/main/packages/config",
+  "repository": "https://github.com/zotera/zotera/blob/main/packages/config",
   "keywords": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fargojs/fargo/issues"
+    "url": "https://github.com/zotera/zotera/issues"
   },
-  "homepage": "https://github.com/fargojs/fargo/blob/main/packages/config#readme",
+  "homepage": "https://github.com/zotera/zotera/blob/main/packages/config#readme",
   "author": {
     "name": "Lucas Norgaard",
     "email": "lucasnrgaard@gmail.com",
@@ -36,7 +36,7 @@
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
-    "@fargo/types": "workspace:*",
+    "@zotera/types": "workspace:*",
     "@types/debug": "^4.1.7"
   }
 }

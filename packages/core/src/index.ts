@@ -1,14 +1,14 @@
 import _debug from 'debug';
 
-import { parseConfiguration } from '@fargo/config';
-import type { FargoConfig } from '@fargo/types';
+import { parseConfiguration } from '@zotera/config';
+import type { ZoteraConfig } from '@zotera/types';
 
-import { fargo } from './fargo';
+import { zotera } from './zotera';
 
-const debug = _debug('fargo:core');
+const debug = _debug('zotera:core');
 
-export async function createApp(config?: string | FargoConfig) {
-  let parsedConfiguration: FargoConfig;
+export async function createApp(config?: string | ZoteraConfig) {
+  let parsedConfiguration: ZoteraConfig;
 
   if (!config || typeof config === 'string') {
     parsedConfiguration = parseConfiguration(config as string);
@@ -16,7 +16,7 @@ export async function createApp(config?: string | FargoConfig) {
     parsedConfiguration = config;
   }
 
-  const app = await fargo(parsedConfiguration);
+  const app = await zotera(parsedConfiguration);
   debug('Created App');
   return app;
 }

@@ -1,7 +1,7 @@
 {
-  "name": "@fargo/types",
+  "name": "@zotera/types",
   "version": "0.0.1",
-  "description": "Fargo type definitions",
+  "description": "zotera type definitions",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -19,13 +19,13 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
-  "repository": "https://github.com/fargojs/fargo/blob/main/packages/types",
+  "repository": "https://github.com/zotera/zotera/blob/main/packages/types",
   "keywords": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fargojs/fargo/issues"
+    "url": "https://github.com/zotera/zotera/issues"
   },
-  "homepage": "https://github.com/fargojs/fargo/blob/main/packages/types#readme",
+  "homepage": "https://github.com/zotera/zotera/blob/main/packages/types#readme",
   "author": {
     "name": "Lucas Norgaard",
     "email": "lucasnrgaard@gmail.com",

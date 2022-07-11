@@ -1,5 +1,5 @@
-import type { FargoConfig } from '@fargo/types';
+import type { ZoteraConfig } from '@zotera/types';
 
-export function parseConfiguration(config?: string): FargoConfig {
+export function parseConfiguration(config?: string): ZoteraConfig {
   return {};
 }

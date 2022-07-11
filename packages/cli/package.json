@@ -1,5 +1,5 @@
 {
-  "name": "@fargo/cli",
+  "name": "@zotera/cli",
   "version": "0.0.1",
   "description": "",
   "exports": {
@@ -13,7 +13,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "bin": {
-    "fargo": "./bin/fargo"
+    "zotera": "./bin/zotera"
   },
   "files": [
     "dist",
@@ -23,42 +23,35 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
-  "repository": "https://github.com/fargojs/fargo/blob/main/packages/cli",
+  "repository": "https://github.com/zotera/zotera/blob/main/packages/cli",
   "keywords": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fargojs/fargo/issues"
+    "url": "https://github.com/zotera/zotera/issues"
   },
-  "homepage": "https://github.com/fargojs/fargo/blob/main/packages/cli#readme",
+  "homepage": "https://github.com/zotera/zotera/blob/main/packages/cli#readme",
   "author": {
     "name": "Lucas Norgaard",
     "email": "lucasnrgaard@gmail.com",
     "url": "https://luxass.dev"
   },
   "dependencies": {
-    "@fargo/config": "workspace:*",
-    "@fargo/core": "workspace:*",
+    "@zotera/config": "workspace:*",
+    "@zotera/core": "workspace:*",
     "@oclif/core": "^1.9.5",
     "@oclif/plugin-help": "^5.1.12",
-    "@oclif/plugin-not-found": "^2.3.1",
-    "clipanion": "3.2.0-rc.11"
+    "@oclif/plugin-not-found": "^2.3.1"
   },
   "devDependencies": {
     "@types/node": "^18.0.3",
     "oclif": "^3.1.0"
   },
   "oclif": {
-    "bin": "fargo",
+    "bin": "zotera",
     "commands": "./dist/commands",
     "plugins": [
       "@oclif/plugin-help",
       "@oclif/plugin-not-found"
-    ],
-    "topicSeparator": " ",
-    "topics": {
-      "hello": {
-        "description": "Say hello to the world and others"
-      }
-    }
+    ]
   }
 }

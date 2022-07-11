@@ -1,7 +1,7 @@
 {
-  "name": "@fargo/core",
+  "name": "@zotera/core",
   "version": "0.0.1",
-  "description": "Fargo Core",
+  "description": "Zotera Core",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -19,25 +19,25 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
-  "repository": "https://github.com/fargojs/fargo/blob/main/packages/core",
+  "repository": "https://github.com/zotera/zotera/blob/main/packages/core",
   "keywords": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fargojs/fargo/issues"
+    "url": "https://github.com/zotera/zotera/issues"
   },
-  "homepage": "https://github.com/fargojs/fargo/blob/main/packages/core#readme",
+  "homepage": "https://github.com/zotera/zotera/blob/main/packages/core#readme",
   "author": {
     "name": "Lucas Norgaard",
     "email": "lucasnrgaard@gmail.com",
     "url": "https://luxass.dev"
   },
   "dependencies": {
-    "@fargo/config": "workspace:*",
+    "@zotera/config": "workspace:*",
     "debug": "^4.3.4",
     "fastify": "^4.2.0"
   },
   "devDependencies": {
-    "@fargo/types": "workspace:*",
+    "@zotera/types": "workspace:*",
     "@types/debug": "^4.1.7",
     "@types/node": "^18.0.3"
   }

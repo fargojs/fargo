@@ -1,1 +1,1 @@
-<h1 align="center">Fargo Types</h1>
+<h1 align="center">Zotera Cli</h1>

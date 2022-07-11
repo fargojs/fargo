@@ -1,5 +1,5 @@
 {
-  "name": "@fargo/fargo",
+  "name": "@zotera/zotera",
   "version": "0.0.1",
   "description": "A private registry for VSIX extensions.",
   "exports": {
@@ -13,7 +13,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "bin": {
-    "fargo": "./bin/fargo"
+    "zotera": "./bin/zotera"
   },
   "files": [
     "dist",
@@ -23,20 +23,20 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
-  "repository": "https://github.com/fargojs/fargo/blob/main/packages/fargo",
+  "repository": "https://github.com/zotera/zotera/blob/main/packages/zotera",
   "keywords": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fargojs/fargo/issues"
+    "url": "https://github.com/zotera/zotera/issues"
   },
-  "homepage": "https://github.com/fargojs/fargo/blob/main/packages/fargo#readme",
+  "homepage": "https://github.com/zotera/zotera/blob/main/packages/zotera#readme",
   "author": {
     "name": "Lucas Norgaard",
     "email": "lucasnrgaard@gmail.com",
     "url": "https://luxass.dev"
   },
   "dependencies": {
-    "@fargo/cli": "workspace:*",
-    "@fargo/core": "workspace:*"
+    "@zotera/cli": "workspace:*",
+    "@zotera/core": "workspace:*"
   }
 }

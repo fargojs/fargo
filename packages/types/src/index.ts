@@ -1,11 +1,11 @@
-export interface FargoConfig {
+export interface ZoteraConfig {
   /**
    * Logging options
    */
-  logging?: FargoLoggingOptions;
+  logging?: ZoteraConfigOptions;
 }
 
-export interface FargoLoggingOptions {
+export interface ZoteraConfigOptions {
   type?: 'stdout' | 'file';
   path?: string;
   level?: LogLevel;
