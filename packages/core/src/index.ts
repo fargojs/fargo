@@ -17,6 +17,6 @@ export async function createApp(config?: string | FargoConfig) {
   }
 
   const app = await fargo(parsedConfiguration);
-  debug('Started App');
+  debug('Created App');
   return app;
 }
