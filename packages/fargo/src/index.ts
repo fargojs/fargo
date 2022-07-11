@@ -1,1 +1,1 @@
-export { createApp } from "@fargo/core";
+export { createApp } from '@fargo/core';

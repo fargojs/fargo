@@ -45,11 +45,10 @@
   "dependencies": {
     "@fargo/config": "workspace:*",
     "debug": "^4.3.4",
-    "express": "^4.18.1"
+    "fastify": "^4.2.0"
   },
   "devDependencies": {
     "@fargo/types": "workspace:*",
-    "@types/debug": "^4.1.7",
-    "@types/express": "^4.17.13"
+    "@types/debug": "^4.1.7"
   }
 }

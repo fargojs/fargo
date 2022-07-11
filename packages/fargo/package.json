@@ -49,6 +49,5 @@
   "dependencies": {
     "@fargo/cli": "workspace:*",
     "@fargo/core": "workspace:*"
-
   }
 }

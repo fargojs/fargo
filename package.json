@@ -1,7 +1,9 @@
 {
   "name": "fargo-monorepo",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    
+  },
   "license": "MIT",
   "devDependencies": {
     "@luxass/eslint-config": "^1.0.2",

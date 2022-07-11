@@ -6,11 +6,10 @@ export interface FargoConfig {
 }
 
 export interface FargoLoggingOptions {
-  type?: "stdout" | "file";
+  type?: 'stdout' | 'file';
   path?: string;
   level?: LogLevel;
   format?: string;
-
 }
 
-export type LogLevel = "debug" | "info" | "warn" | "warn" | "fatal";
+export type LogLevel = 'debug' | 'info' | 'warn' | 'warn' | 'fatal';

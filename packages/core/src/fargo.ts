@@ -1,8 +1,10 @@
-import type { FargoConfig } from "@fargo/types";
-import express, { type Express } from "express";
+import Fastify from 'fastify';
+import type { FastifyInstance } from 'fastify';
 
-export async function fargo(config: FargoConfig): Promise<Express> {
-  const app = express();
+import type { FargoConfig } from '@fargo/types';
+
+export async function fargo(config: FargoConfig): Promise<FastifyInstance> {
+  const app = Fastify();
 
   return app;
 }
