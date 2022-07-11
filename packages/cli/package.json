@@ -39,5 +39,8 @@
     "clipanion": "3.2.0-rc.11",
     "@fargo/core": "workspace:*",
     "@fargo/config": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.3"
   }
 }

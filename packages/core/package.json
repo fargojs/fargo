@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@fargo/types": "workspace:*",
-    "@types/debug": "^4.1.7"
+    "@types/debug": "^4.1.7",
+    "@types/node": "^18.0.3"
   }
 }

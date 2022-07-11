@@ -1,6 +1,6 @@
 import { Cli } from 'clipanion';
 
-import { version } from '../package.json';
+// import { version } from '../package.json';
 import { PublishCommand } from './publish';
 import { StartCommand } from './start';
 import { VersionCommand } from './version';
@@ -10,7 +10,7 @@ const [node, app, ...args] = process.argv;
 const cli = new Cli({
   binaryLabel: 'fargo',
   binaryName: `${node} ${app}`,
-  binaryVersion: version
+  binaryVersion: 'UNKNOWN'
 });
 
 cli.register(StartCommand);
