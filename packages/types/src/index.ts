@@ -2,10 +2,24 @@ export interface ZoteraConfig {
   /**
    * Logging options
    */
-  logging?: ZoteraConfigOptions;
+  logging?: ZoteraLoggingOptions;
+
+  /**
+   * The directory to store plugin in.
+   */
+  pluginDir?: string;
+
+  /**
+   * Zotera plugins to load.
+   */
+  plugins: ZoteraPluginOptions;
 }
 
-export interface ZoteraConfigOptions {
+export interface ZoteraPluginOptions {
+  [key: string]: any;
+}
+
+export interface ZoteraLoggingOptions {
   type?: 'stdout' | 'file';
   path?: string;
   level?: LogLevel;
