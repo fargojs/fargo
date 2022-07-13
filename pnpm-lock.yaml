@@ -26,6 +26,19 @@ importers:
       '@types/node': 18.0.3
       esbuild: 0.14.49
 
+  packages/api:
+    specifiers:
+      '@types/debug': ^4.1.7
+      '@types/node': ^18.0.3
+      '@zotera/types': workspace:*
+      debug: ^4.3.4
+    dependencies:
+      debug: 4.3.4
+    devDependencies:
+      '@types/debug': 4.1.7
+      '@types/node': 18.0.3
+      '@zotera/types': link:../types
+
   packages/cli:
     specifiers:
       '@oclif/core': ^1.9.5

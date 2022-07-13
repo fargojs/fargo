@@ -5,7 +5,7 @@ export interface ZoteraConfig {
   logging?: ZoteraLoggingOptions;
 
   /**
-   * The directory to store plugin in.
+   * The directory to store plugins in.
    */
   pluginDir?: string;
 
@@ -15,9 +15,14 @@ export interface ZoteraConfig {
   plugins?: ZoteraPluginOptions;
 
   /**
-   * Use HTTPS for Zotera
+   * Use HTTPS
    */
   https?: ZoteraHttpsOptions;
+
+  /**
+   * Authentication options
+   */
+  auth?: ZoteraAuthOptions;
 }
 
 export interface ZoteraHttpsOptions {
@@ -38,3 +43,7 @@ export interface ZoteraLoggingOptions {
 }
 
 export type LogLevel = 'debug' | 'info' | 'warn' | 'warn' | 'fatal';
+
+export interface ZoteraAuthOptions {
+
+}

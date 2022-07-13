@@ -1,0 +1,1 @@
+<h1 align="center">Zotera Config</h1>
