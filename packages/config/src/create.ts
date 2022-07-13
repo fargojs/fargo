@@ -2,9 +2,8 @@ import _debug from 'debug';
 import { mkdirSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
 
-// @ts-expect-error ggg
-// eslint-disable-next-line import/no-named-default
-import { default as defaultConfig } from './configs/default.yaml';
+import defaultConfig from './configs/default.yaml';
+
 const debug = _debug('zotera:config');
 
 /**
@@ -15,7 +14,6 @@ const debug = _debug('zotera:config');
 export function writeConfig(loc: string): string {
   mkdirSync(dirname(loc), { recursive: true });
   debug('Creating config folder at %s', loc);
-
   const defaultConfiguration = defaultConfig;
   debug('%O', defaultConfiguration);
   writeFileSync(loc, defaultConfiguration);
