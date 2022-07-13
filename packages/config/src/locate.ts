@@ -15,12 +15,12 @@ export function locate(config?: string): string {
   const possibleDirs = getPossibleDirs();
   debug('%o possible locations found', possibleDirs.length);
 
-  // const existingConfig = possibleDirs.find(fileExists);
+  const existingConfig = possibleDirs.find(fileExists);
 
-  // if (existingConfig) {
-  //   debug('Found config file at %s', existingConfig);
-  //   return existingConfig;
-  // }
+  if (existingConfig) {
+    debug('Found config file at %s', existingConfig);
+    return existingConfig;
+  }
 
   return writeConfig(possibleDirs[0]);
 }

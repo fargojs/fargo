@@ -3,12 +3,12 @@ import type { FastifyInstance } from 'fastify';
 
 import type { ZoteraConfig } from '@zotera/types';
 
+import { routes } from './routes';
+
 export async function zotera(config: ZoteraConfig): Promise<FastifyInstance> {
   const app = Fastify();
 
-  app.get("/", (req, res) => {
-    res.send({ hello: "world" });
-  })
+  app.register(routes);
 
   return app;
 }

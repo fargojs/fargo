@@ -15,7 +15,6 @@ export function writeConfig(loc: string): string {
   mkdirSync(dirname(loc), { recursive: true });
   debug('Creating config folder at %s', loc);
   const defaultConfiguration = defaultConfig;
-  debug('%O', defaultConfiguration);
   writeFileSync(loc, defaultConfiguration);
 
   return loc;
