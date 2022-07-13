@@ -3,12 +3,21 @@ import type { FastifyInstance } from 'fastify';
 
 import type { ZoteraConfig } from '@zotera/types';
 
-import { routes } from './routes';
+import { storagePlugin } from './web/plugins/storage';
+import { routes } from './web/routes';
 
 export async function zotera(config: ZoteraConfig): Promise<FastifyInstance> {
-  const app = Fastify();
+  // Use logging options from config here.
+  const zotera = Fastify({
+    logger: true
+  });
 
-  app.register(routes);
+  zotera.register(storagePlugin, { config });
+  zotera.register(routes);
 
-  return app;
+  if (config.web?.enabled) {
+    zotera.log.info('Web server enabled');
+  }
+
+  return zotera;
 }

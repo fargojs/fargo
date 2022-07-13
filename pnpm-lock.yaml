@@ -85,10 +85,12 @@ importers:
       '@zotera/types': workspace:*
       debug: ^4.3.4
       fastify: ^4.2.0
+      fastify-plugin: ^4.0.0
     dependencies:
       '@zotera/config': link:../config
       debug: 4.3.4
       fastify: 4.2.0
+      fastify-plugin: 4.0.0
     devDependencies:
       '@types/debug': 4.1.7
       '@types/node': 18.0.3
@@ -2872,6 +2874,10 @@ packages:
 
   /fastest-levenshtein/1.0.12:
     resolution: {integrity: sha512-On2N+BpYJ15xIC974QNVuYGMOlEVt4s0EOI3wwMqOmK1fdDY+FN/zltPV8vosq4ad4c/gJ1KHScUn/6AWIgiow==}
+
+  /fastify-plugin/4.0.0:
+    resolution: {integrity: sha512-ZJcXPPcqkj7HFDYqbsCuOIAgIZ/sd2b+OnBxNGyxAcUDUJfIpxp4t23CwxO2E7LZpqUrIliA4TnjxTXG8mLoqw==}
+    dev: false
 
   /fastify/4.2.0:
     resolution: {integrity: sha512-0QXEp+8ceKc0fwVakeBLM/1Ss/+fc7a3auuygT+1GjbSAgHfwqxSucUuu0rYjziu32UgEZXfjItYN/a89HWKhw==}

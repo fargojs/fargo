@@ -1,7 +1,7 @@
 import type { FastifyInstance } from 'fastify';
 
-export async function ping(fastify: FastifyInstance) {
-  fastify.get('/-/ping', async () => {
+export async function ping(zotera: FastifyInstance) {
+  zotera.get('/-/ping', async () => {
     return {
       message: 'pong',
     };

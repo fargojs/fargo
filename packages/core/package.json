@@ -34,11 +34,12 @@
   "dependencies": {
     "@zotera/config": "workspace:*",
     "debug": "^4.3.4",
-    "fastify": "^4.2.0"
+    "fastify": "^4.2.0",
+    "fastify-plugin": "^4.0.0"
   },
   "devDependencies": {
-    "@zotera/types": "workspace:*",
     "@types/debug": "^4.1.7",
-    "@types/node": "^18.0.3"
+    "@types/node": "^18.0.3",
+    "@zotera/types": "workspace:*"
   }
 }
