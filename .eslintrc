@@ -2,6 +2,6 @@
   "root": true,
   "extends": "@luxass/eslint-config",
   "rules": {
-    "no-console": "off"
+    "import/order": "off"
   }
 }

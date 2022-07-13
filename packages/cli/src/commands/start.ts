@@ -1,6 +1,5 @@
-import { parseConfiguration } from '@zotera/config';
-import { createApp } from '@zotera/core';
 import { Command, Flags } from '@oclif/core';
+import { createApp } from '@zotera/core';
 
 export default class Start extends Command {
   static description = 'Start Zotera Server';
@@ -15,19 +14,16 @@ export default class Start extends Command {
     port: Flags.string({ char: 'p', description: 'The port to use', default: '4000' }),
     config: Flags.string({
       char: 'c',
-      description: 'The configuration file to use',
-      default: './zotera.yaml'
+      description: 'The configuration file to use'
     })
   };
 
   async run(): Promise<void> {
     const { flags } = await this.parse(Start);
 
-    const parsedConfiguration = parseConfiguration(flags.config);
-
     process.title = 'zotera';
 
-    const app = await createApp(parsedConfiguration);
+    const app = await createApp();
 
     await app.listen({
       port: parseInt(process.env.PORT || flags.port)

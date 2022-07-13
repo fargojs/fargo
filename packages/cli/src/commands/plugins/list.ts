@@ -4,7 +4,7 @@ export default class List extends Command {
   static description = 'List all plugins';
 
   async run(): Promise<void> {
-    // const { flags } = await this.parse(Publish);
+    // const { flags } = await this.parse(List);
 
     this.log('This is not implemented yet.');
   }

@@ -3,7 +3,9 @@
   "compilerOptions": {
     "preserveSymlinks": true,
     "rootDir": "./src",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "strict": false,
+    "noUnusedLocals": false
   },
   "include": ["src/**/*"],
   "references": [

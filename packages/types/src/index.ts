@@ -12,7 +12,18 @@ export interface ZoteraConfig {
   /**
    * Zotera plugins to load.
    */
-  plugins: ZoteraPluginOptions;
+  plugins?: ZoteraPluginOptions;
+
+  /**
+   * Use HTTPS for Zotera
+   */
+  https?: ZoteraHttpsOptions;
+}
+
+export interface ZoteraHttpsOptions {
+  key?: string;
+  cert?: string;
+  ca?: string;
 }
 
 export interface ZoteraPluginOptions {

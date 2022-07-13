@@ -1,7 +1,8 @@
 {
-  "name": "@zotera/config",
+  "name": "@zotera/esbuild-yaml",
+  "private": true,
   "version": "0.0.1",
-  "description": "",
+  "description": "A esbuild plugin, that allows YAML imports",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -19,27 +20,20 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
-  "repository": "https://github.com/zotera/zotera/blob/main/packages/config",
+  "repository": "https://github.com/zotera/zotera/blob/main/esbuild-yaml",
   "keywords": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/zotera/zotera/issues"
   },
-  "homepage": "https://github.com/zotera/zotera/blob/main/packages/config#readme",
+  "homepage": "https://github.com/zotera/zotera/blob/main/esbuild-yaml#readme",
   "author": {
     "name": "Lucas Norgaard",
     "email": "lucasnrgaard@gmail.com",
     "url": "https://luxass.dev"
   },
-  "dependencies": {
-    "debug": "^4.3.4",
-    "js-yaml": "^4.1.0"
-  },
   "devDependencies": {
-    "@types/debug": "^4.1.7",
-    "@types/js-yaml": "^4.0.5",
     "@types/node": "^18.0.3",
-    "@zotera/types": "workspace:*",
-    "@zotera/esbuild-yaml": "workspace:*"
+    "esbuild": "^0.14.49"
   }
 }
