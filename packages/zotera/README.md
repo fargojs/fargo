@@ -3,4 +3,3 @@
 ```bash
 pnpm install -g @zotera/zotera
 ```
-
