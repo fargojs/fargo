@@ -85,11 +85,13 @@ importers:
       debug: ^4.3.4
       fastify: ^4.2.0
       fastify-plugin: ^4.0.0
+      pino: ^8.1.0
     dependencies:
       '@zotera/config': link:../config
       debug: 4.3.4
       fastify: 4.2.0
       fastify-plugin: 4.0.0
+      pino: 8.1.0
     devDependencies:
       '@types/debug': 4.1.7
       '@types/node': 18.0.3
