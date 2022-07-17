@@ -14,11 +14,7 @@ export async function zotera(config: ZoteraConfig): Promise<FastifyInstance> {
   });
 
   zotera.register(storagePlugin, { config });
-  zotera.register(routes);
-
-  if (config.web?.enabled) {
-    zotera.log.info('Web server enabled');
-  }
+  zotera.register(routes, { config });
 
   return zotera;
 }
