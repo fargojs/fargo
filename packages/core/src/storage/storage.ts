@@ -14,6 +14,7 @@ export class Storage {
   addExtensionVersion() {}
 
   async getPackage(identifier: string): Promise<ExtensionManifest> {
+    debug('getPackage %s', identifier);
     return {
       name: '',
       identifier: '',
@@ -31,6 +32,7 @@ export class Storage {
   }
 
   async getPackageByVersion(identifier: string, version: string): Promise<ExtensionManifest> {
+    debug('getPackage %s with version %s', identifier, version);
     return {
       name: '',
       identifier: '',
@@ -48,6 +50,7 @@ export class Storage {
   }
 
   async getPackageVersions(identifier: string): Promise<string[]> {
+    debug('getPackageVersions %s', identifier);
     return [];
   }
 }

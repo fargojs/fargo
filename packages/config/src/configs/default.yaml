@@ -1,8 +1,8 @@
-pluginDir: './plugins'
+pluginDir: ./plugins
 
 web:
   enabled: true
 
 logging:
-  type: 'stdout'
-  level: 'info'
+  type: stdout
+  level: info
