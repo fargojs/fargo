@@ -1,7 +1,7 @@
 {
-  "name": "@zotera/common",
+  "name": "@zotera/express",
   "version": "0.0.1",
-  "description": "Zotera Common",
+  "description": "Express Middleware for Zotera",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
