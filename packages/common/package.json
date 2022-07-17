@@ -1,7 +1,7 @@
 {
-  "name": "@zotera/zotera",
+  "name": "@zotera/common",
   "version": "0.0.1",
-  "description": "A private registry for VSIX extensions.",
+  "description": "Zotera Common",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -12,31 +12,35 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "bin": {
-    "zotera": "./bin/zotera"
-  },
   "files": [
-    "dist",
-    "bin"
+    "dist"
   ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch"
   },
-  "repository": "https://github.com/zotera/zotera/blob/main/packages/zotera",
+  "repository": "https://github.com/zotera/zotera/blob/main/packages/common",
   "keywords": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/zotera/zotera/issues"
   },
-  "homepage": "https://github.com/zotera/zotera/blob/main/packages/zotera#readme",
+  "homepage": "https://github.com/zotera/zotera/blob/main/packages/common#readme",
   "author": {
     "name": "Lucas Norgaard",
     "email": "lucasnrgaard@gmail.com",
     "url": "https://luxass.dev"
   },
   "dependencies": {
-    "@zotera/cli": "workspace:*",
-    "@zotera/server": "workspace:*"
+    "@zotera/config": "workspace:*",
+    "debug": "^4.3.4",
+    "fastify": "^4.2.0",
+    "fastify-plugin": "^4.0.0",
+    "pino": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.7",
+    "@types/node": "^18.0.3",
+    "@zotera/types": "workspace:*"
   }
 }

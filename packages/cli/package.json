@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@zotera/config": "workspace:*",
-    "@zotera/core": "workspace:*",
+    "@zotera/server": "workspace:*",
     "@oclif/core": "^1.9.5",
     "@oclif/plugin-help": "^5.1.12",
     "@oclif/plugin-not-found": "^2.3.1"

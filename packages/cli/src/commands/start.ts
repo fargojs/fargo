@@ -1,5 +1,5 @@
 import { Command, Flags } from '@oclif/core';
-import { createApp } from '@zotera/core';
+import { createApp } from '@zotera/server';
 
 export default class Start extends Command {
   static description = 'Start Zotera Server';

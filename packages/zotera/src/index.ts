@@ -1,1 +1,1 @@
-export { createApp } from '@zotera/core';
+export { createApp } from '@zotera/server';
