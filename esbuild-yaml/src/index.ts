@@ -4,7 +4,7 @@ import path from 'path';
 
 const readFile = promises.readFile;
 
-export const YAMLPlugin = (): Plugin => ({
+const YAMLPlugin = (): Plugin => ({
   name: 'yaml',
   setup(build) {
     build.onResolve({ filter: /\.(yml|yaml)$/ }, (args) => {
@@ -26,3 +26,5 @@ export const YAMLPlugin = (): Plugin => ({
     });
   }
 });
+
+export default YAMLPlugin;
