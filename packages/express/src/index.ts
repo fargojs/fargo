@@ -1,9 +1,17 @@
-import type { NextFunction, Request, RequestHandler, Response } from 'express';
+import express from 'express';
 
 import type { ZoteraConfig } from '@zotera/types';
 
-type PluginOptions = Omit<ZoteraConfig, 'logging'>;
+import { ping } from './routes/ping';
 
-const zoteraMiddleware: RequestHandler = (req: Request, res: Response, next: NextFunction) => {};
+type RouterOptions = Omit<ZoteraConfig, 'logging'>;
 
-export default zoteraMiddleware;
+const zoteraRouter = (options?: RouterOptions) => {
+  const router = express.Router();
+
+  ping(router);
+  
+  return router;
+};
+
+export default zoteraRouter;
