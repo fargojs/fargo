@@ -1,0 +1,18 @@
+{
+  "name": "<%= name %>",
+  "version": "0.0.1",
+  "description": "<%= description %>",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
+  "engines": {
+    "node": ">=14"
+  },
+  "devDependencies": {
+    "@zotera/api": "*",
+    "typescript": "4.7.4"
+  },
+  "keywords": ["zotera-plugin", "zotera"],
+  "scripts": {
+    "build": "tsc"
+  }
+}

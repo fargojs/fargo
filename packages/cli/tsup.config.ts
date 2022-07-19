@@ -1,3 +1,4 @@
+import { copy } from 'esbuild-plugin-copy';
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
@@ -6,5 +7,14 @@ export default defineConfig({
   clean: true,
   bundle: false,
   splitting: false,
-  dts: true
+  dts: true,
+  esbuildPlugins: [
+    copy({
+      assets: {
+        keepStructure: true,
+        from: ['src/templates/**/*'],
+        to: ['templates']
+      }
+    })
+  ]
 });

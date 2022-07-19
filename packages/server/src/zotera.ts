@@ -13,6 +13,8 @@ export async function zotera(config: ZoteraConfig): Promise<FastifyInstance> {
     ignoreTrailingSlash: true
   });
 
+  
+
   zotera.register(storagePlugin, { config });
   zotera.register(routes, { config });
 
