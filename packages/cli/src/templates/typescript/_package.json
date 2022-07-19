@@ -1,0 +1,22 @@
+{
+  "name": "<%= name %>",
+  "version": "0.0.1",
+  "description": "<%= description %>",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
+  "engines": {
+    "node": ">=14"
+  },
+  "devDependencies": {
+    "@zotera/api": "*" <% if (rollup) { %>,
+    "rollup": "2.77.0", <% } %>
+    "typescript": "4.7.4" <% if (vitest) { %>,
+    "vitest": "0.18.1" <% } %>
+  },
+  "keywords": ["zotera-plugin", "zotera"],
+  "scripts": {
+    "dev": <% if (rollup) { %> "rollup --watch" <% } else { %> "tsc --watch" <% } %>,
+    "build": <% if (rollup) { %> "rollup" <% } else { %> "tsc" <% } %><% if (vitest) { %>,
+    "test": "vitest run" <% } %>
+  }
+}

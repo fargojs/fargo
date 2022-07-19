@@ -8,13 +8,15 @@ export default class Create extends Command {
 
   static flags = {
     name: Flags.string({ char: 'n', description: 'name of the plugin' }),
-    rollup: Flags.boolean({ description: 'use rollup', default: true })
+    rollup: Flags.boolean({ description: 'use rollup', default: false }),
+    git: Flags.boolean({ description: 'use git', default: false }),
+    vitest: Flags.boolean({ description: 'use vitest', default: false })
   };
 
   async run(): Promise<void> {
     const { flags } = await this.parse(Create);
 
-    let { name, rollup } = flags;
+    let { name, rollup, git, vitest } = flags;
     if (!name) {
       name = await (
         await inquirer.prompt({
@@ -31,12 +33,43 @@ export default class Create extends Command {
       ).name;
     }
 
+    const description = await (
+      await inquirer.prompt({
+        name: 'description',
+        message: 'What is the description of your plugin?',
+        type: 'input',
+        default: 'A plugin for zotera'
+      })
+    ).description;
+
     if (!rollup) {
-      rollup = await (await inquirer.prompt({
-        name: 'rollup',
-        message: 'Use rollup as buildtool?',
-        type: 'confirm'
-      })).rollup;
+      rollup = await (
+        await inquirer.prompt({
+          name: 'rollup',
+          message: 'Use rollup as buildtool?',
+          type: 'confirm'
+        })
+      ).rollup;
+    }
+
+    if (!git) {
+      git = await (
+        await inquirer.prompt({
+          name: 'git',
+          message: 'Initialize a git repository?',
+          type: 'confirm'
+        })
+      ).git;
+    }
+
+    if (!vitest) {
+      vitest = await (
+        await inquirer.prompt({
+          name: 'vitest',
+          message: 'Use vitest for testing?',
+          type: 'confirm'
+        })
+      ).vitest;
     }
 
     const env = createEnv();
@@ -44,7 +77,10 @@ export default class Create extends Command {
     env.register(require.resolve('../../generator'), 'zotera:plugin');
     env.run('zotera:plugin', {
       name,
-      rollup
+      rollup,
+      git,
+      description,
+      vitest
     });
   }
 }

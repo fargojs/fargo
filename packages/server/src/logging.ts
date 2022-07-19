@@ -9,7 +9,7 @@ const DEFAULT_LOGGING_OPTIONS: ZoteraLoggingOptions = {
   type: 'stdout'
 };
 
-const debug = _debug('zotera:core:logging');
+const debug = _debug('zotera:server:logging');
 
 /**
  * Setup logging for zotera core.

@@ -12,7 +12,7 @@ export interface ZoteraConfig {
   /**
    * Zotera plugins to load.
    */
-  plugins?: ZoteraPluginOptions;
+  plugins?: ZoteraPlugin[];
 
   /**
    * Use HTTPS
@@ -36,9 +36,8 @@ export interface ZoteraHttpsOptions {
   ca?: string;
 }
 
-export interface ZoteraPluginOptions {
-  [key: string]: any;
-}
+
+export type ZoteraPlugin = string;
 
 export interface ZoteraLoggingOptions {
   type?: 'stdout' | 'file';
