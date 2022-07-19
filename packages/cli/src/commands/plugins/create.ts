@@ -7,6 +7,11 @@ export default class Create extends Command {
   static description = 'Create a plugin';
 
   static flags = {
+    type: Flags.enum({
+      char: 't',
+      options: ['storage'],
+      description: 'type of plugin'
+    }),
     name: Flags.string({ char: 'n', description: 'name of the plugin' }),
     rollup: Flags.boolean({ description: 'use rollup', default: false }),
     git: Flags.boolean({ description: 'use git', default: false }),
@@ -16,7 +21,20 @@ export default class Create extends Command {
   async run(): Promise<void> {
     const { flags } = await this.parse(Create);
 
-    let { name, rollup, git, vitest } = flags;
+    let { type, name, rollup, git, vitest } = flags;
+    if (!type) {
+      type = await (
+        await inquirer.prompt([
+          {
+            type: 'list',
+            name: 'type',
+            message: 'What type of plugin would you like to create?',
+            choices: ['storage']
+          }
+        ])
+      ).type;
+    }
+
     if (!name) {
       name = await (
         await inquirer.prompt({
@@ -74,8 +92,8 @@ export default class Create extends Command {
 
     const env = createEnv();
 
-    env.register(require.resolve('../../generator'), 'zotera:plugin');
-    env.run('zotera:plugin', {
+    env.register(require.resolve(`../../generators/${type}`), `zotera:plugin:${type}`);
+    env.run(`zotera:plugin:${type}`, {
       name,
       rollup,
       git,

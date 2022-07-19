@@ -2,7 +2,7 @@ import { join, resolve } from 'path';
 import Generator from 'yeoman-generator';
 import type { GeneratorOptions } from 'yeoman-generator';
 
-export default class PluginGenerator extends Generator {
+export default class StoragePluginGenerator extends Generator {
   options: {
     name: string;
     rollup: boolean;
@@ -25,7 +25,7 @@ export default class PluginGenerator extends Generator {
 
   writing() {
     this.destinationRoot(resolve(this.options.name));
-    this.sourceRoot(join(__dirname, './templates/typescript'));
+    this.sourceRoot(join(__dirname, './templates/storage'));
 
     this.fs.copyTpl(this.templatePath('_package.json'), this.destinationPath('package.json'), {
       name: this.options.name,
@@ -36,7 +36,7 @@ export default class PluginGenerator extends Generator {
 
     this.fs.copy(this.templatePath('tsconfig.json'), this.destinationPath('tsconfig.json'));
 
-    this.fs.copyTpl(this.templatePath('src/plugin.ts'), this.destinationPath('src/plugin.ts'));
+    this.fs.copyTpl(this.templatePath('src/plugin.ts.ejs'), this.destinationPath('src/plugin.ts'));
     if (this.options.rollup) {
       this.fs.copyTpl(
         this.templatePath('rollup.config.ts'),
