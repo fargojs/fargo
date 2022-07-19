@@ -1,17 +1,19 @@
-import type { FastifyPluginCallback } from 'fastify';
+import type { FastifyError, FastifyInstance, FastifyPluginCallback } from 'fastify';
 import flugin from 'fastify-plugin';
 
-import type { ZoteraConfig } from '@zotera/types';
+import { routes } from './routes';
+import type { PluginOptions } from './types';
 
-type PluginOptions = Omit<ZoteraConfig, 'logging'>;
-
-const plugin: FastifyPluginCallback<PluginOptions> = flugin(
-  (fastify, opts) => {
+const plugin: FastifyPluginCallback = flugin(
+  (fastify: FastifyInstance, options: PluginOptions, next: (error?: FastifyError) => void) => {
     console.log('Hello from plugin');
+    console.log(JSON.stringify(options));
+    fastify.register(routes, options);
+
+    next();
   },
   {
-    name: 'zotera',
-    fastify: '3.x'
+    name: 'zotera'
   }
 );
 

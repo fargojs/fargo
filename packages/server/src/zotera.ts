@@ -1,11 +1,11 @@
 import Fastify from 'fastify';
 import type { FastifyInstance } from 'fastify';
 
+import zoteraPlugin from '@zotera/fastify';
 import type { ZoteraConfig } from '@zotera/types';
 
 import { setup } from './logging';
-import { storagePlugin } from './web/plugins/storage';
-import { routes } from './web/routes';
+// import { storagePlugin } from './web/plugins/storage';
 
 export async function zotera(config: ZoteraConfig): Promise<FastifyInstance> {
   const zotera = Fastify({
@@ -13,10 +13,7 @@ export async function zotera(config: ZoteraConfig): Promise<FastifyInstance> {
     ignoreTrailingSlash: true
   });
 
-  
-
-  zotera.register(storagePlugin, { config });
-  zotera.register(routes, { config });
+  zotera.register(zoteraPlugin, config);
 
   return zotera;
 }
