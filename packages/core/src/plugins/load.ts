@@ -1,6 +1,6 @@
 import _debug from 'debug';
 
-import type { ZoteraConfig, ZoteraPlugin } from '@zotera/types';
+import type { ZoteraConfig } from '@zotera/types';
 
 const debug = _debug('zotera:core:plugins');
 

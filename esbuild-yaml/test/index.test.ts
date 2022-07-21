@@ -10,7 +10,8 @@ describe('Yaml Plugin', () => {
       format: 'esm',
       bundle: true,
       plugins: [YAMLPlugin()],
-      outfile: './test/shared/config-utils.js'
+      outfile: './test/shared/config-utils.js',
+      keepNames: false
     });
     expect(result).toStrictEqual({ errors: [], warnings: [] });
   });

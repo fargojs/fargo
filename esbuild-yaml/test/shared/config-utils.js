@@ -1,4 +1,4 @@
-// yaml:/home/luxas/Development/zotera/esbuild-yaml/test/shared/configs/default.yaml
+// yaml:/home/luxas/dev/zotera/esbuild-yaml/test/shared/configs/default.yaml
 var default_default = "pluginDir: ./plugins\n\nweb:\n  enabled: true\n\nlogging:\n  type: stdout\n  level: info\n";
 
 // test/shared/config-utils.ts

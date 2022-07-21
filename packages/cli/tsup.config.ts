@@ -2,7 +2,7 @@ import { copy } from 'esbuild-plugin-copy';
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-  entry: ['src/**/*.ts'],
+  entry: ['src/**/*.ts', '!src/templates/**/*.ts'],
   format: ['cjs'],
   clean: true,
   bundle: false,
