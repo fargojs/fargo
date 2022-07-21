@@ -53,6 +53,7 @@ importers:
       '@types/yeoman-environment': ^2.10.7
       '@types/yeoman-generator': ^5.2.10
       '@zotera/config': workspace:*
+      '@zotera/core': workspace:*
       '@zotera/server': workspace:*
       esbuild: ^0.14.49
       esbuild-plugin-copy: ^1.3.0
@@ -65,6 +66,7 @@ importers:
       '@oclif/plugin-help': 5.1.12
       '@oclif/plugin-not-found': 2.3.1
       '@zotera/config': link:../config
+      '@zotera/core': link:../core
       '@zotera/server': link:../server
       inquirer: 8.2.4
       yeoman-environment: 3.9.1
@@ -77,23 +79,6 @@ importers:
       esbuild: 0.14.49
       esbuild-plugin-copy: 1.3.0_esbuild@0.14.49
       oclif: 3.1.0
-
-  packages/common:
-    specifiers:
-      '@types/debug': ^4.1.7
-      '@types/node': ^18.0.3
-      '@zotera/config': workspace:*
-      '@zotera/types': workspace:*
-      debug: ^4.3.4
-      pino: ^8.1.0
-    dependencies:
-      '@zotera/config': link:../config
-      debug: 4.3.4
-      pino: 8.1.0
-    devDependencies:
-      '@types/debug': 4.1.7
-      '@types/node': 18.0.3
-      '@zotera/types': link:../types
 
   packages/config:
     specifiers:
@@ -121,14 +106,12 @@ importers:
       '@zotera/config': workspace:*
       '@zotera/types': workspace:*
       debug: ^4.3.4
-      fastify: ^4.2.0
-      fastify-plugin: ^4.0.0
+      jszip: ^3.10.0
       pino: ^8.1.0
     dependencies:
       '@zotera/config': link:../config
       debug: 4.3.4
-      fastify: 4.2.0
-      fastify-plugin: 4.0.0
+      jszip: 3.10.0
       pino: 8.1.0
     devDependencies:
       '@types/debug': 4.1.7
@@ -163,12 +146,14 @@ importers:
       '@types/debug': ^4.1.7
       '@types/node': ^18.0.3
       '@zotera/config': workspace:*
+      '@zotera/core': workspace:*
       '@zotera/types': workspace:*
       debug: ^4.3.4
       fastify: ^4.2.0
       fastify-plugin: ^4.0.0
     dependencies:
       '@zotera/config': link:../config
+      '@zotera/core': link:../core
       debug: 4.3.4
       fastify-plugin: 4.0.0
     devDependencies:
@@ -3880,6 +3865,10 @@ packages:
     resolution: {integrity: sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==}
     engines: {node: '>= 4'}
 
+  /immediate/3.0.6:
+    resolution: {integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==}
+    dev: false
+
   /import-fresh/3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -4277,6 +4266,15 @@ packages:
       object.assign: 4.1.2
     dev: true
 
+  /jszip/3.10.0:
+    resolution: {integrity: sha512-LDfVtOLtOxb9RXkYOwPyNBTQDL4eUbqahtoY6x07GiDJHwSYvn8sHHIw8wINImV3MqbMNve2gSuM1DDqEKk09Q==}
+    dependencies:
+      lie: 3.3.0
+      pako: 1.0.11
+      readable-stream: 2.3.7
+      setimmediate: 1.0.5
+    dev: false
+
   /just-diff-apply/5.3.1:
     resolution: {integrity: sha512-dgFenZnMsc1xGNqgdtgnh7DK+Oy352CE3VZLbzcbQpsBs9iI2K3M0IRrdgREZ72eItTjbl0suRyvKRdVQa9GbA==}
 
@@ -4297,6 +4295,12 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
+
+  /lie/3.3.0:
+    resolution: {integrity: sha512-UaiMJzeWRlEujzAuw5LokY1L5ecNQYZKfmyZ9L7wDHb/p5etKaxXhohBcrw0EYby+G/NA52vRSN4N39dxHAIwQ==}
+    dependencies:
+      immediate: 3.0.6
+    dev: false
 
   /light-my-request/5.0.0:
     resolution: {integrity: sha512-0OPHKV+uHgBOnRokzL1LqeMCnSAo5l/rZS7kyB6G1I8qxGCvhXpq1M6WK565Y9A5CSn50l3DVaHnJ5FCdpguZQ==}
@@ -5162,6 +5166,10 @@ packages:
     resolution: {integrity: sha512-8EKVBxCRSvLnsX1p2LlSFSH3c2/wuhY9/BXXWu8boL78FbVKqn2L5SpURt1x5iw6Gq8PTqJ7MdPoe5nCtX3I+g==}
     dev: true
 
+  /pako/1.0.11:
+    resolution: {integrity: sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==}
+    dev: false
+
   /parent-module/1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
     engines: {node: '>=6'}
@@ -5887,6 +5895,10 @@ packages:
 
   /set-cookie-parser/2.5.0:
     resolution: {integrity: sha512-cHMAtSXilfyBePduZEBVPTCftTQWz6ehWJD5YNUg4mqvRosrrjKbo4WS8JkB0/RxonMoohHm7cOGH60mDkRQ9w==}
+
+  /setimmediate/1.0.5:
+    resolution: {integrity: sha512-MATJdZp8sLqDl/68LfQmbP8zKPLQNV6BIZoIgrscFDQ+RsvK/BxeDQOgyxKKoh0y/8h3BqVFnCqQ/gd+reiIXA==}
+    dev: false
 
   /setprototypeof/1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}

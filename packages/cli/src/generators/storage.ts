@@ -25,7 +25,7 @@ export default class StoragePluginGenerator extends Generator {
 
   writing() {
     this.destinationRoot(resolve(this.options.name));
-    this.sourceRoot(join(__dirname, './templates/storage'));
+    this.sourceRoot(join(__dirname, '../templates/storage'));
 
     this.fs.copyTpl(this.templatePath('_package.json'), this.destinationPath('package.json'), {
       name: this.options.name,

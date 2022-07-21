@@ -10,6 +10,11 @@ export interface ZoteraConfig {
   pluginDir?: string;
 
   /**
+   * Allow loading of unscoped plugins.
+   */
+  allowUnscopedPlugins?: boolean;
+
+  /**
    * Zotera plugins to load.
    */
   plugins?: ZoteraPlugin[];
@@ -36,8 +41,10 @@ export interface ZoteraHttpsOptions {
   ca?: string;
 }
 
-
-export type ZoteraPlugin = string;
+export type ZoteraPlugin = string | ZoteraPluginOptions;
+export interface ZoteraPluginOptions {
+  [key: string]: any;
+}
 
 export interface ZoteraLoggingOptions {
   type?: 'stdout' | 'file';
@@ -51,6 +58,17 @@ export interface ZoteraAuthOptions {}
 
 export interface ZoteraWebOptions {
   enabled: boolean;
+}
+
+export interface PluginManifest {
+  name: string;
+  version?: string;
+  main?: string;
+}
+
+export interface PluginFile {
+  path: string;
+  name: string;
 }
 
 export interface ExtensionManifest {

@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@zotera/config": "workspace:*",
+    "@zotera/core": "workspace:*",
     "debug": "^4.3.4",
     "fastify-plugin": "^4.0.0"
   },
