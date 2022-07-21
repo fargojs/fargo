@@ -62,13 +62,12 @@ export interface ZoteraWebOptions {
 
 export interface PluginManifest {
   name: string;
-  version?: string;
-  main?: string;
+  version: string;
+  main: string;
 }
 
 export interface PluginFile {
   path: string;
-  name: string;
 }
 
 export interface ExtensionManifest {

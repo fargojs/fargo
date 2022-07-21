@@ -34,12 +34,13 @@
   "dependencies": {
     "@zotera/config": "workspace:*",
     "debug": "^4.3.4",
-    "jszip": "^3.10.0",
-    "pino": "^8.1.0"
+    "pino": "^8.1.0",
+    "yazl": "^2.5.1"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
     "@types/node": "^18.0.3",
+    "@types/yazl": "^2.4.2",
     "@zotera/types": "workspace:*"
   }
 }

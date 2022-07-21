@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import type { PluginFile, PluginManifest } from '@zotera/types';
+import type { PluginManifest } from '@zotera/types';
 
 export async function readManifest(cwd: string): Promise<PluginManifest> {
   const manifestPath = path.join(cwd, 'package.json');
@@ -25,8 +25,4 @@ export async function readManifest(cwd: string): Promise<PluginManifest> {
 
 export function readPackedManifest() {}
 
-export async function findFiles(manifest: PluginManifest): Promise<PluginFile[]> {
-  const mainFile = manifest.main;
-  return [];
-}
 

@@ -1,18 +1,23 @@
 import fs from 'fs';
 import path from 'path';
 
-import type { PluginManifest } from '@zotera/types';
+import type { PluginFile, PluginManifest } from '@zotera/types';
 
-import { findFiles } from './read';
 import { writeZOP } from './write';
 
 export async function pack(manifest: PluginManifest, out?: string) {
-  const files = await findFiles(manifest);
+  const cwd = process.cwd();
+  const files: PluginFile[] = [
+    {
+      path: path.join(cwd, 'package.json')
+    },
+    {
+      path: path.join(cwd, manifest.main || 'dist/plugin.js')
+    }
+  ];
 
   const output = await getOutput(manifest, out);
-  console.log(output);
-  console.log(files);
-  writeZOP(files, path.resolve(output));
+  await writeZOP(files, path.resolve(output));
 }
 
 async function getOutput(manifest: PluginManifest, out?: string): Promise<string> {

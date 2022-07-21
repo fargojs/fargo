@@ -16,7 +16,6 @@ export default class Pack extends Command {
   async run(): Promise<void> {
     const { flags } = await this.parse(Pack);
     const manifest = await readManifest(process.cwd());
-    this.log(JSON.stringify(manifest, null, 2));
     await pack(manifest, flags.out);
   }
 }
