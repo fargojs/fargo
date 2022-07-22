@@ -8,7 +8,7 @@ const depVersions: Record<string, string> = {
   vitest: '0.18.1',
   typescript: '4.7.4',
   '@types/fastify': '4.3.0',
-  '@types/expres': '4.17.13'
+  '@types/express': '4.17.13'
 };
 
 export function getDependencyVersion(dep: string): string {
