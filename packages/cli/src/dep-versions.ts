@@ -6,7 +6,9 @@ const depVersions: Record<string, string> = {
   '@rollup/plugin-typescript': '8.3.3',
   tslib: '2.4.0',
   vitest: '0.18.1',
-  typescript: '4.7.4'
+  typescript: '4.7.4',
+  '@types/fastify': '4.3.0',
+  '@types/expres': '4.17.13'
 };
 
 export function getDependencyVersion(dep: string): string {

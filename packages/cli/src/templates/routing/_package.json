@@ -14,7 +14,9 @@
     <%- dep("@rollup/plugin-commonjs") %>,
     <%- dep("@rollup/plugin-node-resolve") %>,
     <%- dep("@rollup/plugin-typescript") %>,
-    <%- dep("tslib") %><% } %>
+    <%- dep("tslib") %><% } %><% if (framework == 'express') { %>,
+    <%- dep("@types/express") %><% } else { %>,
+    <%- dep("@types/fastify") %><% } %>
   },
   "keywords": ["zotera-plugin", "zotera"],
   "scripts": {

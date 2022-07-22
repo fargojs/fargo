@@ -11,6 +11,7 @@ export default class RoutingPluginGenerator extends Generator {
     git: boolean;
     vitest: boolean;
     description: string;
+    framework: 'fastify' | 'express';
   };
 
   constructor(args: string | string[], opts: GeneratorOptions) {
@@ -21,7 +22,8 @@ export default class RoutingPluginGenerator extends Generator {
       rollup: opts.rollup,
       git: opts.git,
       description: opts.description,
-      vitest: opts.vitest
+      vitest: opts.vitest,
+      framework: opts.framework
     };
   }
 
@@ -34,36 +36,38 @@ export default class RoutingPluginGenerator extends Generator {
       description: this.options.description,
       vitest: this.options.vitest,
       rollup: this.options.rollup,
+      framework: this.options.framework,
       dep: getDependencyVersion
     });
 
-    this.fs.copy(this.templatePath('tsconfig.json'), this.destinationPath('tsconfig.json'));
+    this.fs.copy(
+      this.templatePath('../shared/tsconfig.json'),
+      this.destinationPath('tsconfig.json')
+    );
 
     this.fs.copyTpl(this.templatePath('src/plugin.ts'), this.destinationPath('src/plugin.ts'));
     if (this.options.rollup) {
       this.fs.copyTpl(
-        this.templatePath('rollup.config.ts'),
+        this.templatePath('../shared/rollup.config.ts'),
         this.destinationPath('rollup.config.ts')
       );
     }
 
     if (this.options.git) {
-      this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'));
+      this.fs.copy(this.templatePath('../shared/gitignore'), this.destinationPath('.gitignore'));
     }
 
     if (this.options.vitest) {
-      this.fs.copy(this.templatePath('vitest.config.ts'), this.destinationPath('vitest.config.ts'));
+      this.fs.copy(
+        this.templatePath('../shared/vitest.config.ts'),
+        this.destinationPath('vitest.config.ts')
+      );
       this.fs.copy(this.templatePath('test'), this.destinationPath('test'));
     }
 
-    this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), {
+    this.fs.copyTpl(this.templatePath('../shared/README.md'), this.destinationPath('README.md'), {
       name: this.options.name
     });
-  }
-
-  install() {
-    process.chdir(this.options.name);
-    // this.installDependencies({ npm: true, bower: false });
   }
 
   end() {

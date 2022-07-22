@@ -4,6 +4,7 @@ import { createEnv } from 'yeoman-environment';
 import { Command, Flags } from '@oclif/core';
 
 const pluginTypes = ['routing', 'storage', 'auth'];
+const httpFrameworkTypes = ['express', 'fastify'];
 
 export default class Create extends Command {
   static description = 'Create a plugin';
@@ -17,13 +18,18 @@ export default class Create extends Command {
     name: Flags.string({ char: 'n', description: 'name of the plugin' }),
     rollup: Flags.boolean({ description: 'use rollup', default: false }),
     git: Flags.boolean({ description: 'use git', default: false }),
-    vitest: Flags.boolean({ description: 'use vitest', default: false })
+    vitest: Flags.boolean({ description: 'use vitest', default: false }),
+    framework: Flags.string({
+      char: 'f',
+      description: 'framework types to use',
+      options: httpFrameworkTypes
+    })
   };
 
   async run(): Promise<void> {
     const { flags } = await this.parse(Create);
 
-    let { type, name, rollup, git, vitest } = flags;
+    let { type, name, rollup, git, vitest, framework } = flags;
     if (!type) {
       type = await (
         await inquirer.prompt([
@@ -92,6 +98,19 @@ export default class Create extends Command {
       ).vitest;
     }
 
+    if (type === 'routing') {
+      if (!framework) {
+        framework = await (
+          await inquirer.prompt({
+            name: 'framework',
+            message: 'What framework are you building this plugin for?',
+            type: 'list',
+            choices: httpFrameworkTypes
+          })
+        ).framework;
+      }
+    }
+
     const env = createEnv();
 
     env.register(require.resolve(`../../generators/${type}`), `zotera:plugin:${type}`);
@@ -100,7 +119,8 @@ export default class Create extends Command {
       rollup,
       git,
       description,
-      vitest
+      vitest,
+      framework
     });
   }
 }

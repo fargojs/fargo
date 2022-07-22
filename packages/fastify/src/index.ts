@@ -9,8 +9,9 @@ import type { PluginOptions } from './types';
 const plugin: FastifyPluginCallback = flugin(
   (fastify: FastifyInstance, options: PluginOptions, next: (error?: FastifyError) => void) => {
     loadPlugins(options);
+    // fastify.register(storage);
     fastify.register(routes, options);
-    
+
     next();
   },
   {

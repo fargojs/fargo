@@ -5,6 +5,7 @@
     "outDir": "dist",
     "lib": ["ESNext"],
     "rootDir": "src",
-    "strict": true
+    "strict": true,
+    "moduleResolution": "node"
   }
 }
