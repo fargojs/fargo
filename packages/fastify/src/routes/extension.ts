@@ -1,7 +1,7 @@
 import _debug from 'debug';
 import type { FastifyInstance } from 'fastify';
 
-const debug = _debug('zotera:core:routes:extension');
+const debug = _debug('zotera:fastify:routes:extension');
 
 export async function extension(zotera: FastifyInstance) {
   zotera.get('/-/:identifier', async (req) => {

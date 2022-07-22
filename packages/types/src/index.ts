@@ -1,3 +1,6 @@
+export * from './storage';
+export * from './plugins';
+
 export interface ZoteraConfig {
   /**
    * Logging options

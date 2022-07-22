@@ -1,5 +1,5 @@
 const depVersions: Record<string, string> = {
-  '@zotera/api': '0.0.1',
+  '@zotera/types': '0.0.1',
   rollup: '2.77.0',
   '@rollup/plugin-commonjs': '22.0.1',
   '@rollup/plugin-node-resolve': '13.3.0',

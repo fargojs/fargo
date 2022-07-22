@@ -7,7 +7,7 @@
     "node": ">=14"
   },
   "devDependencies": {
-    <%- dep("@zotera/api") %>,
+    <%- dep("@zotera/types") %>,
     <%- dep("typescript") %><% if (vitest) { %>,
     <%- dep("vitest") %><% } %><% if (rollup) { %>,
     <%- dep("rollup") %>,

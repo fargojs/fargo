@@ -1,6 +1,10 @@
 import type { PluginContext, ZoteraStorage } from '@zotera/api';
 
-export function register(ctx: PluginContext) {
+interface PluginOptions {
+  minion: boolean;
+}
+
+export function register(ctx: PluginContext, options: PluginOptions) {
   const storage = new StorageAPI();
   ctx.storage.register(storage);
 }

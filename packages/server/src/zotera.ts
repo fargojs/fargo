@@ -5,7 +5,6 @@ import zoteraPlugin from '@zotera/fastify';
 import type { ZoteraConfig } from '@zotera/types';
 
 import { setup } from './logging';
-// import { storagePlugin } from './web/plugins/storage';
 
 export async function zotera(config: ZoteraConfig): Promise<FastifyInstance> {
   const zotera = Fastify({

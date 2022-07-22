@@ -3,8 +3,9 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   entry: ['src/index.ts'],
   clean: true,
-  splitting: false,
+  splitting: true,
   dts: {
-    only: true
+    only: true,
+
   }
 });
