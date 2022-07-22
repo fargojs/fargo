@@ -4,7 +4,7 @@ import type { GeneratorOptions } from 'yeoman-generator';
 
 import { getDependencyVersion } from '../dep-versions';
 
-export default class StoragePluginGenerator extends Generator {
+export default class AuthPluginGenerator extends Generator {
   options: {
     name: string;
     rollup: boolean;
@@ -27,7 +27,7 @@ export default class StoragePluginGenerator extends Generator {
 
   writing() {
     this.destinationRoot(resolve(this.options.name));
-    this.sourceRoot(join(__dirname, '../templates/storage'));
+    this.sourceRoot(join(__dirname, '../templates/auth'));
 
     this.fs.copyTpl(this.templatePath('_package.json'), this.destinationPath('package.json'), {
       name: this.options.name,

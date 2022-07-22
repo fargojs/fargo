@@ -8,5 +8,9 @@ export default defineConfig({
   clean: true,
   splitting: false,
   dts: true,
-  esbuildPlugins: [YAMLPlugin()]
+  esbuildPlugins: [
+    YAMLPlugin({
+      output: 'text'
+    })
+  ]
 });

@@ -3,13 +3,15 @@ import { createEnv } from 'yeoman-environment';
 
 import { Command, Flags } from '@oclif/core';
 
+const pluginTypes = ['routing', 'storage', 'auth'];
+
 export default class Create extends Command {
   static description = 'Create a plugin';
 
   static flags = {
     type: Flags.enum({
       char: 't',
-      options: ['storage'],
+      options: pluginTypes,
       description: 'type of plugin'
     }),
     name: Flags.string({ char: 'n', description: 'name of the plugin' }),
@@ -29,7 +31,7 @@ export default class Create extends Command {
             type: 'list',
             name: 'type',
             message: 'What type of plugin would you like to create?',
-            choices: ['storage']
+            choices: pluginTypes
           }
         ])
       ).type;

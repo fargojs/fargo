@@ -28,7 +28,6 @@ export function loadPlugins({
 
 function loadPlugin(plugin: string, dir: string) {
   debug.extend('load')('Loading plugin %s', plugin);
-
 }
 
 // function loadFromDirectory() {}

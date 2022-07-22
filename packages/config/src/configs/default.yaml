@@ -1,5 +1,8 @@
 pluginDir: ./plugins
 
+allowUnscopedPlugins: true
+
+
 web:
   enabled: true
 
