@@ -21,7 +21,7 @@ export default class AuthPluginGenerator extends Generator {
       rollup: opts.rollup,
       git: opts.git,
       description: opts.description,
-      vitest: opts.vitest,
+      vitest: opts.vitest
     };
   }
 
@@ -37,7 +37,10 @@ export default class AuthPluginGenerator extends Generator {
       dep: getDependencyVersion
     });
 
-    this.fs.copy(this.templatePath('../shared/tsconfig.json'), this.destinationPath('tsconfig.json'));
+    this.fs.copy(
+      this.templatePath('../shared/tsconfig.json'),
+      this.destinationPath('tsconfig.json')
+    );
 
     this.fs.copyTpl(this.templatePath('src/plugin.ts'), this.destinationPath('src/plugin.ts'));
     if (this.options.rollup) {
@@ -52,7 +55,10 @@ export default class AuthPluginGenerator extends Generator {
     }
 
     if (this.options.vitest) {
-      this.fs.copy(this.templatePath('../shared/vitest.config.ts'), this.destinationPath('vitest.config.ts'));
+      this.fs.copy(
+        this.templatePath('../shared/vitest.config.ts'),
+        this.destinationPath('vitest.config.ts')
+      );
       this.fs.copy(this.templatePath('test'), this.destinationPath('test'));
     }
 

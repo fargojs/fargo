@@ -24,5 +24,3 @@ export async function readManifest(cwd: string): Promise<PluginManifest> {
 }
 
 export function readPackedManifest() {}
-
-

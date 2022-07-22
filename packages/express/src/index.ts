@@ -10,7 +10,7 @@ const zoteraRouter = (options?: RouterOptions) => {
   const router = express.Router();
 
   ping(router);
-  
+
   return router;
 };
 

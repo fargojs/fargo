@@ -5,7 +5,6 @@ export default defineConfig({
   clean: true,
   splitting: true,
   dts: {
-    only: true,
-
+    only: true
   }
 });

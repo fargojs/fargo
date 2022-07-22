@@ -5,7 +5,6 @@ import type { ZoteraConfig } from '@zotera/types';
 
 import { zotera } from './zotera';
 
-
 const debug = _debug('zotera:server');
 
 export async function createApp(config?: string | ZoteraConfig) {
