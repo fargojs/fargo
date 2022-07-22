@@ -4,7 +4,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "format": "prettier --write --cache .",
-    "lint": "eslint --cache {packages/*,esbuild-yaml}/{src,test}/**/*.{js,ts,tsx}",
+    "lint": "eslint --cache packages/*/{src,test}/**/*.{js,ts,tsx}",
     "build": "pnpm -r --filter=@zotera/* run build",
     "dev": "pnpm -r --parallel --filter=@zotera/* run dev",
     "test": "pnpm -r --parallel --filter=@zotera/* run test"

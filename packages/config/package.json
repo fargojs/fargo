@@ -41,6 +41,6 @@
     "@types/js-yaml": "^4.0.5",
     "@types/node": "^18.0.3",
     "@zotera/types": "workspace:*",
-    "@zotera/esbuild-yaml": "workspace:*"
+    "@zotera/esbuild-yaml": "0.1.0"
   }
 }
