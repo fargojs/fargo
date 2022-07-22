@@ -3,8 +3,20 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build"
+    "dev": "vite build --watch",
+    "build": "vite build"
+  },
+  "repository": "https://github.com/zotera/zotera/blob/main/packages/web",
+  "keywords": [],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zotera/zotera/issues"
+  },
+  "homepage": "https://github.com/zotera/zotera/blob/main/packages/web#readme",
+  "author": {
+    "name": "Lucas Norgaard",
+    "email": "lucasnrgaard@gmail.com",
+    "url": "https://luxass.dev"
   },
   "dependencies": {
     "react": "^18.2.0",
