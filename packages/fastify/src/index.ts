@@ -6,7 +6,7 @@ import { loadPlugins } from '@zotera/core';
 import { routes } from './routes';
 import type { PluginOptions } from './types';
 
-const plugin: FastifyPluginCallback = flugin(
+const plugin: FastifyPluginCallback<PluginOptions> = flugin(
   (fastify: FastifyInstance, options: PluginOptions, next: (error?: FastifyError) => void) => {
     loadPlugins(options);
     // fastify.register(storage);

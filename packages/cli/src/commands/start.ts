@@ -20,10 +20,8 @@ export default class Start extends Command {
 
   async run(): Promise<void> {
     const { flags } = await this.parse(Start);
-
     process.title = 'zotera';
-
-    const app = await createApp();
+    const app = await createApp(flags.config);
 
     await app.listen({
       port: parseInt(process.env.PORT || flags.port)

@@ -3,6 +3,11 @@ export * from './plugins';
 
 export interface ZoteraConfig {
   /**
+   * Used for development, will be moved at some point.
+   */
+  configPath: string;
+
+  /**
    * Logging options
    */
   logging?: ZoteraLoggingOptions;

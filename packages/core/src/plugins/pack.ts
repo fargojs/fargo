@@ -22,14 +22,14 @@ export async function pack(manifest: PluginManifest, out?: string) {
 
 async function getOutput(manifest: PluginManifest, out?: string): Promise<string> {
   if (!out) {
-    return path.resolve(process.cwd(), `${manifest.name}-v${manifest.version || 'x.x.x'}.zop`);
+    return path.resolve(process.cwd(), `${manifest.name}.zop`);
   }
 
   try {
     const _stat = await fs.promises.stat(out);
 
     if (_stat.isDirectory()) {
-      return path.join(out, `${manifest.name}-v${manifest.version || 'x.x.x'}.zop`);
+      return path.join(out, `${manifest.name}.zop`);
     } else {
       return out;
     }

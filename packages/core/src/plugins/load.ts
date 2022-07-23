@@ -1,4 +1,5 @@
 import _debug from 'debug';
+import path from 'path';
 
 import type { ZoteraConfig } from '@zotera/types';
 
@@ -7,7 +8,8 @@ const debug = _debug('zotera:core:plugins');
 export function loadPlugins({
   allowUnscopedPlugins = false,
   pluginDir = './plugins',
-  plugins: plugs = []
+  plugins: plugs = [],
+  configPath
 }: ZoteraConfig) {
   const plugins = plugs
     .map((plugin) => {
@@ -23,13 +25,16 @@ export function loadPlugins({
 
   debug('Loading %s plugins', plugins.length);
 
-  plugins.map((plugin) => loadPlugin(plugin, pluginDir));
+  plugins.map((plugin) => loadPlugin(plugin, path.resolve(configPath || '', pluginDir)));
 }
 
+/**
+ * Load a zotera plugin from plugins directory
+ */
 function loadPlugin(plugin: string, dir: string) {
   debug.extend('load')('Loading plugin %s', plugin);
+  const pluginLocation = path.resolve(dir, plugin);
+  debug('Loading plugin from %s', pluginLocation);
 }
 
 // function loadFromDirectory() {}
-
-// function loadFromRegistry() {}

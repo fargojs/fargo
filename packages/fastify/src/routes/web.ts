@@ -12,8 +12,6 @@ export async function web(zotera: FastifyInstance) {
       </head>
       <body class="body">
         <div id="app"></div>
-        <div id="root">Hello</div>
-        <script async>${await import('@zotera/web')}</script>
       </body>
     </html>
   `);
