@@ -1,4 +1,5 @@
 export * from './storage';
+export * from './auth';
 export * from './plugins';
 
 export interface ZoteraConfig {
