@@ -25,16 +25,16 @@ export function loadPlugins({
 
   debug('Loading %s plugins', plugins.length);
 
-  plugins.map((plugin) => loadPlugin(plugin, path.resolve(configPath || '', pluginDir)));
+  plugins.map((plugin) => loadPlugin(plugin, path.resolve(configPath, pluginDir)));
 }
 
 /**
  * Load a zotera plugin from plugins directory
  */
-function loadPlugin(plugin: string, dir: string) {
-  debug.extend('load')('Loading plugin %s', plugin);
-  const pluginLocation = path.resolve(dir, plugin);
-  debug('Loading plugin from %s', pluginLocation);
+async function loadPlugin(plugin: string, dir: string) {
+  debug('Loading plugin %s', plugin);
+  const pluginLocation = path.resolve(dir, plugin + '.zop');
+  debug('Plugin location %s', pluginLocation);
 }
 
 // function loadFromDirectory() {}

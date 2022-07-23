@@ -35,11 +35,13 @@
     "@zotera/config": "workspace:*",
     "debug": "^4.3.4",
     "pino": "^8.1.0",
+    "yauzl": "^2.10.0",
     "yazl": "^2.5.1"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
     "@types/node": "^18.0.3",
+    "@types/yauzl": "^2.10.0",
     "@types/yazl": "^2.4.2",
     "@zotera/types": "workspace:*"
   }

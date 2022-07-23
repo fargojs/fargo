@@ -22,5 +22,3 @@ export async function readManifest(cwd: string): Promise<PluginManifest> {
 
   return manifest;
 }
-
-export function readPackedManifest() {}
