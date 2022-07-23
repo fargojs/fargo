@@ -5,13 +5,11 @@ import { extension } from './extension';
 import { web } from './web';
 
 export const routes: FastifyPluginCallback<PluginOptions> = (app, options, done) => {
-  app.register(extension);
+  app.register(extension, { prefix: '/-/' });
 
   if (options.web?.enabled) {
     app.log.info('Web server enabled');
-    app.register(web, {
-      prefix: '/-/'
-    });
+    app.register(web);
   }
 
   done();
