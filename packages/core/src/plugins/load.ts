@@ -58,8 +58,7 @@ async function loadPlugin(plugin: string, dir: string): Promise<ZoteraPluginImpl
     }
   } catch (e) {
     debug('Plugin is not unpacked');
-    console.log(`${pluginPath}.zop`)
-    await unpack(`${pluginPath}.zop`);
+    await unpack(pluginPath);
     throw new Error(`Plugin ${plugin} not found`);
     // Plugin is not unpacked
     debug('Plugin %s is not unpacked, unpacking...', plugin);

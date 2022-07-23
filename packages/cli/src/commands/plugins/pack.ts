@@ -17,5 +17,6 @@ export default class Pack extends Command {
     const { flags } = await this.parse(Pack);
     const manifest = await readManifest(process.cwd());
     await pack(manifest, flags.out);
+    this.log(`Plugin ${manifest.name} packed`);
   }
 }
