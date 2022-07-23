@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
+import { ZipFile } from 'yazl';
 
 import type { PluginFile, PluginManifest } from '@zotera/types';
 
-import { writeZOP } from './write';
 
 export async function pack(manifest: PluginManifest, out?: string) {
   const cwd = process.cwd();
@@ -19,7 +19,21 @@ export async function pack(manifest: PluginManifest, out?: string) {
   ];
 
   const output = await getOutput(manifest, out);
-  await writeZOP(files, path.resolve(output));
+  return new Promise((resolve, reject) => {
+    const zip = new ZipFile();
+    files.forEach((file) => {
+      zip.addFile(file.localPath, file.path);
+    });
+
+    zip.end();
+
+    const zipStream = fs.createWriteStream(path.resolve(output));
+    zip.outputStream.pipe(zipStream);
+
+    zip.outputStream.once('error', reject);
+    zipStream.once('error', reject);
+    zipStream.once('finish', () => resolve);
+  });
 }
 
 async function getOutput(manifest: PluginManifest, out?: string): Promise<string> {

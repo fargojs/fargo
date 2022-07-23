@@ -1,39 +1,50 @@
 import fs from 'fs';
 import path from 'path';
+import type { Entry, ZipFile } from 'yauzl';
+import { open } from 'yauzl';
 
-import type { PluginFile, PluginManifest } from '@zotera/types';
+export async function unpack(location: string) {
+  const zipfile = await new Promise<ZipFile>((resolve, reject) =>
+    open(location, { lazyEntries: true }, (err, zipfile) => (err ? reject(err) : resolve(zipfile!)))
+  );
+  console.log(zipfile.readEntry())
 
-import { writeZOP } from './write';
+  return await new Promise((resolve, reject) => {
+    zipfile.readEntry();
 
-export async function pack(manifest: PluginManifest, out?: string) {
-  const cwd = process.cwd();
-  const files: PluginFile[] = [
-    {
-      path: path.join(cwd, 'package.json')
-    },
-    {
-      path: path.join(cwd, manifest.main || 'dist/plugin.js')
-    }
-  ];
+    zipfile.once('close', () => resolve(null));
 
-  const output = await getOutput(manifest, out);
-  await writeZOP(files, path.resolve(output));
-}
+    zipfile.on('entry', (entry: Entry) => {
+      if (/\/$/.test(entry.fileName)) {
+        // Directory file names end with '/'.
+        // Note that entires for directories themselves are optional.
+        // An entry's fileName implicitly requires its parent directories to exist.
+        zipfile.readEntry();
+      } else {
+        // file entry
+        zipfile.openReadStream(entry, (err, readStream) => {
+          if (err) {
+            zipfile.close();
+            reject(err);
+          }
+          readStream.on('end', () => {
+            zipfile.readEntry();
+          });
+          readStream.pipe(fs.createWriteStream(entry.fileName));
+        });
+      }
+    });
+  });
+  // const cwd = process.cwd();
+  // const files: PluginFile[] = [
+  //   {
+  //     path: path.join(cwd, 'package.json')
+  //   },
+  //   {
+  //     path: path.join(cwd, manifest.main || 'dist/plugin.js')
+  //   }
+  // ];
 
-async function getOutput(manifest: PluginManifest, out?: string): Promise<string> {
-  if (!out) {
-    return path.resolve(process.cwd(), `${manifest.name}.zop`);
-  }
-
-  try {
-    const _stat = await fs.promises.stat(out);
-
-    if (_stat.isDirectory()) {
-      return path.join(out, `${manifest.name}.zop`);
-    } else {
-      return out;
-    }
-  } catch {
-    return out;
-  }
+  // const output = await getOutput(manifest, out);
+  // await writeZOP(files, path.resolve(output));
 }

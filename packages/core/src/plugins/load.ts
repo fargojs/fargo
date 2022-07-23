@@ -4,6 +4,8 @@ import path from 'path';
 
 import type { ZoteraConfig, ZoteraPluginImpl } from '@zotera/types';
 
+import { unpack } from './unpack';
+
 const debug = _debug('zotera:core:plugins');
 
 export async function loadPlugins({
@@ -55,6 +57,9 @@ async function loadPlugin(plugin: string, dir: string): Promise<ZoteraPluginImpl
       return require(pluginPath) as ZoteraPluginImpl;
     }
   } catch (e) {
+    debug('Plugin is not unpacked');
+    console.log(`${pluginPath}.zop`)
+    await unpack(`${pluginPath}.zop`);
     throw new Error(`Plugin ${plugin} not found`);
     // Plugin is not unpacked
     debug('Plugin %s is not unpacked, unpacking...', plugin);
