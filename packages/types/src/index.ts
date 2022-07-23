@@ -83,6 +83,7 @@ export interface PluginManifest {
 
 export interface PluginFile {
   path: string;
+  localPath: string;
 }
 
 export interface ExtensionManifest {

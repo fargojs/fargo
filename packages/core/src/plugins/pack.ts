@@ -9,10 +9,12 @@ export async function pack(manifest: PluginManifest, out?: string) {
   const cwd = process.cwd();
   const files: PluginFile[] = [
     {
-      path: path.join(cwd, 'package.json')
+      localPath: path.join(cwd, 'package.json'),
+      path: 'package.json'
     },
     {
-      path: path.join(cwd, manifest.main || 'dist/plugin.js')
+      localPath: path.join(cwd, manifest.main || 'dist/plugin.js'),
+      path: manifest.main || 'dist/plugin.js'
     }
   ];
 
