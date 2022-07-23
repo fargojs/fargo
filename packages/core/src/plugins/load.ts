@@ -1,11 +1,12 @@
 import _debug from 'debug';
+import fs from 'fs';
 import path from 'path';
 
-import type { ZoteraConfig } from '@zotera/types';
+import type { ZoteraConfig, ZoteraPluginImpl } from '@zotera/types';
 
 const debug = _debug('zotera:core:plugins');
 
-export function loadPlugins({
+export async function loadPlugins({
   allowUnscopedPlugins = false,
   pluginDir = './plugins',
   plugins: plugs = [],
@@ -24,17 +25,39 @@ export function loadPlugins({
     });
 
   debug('Loading %s plugins', plugins.length);
+  const dir = path.resolve(configPath, pluginDir);
+  debug('Plugin directory %s', dir);
+  const k = plugins.map((plugin) => {
+    try {
+      return loadPlugin(plugin, dir);
+    } catch (e) {
+      debug('Error loading plugin %s', plugin);
+      throw new Error(e);
+    }
+  });
 
-  plugins.map((plugin) => loadPlugin(plugin, path.resolve(configPath, pluginDir)));
+  return await Promise.all(k);
 }
 
 /**
  * Load a zotera plugin from plugins directory
  */
-async function loadPlugin(plugin: string, dir: string) {
+async function loadPlugin(plugin: string, dir: string): Promise<ZoteraPluginImpl | undefined> {
   debug('Loading plugin %s', plugin);
-  const pluginLocation = path.resolve(dir, plugin + '.zop');
-  debug('Plugin location %s', pluginLocation);
+  const pluginPath = path.resolve(dir, plugin);
+  try {
+    const isUnpacked = await fs.promises.stat(pluginPath);
+    // isUnpacked
+    if (isUnpacked.isDirectory()) {
+      debug('Plugin is unpacked');
+      debug('Plugin path %s', pluginPath);
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      return require(pluginPath) as ZoteraPluginImpl;
+    }
+  } catch (e) {
+    throw new Error(`Plugin ${plugin} not found`);
+    // Plugin is not unpacked
+    debug('Plugin %s is not unpacked, unpacking...', plugin);
+    debug('Error loading plugin %s', plugin);
+  }
 }
-
-// function loadFromDirectory() {}

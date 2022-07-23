@@ -1,6 +1,9 @@
+import type { PluginContext } from './plugins';
+
 export * from './storage';
 export * from './auth';
-export * from './plugins';
+
+export { PluginContext };
 
 export interface ZoteraConfig {
   /**
@@ -50,8 +53,11 @@ export interface ZoteraHttpsOptions {
   ca?: string;
 }
 
-export type ZoteraPlugin = string | ZoteraPluginOptions;
-export interface ZoteraPluginOptions {
+export interface ZoteraPluginImpl {
+  register(ctx: PluginContext, options: any): void | Promise<void>;
+}
+export type ZoteraPlugin = string | ZoteraPluginWithOptions;
+export interface ZoteraPluginWithOptions {
   [key: string]: any;
 }
 

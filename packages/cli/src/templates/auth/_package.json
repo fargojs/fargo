@@ -21,5 +21,13 @@
     "dev": <% if (rollup) { %> "rollup --config rollup.config.ts --configPlugin typescript --watch" <% } else { %> "tsc --watch" <% } %>,
     "build": <% if (rollup) { %> "rollup --config rollup.config.ts --configPlugin typescript" <% } else { %> "tsc" <% } %><% if (vitest) { %>,
     "test": "vitest run" <% } %>
+  },
+  "zotera": {
+    "options": {
+      "minion": {
+        "type": "boolean",
+        "default": true
+      }
+    }
   }
 }

@@ -1,12 +1,10 @@
-import type { PluginContext, ZoteraStorage } from '@zotera/types';
+import type { PluginContext } from '@zotera/types';
 
 interface PluginOptions {
   minion: boolean;
 }
 
 export function register(ctx: PluginContext, options: PluginOptions) {
-  const storage = new StorageAPI();
-  ctx.storage.register(storage);
+  ctx.log.info('Registering routing plugin');
+  ctx.log.info('Minion: ' + options.minion);
 }
-
-class StorageAPI extends ZoteraStorage {}
