@@ -54,7 +54,8 @@ export interface ZoteraHttpsOptions {
 }
 
 export interface ZoteraPluginImpl {
-  register(ctx: PluginContext, options: any): void | Promise<void>;
+  register(ctx: PluginContext, options?: any): void | Promise<void>;
+  options?: any;
 }
 export type ZoteraPlugin = string | ZoteraPluginWithOptions;
 export interface ZoteraPluginWithOptions {

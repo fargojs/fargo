@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
   "properties": {
     "zotera": {
       "type": "object",
@@ -16,7 +16,7 @@
     "options": {
       "anyOf": [
         {
-          "title": "Schema of the configuration property.",
+          "type": "object",
           "$ref": "http://json-schema.org/draft-07/schema#"
         }
       ]

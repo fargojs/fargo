@@ -86,11 +86,13 @@ importers:
       '@zotera/config': workspace:*
       '@zotera/types': workspace:*
       adm-zip: ^0.5.9
+      ajv: ^8.11.0
       debug: ^4.3.4
       pino: ^8.1.0
     dependencies:
       '@zotera/config': link:../config
       adm-zip: 0.5.9
+      ajv: 8.11.0
       debug: 4.3.4
       pino: 8.1.0
     devDependencies:
