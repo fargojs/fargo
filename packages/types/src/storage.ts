@@ -1,1 +1,3 @@
-export interface ZoteraStorage {}
+export interface ZoteraStorage {
+  search(): any;
+}

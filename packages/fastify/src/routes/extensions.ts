@@ -3,8 +3,8 @@ import type { FastifyInstance } from 'fastify';
 
 const debug = _debug('zotera:fastify:routes:extension');
 
-export async function extension(zotera: FastifyInstance) {
-  zotera.get('/', async (req) => {
+export async function extensions(zotera: FastifyInstance) {
+  zotera.get('/:identifier', async (req) => {
     const { identifier } = req.params as { identifier: string };
 
     debug('identifier lookup: %s', identifier);
@@ -28,4 +28,5 @@ export async function extension(zotera: FastifyInstance) {
     // const versions = await zotera.storage.getPackageVersions(identifier);
     return 'versions';
   });
+
 }

@@ -1,11 +1,12 @@
 import type { FastifyPluginCallback } from 'fastify';
 
 import type { PluginOptions } from '../types';
-import { extension } from './extension';
+import { extensions } from './extensions';
 import { web } from './web';
 
 export const routes: FastifyPluginCallback<PluginOptions> = (app, options, done) => {
-  app.register(extension, { prefix: '/-/' });
+  app.register(extensions, { prefix: '/-/extensions' });
+
 
   if (options.web?.enabled) {
     app.log.info('Web server enabled');
