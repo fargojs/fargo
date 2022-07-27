@@ -2,22 +2,25 @@
   "name": "@zotera/config",
   "version": "0.0.1",
   "description": "",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "zotera": "./bin/zotera"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
       "import": "./dist/index.mjs"
     }
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "rimraf dist && rollup --config rollup.config.ts --configPlugin typescript",
+    "dev": "rollup --watch --config rollup.config.ts --configPlugin typescript",
     "test": "vitest run"
   },
   "repository": "https://github.com/zotera/zotera/blob/main/packages/config",
@@ -40,7 +43,7 @@
     "@types/debug": "^4.1.7",
     "@types/js-yaml": "^4.0.5",
     "@types/node": "^18.0.3",
-    "@zotera/types": "workspace:*",
-    "@zotera/esbuild-yaml": "0.1.0"
+    "@zotera/esbuild-yaml": "0.1.0",
+    "@zotera/types": "workspace:*"
   }
 }
