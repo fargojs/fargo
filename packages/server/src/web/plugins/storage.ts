@@ -1,7 +1,7 @@
 import type { FastifyError, FastifyInstance, FastifyPluginOptions } from 'fastify';
 import flugin from 'fastify-plugin';
 
-import { Storage } from '../../storage/storage';
+import { Storage } from '@zotera/core';
 
 export const storagePlugin = flugin(
   (

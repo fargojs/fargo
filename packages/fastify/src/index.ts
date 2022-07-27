@@ -5,6 +5,7 @@ import { loadPlugins } from '@zotera/core';
 
 import { routes } from './routes';
 import type { PluginOptions } from './types';
+import { storagePlugin } from './plugins/storage';
 
 const plugin: FastifyPluginCallback<PluginOptions> = flugin(
   async (
@@ -14,7 +15,7 @@ const plugin: FastifyPluginCallback<PluginOptions> = flugin(
   ) => {
     await loadPlugins(options);
 
-    // fastify.register(storage);
+    fastify.register(storagePlugin);
     fastify.register(routes, options);
 
     next();

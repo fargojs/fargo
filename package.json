@@ -1,5 +1,5 @@
 {
-  "name": "zotera-monorepo",
+  "name": "@zotera/monorepo",
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",

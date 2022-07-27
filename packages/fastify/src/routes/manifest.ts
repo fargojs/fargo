@@ -1,9 +1,9 @@
 import _debug from 'debug';
 import type { FastifyInstance } from 'fastify';
 
-const debug = _debug('zotera:fastify:routes:extension');
+const debug = _debug('zotera:fastify:routes:manifest');
 
-export async function extensions(zotera: FastifyInstance) {
+export async function manifest(zotera: FastifyInstance) {
   zotera.get('/:identifier', async (req) => {
     const { identifier } = req.params as { identifier: string };
 
