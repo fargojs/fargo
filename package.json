@@ -19,6 +19,7 @@
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-typescript": "^8.3.3",
+    "@rollup/plugin-yaml": "^3.1.0",
     "esbuild": "^0.14.50",
     "eslint": "^8.20.0",
     "got": "^12.1.0",
@@ -37,5 +38,8 @@
   "engines": {
     "node": ">=16"
   },
-  "packageManager": "pnpm@7.5.0"
+  "packageManager": "pnpm@7.5.0",
+  "dependencies": {
+    "@rollup/plugin-node-resolve": "^13.3.0"
+  }
 }

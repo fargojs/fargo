@@ -1,8 +1,8 @@
 import { defineConfig } from 'rollup';
 import dts from 'rollup-plugin-dts';
 
-import commonjs from '@rollup/plugin-commonjs';
-import json from '@rollup/plugin-json';
+/* import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json'; */
 import typescript from '@rollup/plugin-typescript';
 
 const generatorEntries = [
@@ -22,19 +22,14 @@ const commandsEntries = [
 ];
 
 const entries = ['src/index.ts', 'src/dep-versions.ts', ...generatorEntries, ...commandsEntries];
+
 export default defineConfig({
   input: entries,
   output: {
     dir: 'dist',
-    format: 'esm',
-    entryFileNames: '[name].mjs',
+    format: 'esm'
   },
-  plugins: [
-    commonjs(),
-    dts(),
-    json(),
-    typescript()
-  ],
+  plugins: [typescript(), dts()],
   onwarn(warning) {
     if (/Circular dependencies/.test(warning.message)) return;
     console.error(warning.message);
