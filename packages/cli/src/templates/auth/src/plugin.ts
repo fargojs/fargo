@@ -1,4 +1,4 @@
-import type { PluginContext } from '@zotera/types';
+import type { PluginContext } from '@zotera/types/api';
 
 interface PluginOptions {
   minion: boolean;

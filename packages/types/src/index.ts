@@ -1,9 +1,7 @@
-import type { PluginContext } from './plugins';
+import type { PluginContext } from './api';
 
 export * from './storage';
 export * from './auth';
-
-export { PluginContext };
 
 export interface ZoteraConfig {
   /**
