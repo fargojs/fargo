@@ -20,8 +20,8 @@
     "bin"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch"
+    "build": "rimraf dist && rollup -c",
+    "dev": "rollup -c --watch"
   },
   "repository": "https://github.com/zotera/zotera/blob/main/packages/zotera",
   "keywords": [],
