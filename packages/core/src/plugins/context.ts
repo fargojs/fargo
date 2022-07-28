@@ -8,7 +8,7 @@ export const context: PluginContext = {
     debug: (message: string) => console.debug('PLUGIN', message)
   },
   auth: {
-    register: (plugin) => {}
+    register: () => {}
   },
   storage: {
     register: (storage) => {

@@ -30,7 +30,7 @@ export interface ZoteraConfig {
   plugins?: ZoteraPlugin[];
 
   /**
-   * Use HTTPS
+   * HTTPS options
    */
   https?: ZoteraHttpsOptions;
 
@@ -40,9 +40,14 @@ export interface ZoteraConfig {
   auth?: ZoteraAuthOptions;
 
   /**
-   * Should web be enabled
+   * Web options
    */
   web?: ZoteraWebOptions;
+
+  /**
+   * Storage options
+   */
+  storage?: ZoteraStorageOptions;
 }
 
 export interface ZoteraHttpsOptions {
@@ -69,6 +74,10 @@ export interface ZoteraLoggingOptions {
 export type LogLevel = 'debug' | 'info' | 'warn' | 'warn' | 'fatal';
 
 export interface ZoteraAuthOptions {}
+
+export interface ZoteraStorageOptions {
+  [key: string]: any;
+}
 
 export interface ZoteraWebOptions {
   enabled: boolean;

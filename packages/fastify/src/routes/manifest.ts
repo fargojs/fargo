@@ -4,7 +4,7 @@ import type { FastifyInstance } from 'fastify';
 const debug = _debug('zotera:fastify:routes:manifest');
 
 export async function manifest(zotera: FastifyInstance) {
-  zotera.get('/:identifier', async (req) => {
+  zotera.get('/', async (req) => {
     const { identifier } = req.params as { identifier: string };
 
     debug('identifier lookup: %s', identifier);
@@ -13,7 +13,7 @@ export async function manifest(zotera: FastifyInstance) {
     return 'manifest';
   });
 
-  zotera.get('/:identifier/:version', async (req) => {
+  zotera.get('/:version', async (req) => {
     const { identifier, version } = req.params as { identifier: string; version: string };
 
     debug('identifier lookup %s with version %s', identifier, version);
@@ -21,7 +21,7 @@ export async function manifest(zotera: FastifyInstance) {
     return 'manifest';
   });
 
-  zotera.get('/:identifier/versions', async (req) => {
+  zotera.get('/versions', async (req) => {
     const { identifier } = req.params as { identifier: string };
 
     debug('identifier lookup: %s', identifier);

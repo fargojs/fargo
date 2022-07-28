@@ -6,7 +6,7 @@ import type { FastifyInstance } from 'fastify';
 const debug = _debug('zotera:fastify:routes:vsix');
 
 export async function vsix(zotera: FastifyInstance) {
-  zotera.get('/:identifier', async (req, res) => {
+  zotera.get('/', async (req, res) => {
     const { identifier } = req.params as { identifier: string };
 
     debug('identifier lookup: %s', identifier);
@@ -16,7 +16,7 @@ export async function vsix(zotera: FastifyInstance) {
     return 'vsix indentifier';
   });
 
-  zotera.get('/:identifier/:version', async (req) => {
+  zotera.get('/:version', async (req) => {
     const { identifier, version } = req.params as { identifier: string; version: string };
 
     debug('identifier lookup %s with version %s', identifier, version);
@@ -24,7 +24,7 @@ export async function vsix(zotera: FastifyInstance) {
     return 'vsix identifier version';
   });
 
-  zotera.get('/:identifier/versions', async (req) => {
+  zotera.get('/versions', async (req) => {
     const { identifier } = req.params as { identifier: string };
 
     debug('identifier lookup: %s', identifier);
