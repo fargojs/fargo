@@ -1,4 +1,4 @@
-import type { PluginContext } from '@zotera/types';
+import type { PluginContext } from '@zotera/types/api';
 
 export const context: PluginContext = {
   log: {
@@ -11,8 +11,8 @@ export const context: PluginContext = {
     register: () => {}
   },
   storage: {
-    register: (storage) => {
-      console.log('PLUGIN', storage.search());
+    register: (id, storage) => {
+      console.log('PLUGIN', id, storage);
     }
   }
 };

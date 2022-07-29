@@ -1,6 +1,6 @@
 {
   "name": "@zotera/types",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "zotera type definitions",
   "main": "./dist/index.d.ts",
   "module": "./dist/index.d.ts",
@@ -15,6 +15,11 @@
       "types": "./dist/api.d.ts",
       "require": "./dist/api.d.ts",
       "import": "./dist/api.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "api": ["dist/api.d.ts"]
     }
   },
   "files": [

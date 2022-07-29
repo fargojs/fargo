@@ -2,6 +2,7 @@ import type { PluginContext } from './api';
 
 export * from './storage';
 export * from './auth';
+export * from './manifest';
 
 export interface ZoteraConfig {
   /**
@@ -76,7 +77,8 @@ export type LogLevel = 'debug' | 'info' | 'warn' | 'warn' | 'fatal';
 export interface ZoteraAuthOptions {}
 
 export interface ZoteraStorageOptions {
-  [key: string]: any;
+  id: string;
+  options: any;
 }
 
 export interface ZoteraWebOptions {
@@ -92,19 +94,4 @@ export interface PluginManifest {
 export interface PluginFile {
   path: string;
   localPath: string;
-}
-
-export interface ExtensionManifest {
-  name: string;
-  identifier: string;
-  displayName: string;
-  description: string;
-  readme: string;
-  version: string;
-  icon: string;
-  categories: string[];
-  releasedOn: string;
-  lastUpdated: string;
-  license: string;
-  repository: string;
 }

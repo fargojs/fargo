@@ -1,6 +1,8 @@
 import type { ZoteraAuth } from './auth';
 import type { ZoteraStorage } from './storage';
 
+export { ZoteraAuth, ZoteraStorage };
+
 export interface PluginContext {
   log: ZoteraLoggingContext;
   auth: ZoteraAuthContext;
@@ -15,7 +17,7 @@ interface ZoteraLoggingContext {
 }
 
 interface ZoteraStorageContext {
-  register(storage: ZoteraStorage): void;
+  register(id: string, storage: ZoteraStorage): void;
 }
 
 interface ZoteraAuthContext {
