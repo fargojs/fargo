@@ -1,9 +1,9 @@
 import _debug from 'debug';
 import { readFileSync } from 'fs';
 import YAML from 'js-yaml';
+import path from 'path';
 
 import type { ZoteraConfig } from '@zotera/types';
-import path from 'path';
 
 const debug = _debug('zotera:config');
 
@@ -17,6 +17,6 @@ export function parseConfiguration(config: string): ZoteraConfig {
   debug('Parsed configuration file %O', yaml);
   return {
     ...yaml,
-    configPath: path.dirname(config),
+    configPath: path.dirname(config)
   };
 }

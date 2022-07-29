@@ -3,9 +3,9 @@ import flugin from 'fastify-plugin';
 
 import { loadPlugins } from '@zotera/core';
 
+import { storagePlugin } from './plugins/storage';
 import { routes } from './routes';
 import type { PluginOptions } from './types';
-import { storagePlugin } from './plugins/storage';
 
 const plugin: FastifyPluginCallback<PluginOptions> = flugin(
   async (

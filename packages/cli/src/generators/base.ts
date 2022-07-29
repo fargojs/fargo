@@ -1,8 +1,8 @@
 import Generator from 'yeoman-generator';
+
 import { depVersions } from '../dep-versions';
 
 export class ZoteraGenerator extends Generator {
-
   getDependencyVersion(dep: string): string {
     const version = depVersions[dep];
     if (!version) {
@@ -11,6 +11,4 @@ export class ZoteraGenerator extends Generator {
 
     return `"${dep}": "${version}"`;
   }
-
 }
-

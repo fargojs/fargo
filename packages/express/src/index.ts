@@ -14,7 +14,6 @@ const zoteraRouter = (options?: RouterOptions) => {
   vsix(router);
   manifest(router);
   readme(router);
-  
 
   return router;
 };

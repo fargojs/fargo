@@ -19,7 +19,9 @@
   },
   "typesVersions": {
     "*": {
-      "api": ["dist/api.d.ts"]
+      "api": [
+        "dist/api.d.ts"
+      ]
     }
   },
   "files": [

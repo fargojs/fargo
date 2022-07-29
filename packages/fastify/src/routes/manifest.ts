@@ -28,5 +28,4 @@ export async function manifest(zotera: FastifyInstance) {
     // const versions = await zotera.storage.getPackageVersions(identifier);
     return 'versions';
   });
-
 }

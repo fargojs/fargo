@@ -25,7 +25,14 @@ async function run() {
     })
   );
 
-  fs.writeFile('./packages/cli/src/dep-versions.ts', `${BANNER}\nexport const depVersions: Record<string, string> = ${JSON.stringify(deps, null, 2)};`);
+  fs.writeFile(
+    './packages/cli/src/dep-versions.ts',
+    `${BANNER}\nexport const depVersions: Record<string, string> = ${JSON.stringify(
+      deps,
+      null,
+      2
+    )};`
+  );
 }
 
 async function getVersion(packageName: string): Promise<string | undefined> {

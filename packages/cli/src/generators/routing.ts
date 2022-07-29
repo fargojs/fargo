@@ -1,7 +1,7 @@
 import { join, resolve } from 'path';
 import type { GeneratorOptions } from 'yeoman-generator';
-import { ZoteraGenerator } from './base';
 
+import { ZoteraGenerator } from './base';
 
 export default class RoutingPluginGenerator extends ZoteraGenerator {
   options: {
