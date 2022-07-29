@@ -34,7 +34,7 @@
   "dependencies": {
     "@zotera/config": "workspace:*",
     "adm-zip": "^0.5.9",
-    "ajv": "github:zotera/ajv",
+    "ajv": "^8.11.0",
     "debug": "^4.3.4",
     "pino": "^8.1.0"
   },

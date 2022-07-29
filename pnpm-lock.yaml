@@ -10,6 +10,7 @@ importers:
       got: ^12.1.0
       prettier: ^2.7.1
       tsup: ^6.1.3
+      tsx: ^3.8.0
       typescript: ^4.7.4
       vitest: ^0.18.1
     devDependencies:
@@ -19,6 +20,7 @@ importers:
       got: 12.1.0
       prettier: 2.7.1
       tsup: 6.1.3_typescript@4.7.4
+      tsx: 3.8.0
       typescript: 4.7.4
       vitest: 0.18.1
 
@@ -86,13 +88,13 @@ importers:
       '@zotera/config': workspace:*
       '@zotera/types': workspace:*
       adm-zip: ^0.5.9
-      ajv: github:zotera/ajv
+      ajv: ^8.11.0
       debug: ^4.3.4
       pino: ^8.1.0
     dependencies:
       '@zotera/config': link:../config
       adm-zip: 0.5.9
-      ajv: github.com/zotera/ajv/99e884dc4bbb828cf47771b7bbdb14f23193b0b1
+      ajv: 8.11.0
       debug: 4.3.4
       pino: 8.1.0
     devDependencies:
@@ -424,6 +426,27 @@ packages:
     dependencies:
       '@babel/helper-validator-identifier': 7.18.6
       to-fast-properties: 2.0.0
+    dev: true
+
+  /@esbuild-kit/cjs-loader/2.3.2:
+    resolution: {integrity: sha512-3UIFKrGfq2d2R2A/SpJaeHTP5z3nrOnVMxE+cNpOuuW+Lotm0Sfbc9lVHCjcxaxgcx0MKI7g2FvxvWlylzDRKg==}
+    dependencies:
+      '@esbuild-kit/core-utils': 2.1.0
+      get-tsconfig: 4.2.0
+    dev: true
+
+  /@esbuild-kit/core-utils/2.1.0:
+    resolution: {integrity: sha512-fZirrc2KjeTumVjE4bpleWOk2gD83b7WuGeQqOceKFQL+heNKKkNB5G5pekOUTLzfSBc0hP7hCSBoD9TuR0hLw==}
+    dependencies:
+      esbuild: 0.14.49
+      source-map-support: 0.5.21
+    dev: true
+
+  /@esbuild-kit/esm-loader/2.4.2:
+    resolution: {integrity: sha512-N9dPKAj8WOx6djVnStgILWXip4fjDcBk9L7azO0/uQDpu8Ee0eaL78mkN4Acid9BzvNAKWwdYXFJZnsVahNEew==}
+    dependencies:
+      '@esbuild-kit/core-utils': 2.1.0
+      get-tsconfig: 4.2.0
     dev: true
 
   /@eslint/eslintrc/1.3.0:
@@ -1703,6 +1726,10 @@ packages:
 
   /buffer-crc32/0.2.13:
     resolution: {integrity: sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==}
+    dev: true
+
+  /buffer-from/1.1.2:
+    resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
     dev: true
 
   /buffer/4.9.2:
@@ -3469,6 +3496,10 @@ packages:
     dependencies:
       call-bind: 1.0.2
       get-intrinsic: 1.1.2
+    dev: true
+
+  /get-tsconfig/4.2.0:
+    resolution: {integrity: sha512-X8u8fREiYOE6S8hLbq99PeykTDoLVnxvF4DjWKJmz9xy2nNRdUcV8ZN9tniJFeKyTU3qnC9lL8n4Chd6LmVKHg==}
     dev: true
 
   /github-slugger/1.4.0:
@@ -5884,8 +5915,20 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /source-map-support/0.5.21:
+    resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
+    dependencies:
+      buffer-from: 1.1.2
+      source-map: 0.6.1
+    dev: true
+
   /source-map/0.5.7:
     resolution: {integrity: sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==}
+    engines: {node: '>=0.10.0'}
+    dev: true
+
+  /source-map/0.6.1:
+    resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
     dev: true
 
@@ -6443,6 +6486,17 @@ packages:
       typescript: 4.7.4
     dev: true
 
+  /tsx/3.8.0:
+    resolution: {integrity: sha512-PcvTwRXTm6hDWfPihA4n5WW/9SmgFNxKaDKqvLLG+FKNEPA4crsipChzC7PVozPtdOaMfR5QctDlkC/hKoIsxw==}
+    hasBin: true
+    dependencies:
+      '@esbuild-kit/cjs-loader': 2.3.2
+      '@esbuild-kit/core-utils': 2.1.0
+      '@esbuild-kit/esm-loader': 2.4.2
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
   /tunnel-agent/0.6.0:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
     dependencies:
@@ -6961,14 +7015,3 @@ packages:
       taketalk: 1.0.0
       wrap-ansi: 2.1.0
     dev: true
-
-  github.com/zotera/ajv/99e884dc4bbb828cf47771b7bbdb14f23193b0b1:
-    resolution: {tarball: https://codeload.github.com/zotera/ajv/tar.gz/99e884dc4bbb828cf47771b7bbdb14f23193b0b1}
-    name: ajv
-    version: 8.11.0
-    dependencies:
-      fast-deep-equal: 3.1.3
-      json-schema-traverse: 1.0.0
-      require-from-string: 2.0.2
-      uri-js: 4.4.1
-    dev: false

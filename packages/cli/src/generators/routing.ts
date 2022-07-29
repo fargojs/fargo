@@ -1,10 +1,9 @@
 import { join, resolve } from 'path';
-import Generator from 'yeoman-generator';
 import type { GeneratorOptions } from 'yeoman-generator';
+import { ZoteraGenerator } from './base';
 
-import { getDependencyVersion } from '../dep-versions';
 
-export default class RoutingPluginGenerator extends Generator {
+export default class RoutingPluginGenerator extends ZoteraGenerator {
   options: {
     name: string;
     rollup: boolean;
@@ -37,7 +36,7 @@ export default class RoutingPluginGenerator extends Generator {
       vitest: this.options.vitest,
       rollup: this.options.rollup,
       framework: this.options.framework,
-      dep: getDependencyVersion
+      dep: this.getDependencyVersion
     });
 
     this.fs.copy(

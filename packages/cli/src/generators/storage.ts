@@ -1,10 +1,9 @@
 import { join, resolve } from 'path';
-import Generator from 'yeoman-generator';
 import type { GeneratorOptions } from 'yeoman-generator';
 
-import { getDependencyVersion } from '../dep-versions';
+import { ZoteraGenerator } from './base';
 
-export default class StoragePluginGenerator extends Generator {
+export default class StoragePluginGenerator extends ZoteraGenerator {
   options: {
     name: string;
     rollup: boolean;
@@ -34,7 +33,7 @@ export default class StoragePluginGenerator extends Generator {
       description: this.options.description,
       vitest: this.options.vitest,
       rollup: this.options.rollup,
-      dep: getDependencyVersion
+      dep: this.getDependencyVersion
     });
 
     this.fs.copy(

@@ -7,7 +7,8 @@
     "lint": "eslint --cache packages/*/{src,test}/**/*.{js,ts,tsx}",
     "build": "pnpm -r --filter=@zotera/* run build",
     "dev": "pnpm -r --parallel --filter=@zotera/* run dev",
-    "test": "pnpm -r --parallel --filter=@zotera/* run test"
+    "test": "pnpm -r --parallel --filter=@zotera/* run test",
+    "update:versions": "tsx scripts/update-versions.ts"
   },
   "license": "MIT",
   "devDependencies": {
@@ -17,6 +18,7 @@
     "got": "^12.1.0",
     "prettier": "^2.7.1",
     "tsup": "^6.1.3",
+    "tsx": "^3.8.0",
     "typescript": "^4.7.4",
     "vitest": "^0.18.1"
   },

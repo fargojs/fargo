@@ -30,4 +30,3 @@ export class LocalStorage implements ZoteraStorage {
     throw new Error('Method not implemented.');
   }
 }
-
