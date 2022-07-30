@@ -81,14 +81,3 @@ export type ZoteraStorageConfig = string;
 export interface ZoteraWebConfig {
   enabled: boolean;
 }
-
-export interface PluginManifest {
-  name: string;
-  version: string;
-  main: string;
-}
-
-export interface PluginFile {
-  path: string;
-  localPath: string;
-}
