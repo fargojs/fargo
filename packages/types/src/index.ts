@@ -46,7 +46,7 @@ export interface ZoteraConfig {
   web?: ZoteraWebConfig;
 
   /**
-   * Storage options
+   * Id of the storage, that got registered
    */
   storage?: ZoteraStorageConfig;
 }
@@ -76,10 +76,7 @@ export type LogLevel = 'debug' | 'info' | 'warn' | 'warn' | 'fatal';
 
 export interface ZoteraAuthConfig {}
 
-export interface ZoteraStorageConfig {
-  id: string;
-  options: any;
-}
+export type ZoteraStorageConfig = string;
 
 export interface ZoteraWebConfig {
   enabled: boolean;
