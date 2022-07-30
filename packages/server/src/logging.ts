@@ -2,9 +2,9 @@ import _debug from 'debug';
 import pino from 'pino';
 import type { Logger } from 'pino';
 
-import type { ZoteraLoggingOptions } from '@zotera/types';
+import type { ZoteraLoggingConfig } from '@zotera/types';
 
-const DEFAULT_LOGGING_OPTIONS: ZoteraLoggingOptions = {
+const DEFAULT_LOGGING_OPTIONS: ZoteraLoggingConfig = {
   level: 'info',
   type: 'stdout'
 };
@@ -16,8 +16,8 @@ const debug = _debug('zotera:server:logging');
  * @param config Zotera Logging options
  * @returns {Logger} Pino Logger
  */
-export function setup(config?: ZoteraLoggingOptions): Logger {
-  const loggingConfig: ZoteraLoggingOptions = { ...DEFAULT_LOGGING_OPTIONS, ...config };
+export function setup(config?: ZoteraLoggingConfig): Logger {
+  const loggingConfig: ZoteraLoggingConfig = { ...DEFAULT_LOGGING_OPTIONS, ...config };
   let destination = pino.destination(1);
   const pinoConfig: pino.LoggerOptions = {
     level: loggingConfig.level,

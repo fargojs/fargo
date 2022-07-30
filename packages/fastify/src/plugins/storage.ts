@@ -1,22 +1,21 @@
 import type { FastifyError, FastifyInstance, FastifyPluginOptions } from 'fastify';
 import flugin from 'fastify-plugin';
 
-import { Storage } from '@zotera/core';
+import { StorageManager } from '@zotera/core';
+import type { ZoteraStorage } from '@zotera/types';
 
 export const storagePlugin = flugin(
-  (
-    zotera: FastifyInstance,
-    options: FastifyPluginOptions,
-    next: (error?: FastifyError) => void
-  ): void => {
-    const { config } = options;
-    zotera.decorate('storage', new Storage(config));
+  async (zotera: FastifyInstance, _: FastifyPluginOptions, next: () => FastifyError): Promise<void> => {
+    const storageManager = new StorageManager(zotera.config.storage);
+    await storageManager.init();
+    zotera.decorate('storage', storageManager.storage);
+
     next();
   }
 );
 
 declare module 'fastify' {
   interface FastifyInstance {
-    storage: Storage;
+    storage: ZoteraStorage;
   }
 }

@@ -5,21 +5,14 @@ import { manifest } from './manifest';
 import { vsix } from './vsix';
 import { web } from './web';
 
-export const routes: FastifyPluginCallback<PluginOptions> = (app, options, done) => {
-  app.register(vsix, { prefix: '/-/extensions/:identifier/vsix' });
-  app.register(manifest, { prefix: '/-/extensions/:identifier/manifest' });
+export const routes: FastifyPluginCallback<PluginOptions> = (zotera, _, next) => {
+  zotera.register(vsix, { prefix: '/-/extensions/:identifier/vsix' });
+  zotera.register(manifest, { prefix: '/-/extensions/:identifier/manifest' });
 
-  if (options.web?.enabled) {
-    app.log.info('Web server enabled');
-    app.register(web);
+  if (zotera.config.web?.enabled) {
+    zotera.log.info('Web server enabled');
+    zotera.register(web);
   }
 
-  done();
+  next();
 };
-
-// luxas.discord -> manifest for latest version
-// luxass.discord/0.0.1 -> manifest for specific version
-// luxass.discord/versions -> all versions in an array
-
-// luxass.discord/vsix -> downloads the vsix
-// luxass.discord/vsix/0.0.1 -> downloads the vsix for a specific version

@@ -13,7 +13,7 @@ export interface ZoteraConfig {
   /**
    * Logging options
    */
-  logging?: ZoteraLoggingOptions;
+  logging?: ZoteraLoggingConfig;
 
   /**
    * The directory to store plugins in.
@@ -33,25 +33,25 @@ export interface ZoteraConfig {
   /**
    * HTTPS options
    */
-  https?: ZoteraHttpsOptions;
+  https?: ZoteraHttpsConfig;
 
   /**
    * Authentication options
    */
-  auth?: ZoteraAuthOptions;
+  auth?: ZoteraAuthConfig;
 
   /**
    * Web options
    */
-  web?: ZoteraWebOptions;
+  web?: ZoteraWebConfig;
 
   /**
    * Storage options
    */
-  storage?: ZoteraStorageOptions;
+  storage?: ZoteraStorageConfig;
 }
 
-export interface ZoteraHttpsOptions {
+export interface ZoteraHttpsConfig {
   key?: string;
   cert?: string;
   ca?: string;
@@ -66,7 +66,7 @@ export interface ZoteraPluginWithOptions {
   [key: string]: any;
 }
 
-export interface ZoteraLoggingOptions {
+export interface ZoteraLoggingConfig {
   type?: 'stdout' | 'file';
   destination?: string;
   level?: LogLevel;
@@ -74,14 +74,14 @@ export interface ZoteraLoggingOptions {
 
 export type LogLevel = 'debug' | 'info' | 'warn' | 'warn' | 'fatal';
 
-export interface ZoteraAuthOptions {}
+export interface ZoteraAuthConfig {}
 
-export interface ZoteraStorageOptions {
+export interface ZoteraStorageConfig {
   id: string;
   options: any;
 }
 
-export interface ZoteraWebOptions {
+export interface ZoteraWebConfig {
   enabled: boolean;
 }
 

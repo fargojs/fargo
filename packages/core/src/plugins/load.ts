@@ -16,7 +16,7 @@ interface PluginLoadOptions {
   options?: any;
 }
 
-export async function loadPlugins({
+export function loadPlugins({
   allowUnscopedPlugins = false,
   pluginDir = './plugins',
   plugins: plugs = [],
@@ -42,16 +42,16 @@ export async function loadPlugins({
   debug('Loading %d plugin(s)', plugins.length);
   const dir = path.resolve(configPath, pluginDir);
 
-  plugins.forEach(async (plugin) => {
+  plugins.forEach((plugin) => {
     try {
-      const pluginImpl = await loadPlugin(plugin.name, dir, plugin.options);
+      const pluginImpl = loadPlugin(plugin.name, dir, plugin.options);
       if (!pluginImpl) {
         debug('Plugin %s is not loaded correctly', plugin.name);
         return;
       }
 
       // Freezing because of context can be overriden
-      pluginImpl.register(Object.freeze(context), plugin.options);
+      pluginImpl.register(context, plugin.options);
     } catch (e) {
       // TODO: @luxass 24-07-22: this error should be logged with something else.
       debug('Error loading plugin %O', plugin);
@@ -59,16 +59,16 @@ export async function loadPlugins({
   });
 }
 
-async function loadPlugin(
+function loadPlugin(
   plugin: string,
   dir: string,
   options: any
-): Promise<ZoteraPluginImpl | undefined> {
+): ZoteraPluginImpl | undefined {
   debug('Loading plugin %s', plugin);
   const pluginPath = path.resolve(dir, plugin);
 
   try {
-    const isUnpacked = await fs.promises.stat(pluginPath);
+    const isUnpacked = fs.statSync(pluginPath);
     if (isUnpacked.isDirectory()) {
       debug('Plugin path %s', pluginPath);
 

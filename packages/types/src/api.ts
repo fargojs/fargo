@@ -9,17 +9,17 @@ export interface PluginContext {
   storage: ZoteraStorageContext;
 }
 
-interface ZoteraLoggingContext {
+export interface ZoteraLoggingContext {
   info(message: string): void;
   warn(message: string): void;
   error(message: string): void;
   debug(message: string): void;
 }
 
-interface ZoteraStorageContext {
+export interface ZoteraStorageContext {
   register(id: string, storage: ZoteraStorage): void;
 }
 
-interface ZoteraAuthContext {
+export interface ZoteraAuthContext {
   register(auth: ZoteraAuth): void;
 }
