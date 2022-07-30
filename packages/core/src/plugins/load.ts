@@ -49,7 +49,9 @@ export async function loadPlugins({
         debug('Plugin %s is not loaded correctly', plugin.name);
         return;
       }
-      pluginImpl.register(context, plugin.options);
+
+      // Freezing because of context can be overriden
+      pluginImpl.register(Object.freeze(context), plugin.options);
     } catch (e) {
       // TODO: @luxass 24-07-22: this error should be logged with something else.
       debug('Error loading plugin %O', plugin);
