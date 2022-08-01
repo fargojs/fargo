@@ -7,19 +7,6 @@ import type { ZoteraConfig } from '@zotera/types';
 
 const debug = _debug('zotera:server');
 
-// import { setup } from './logging';
-
-export async function zotera(config: ZoteraConfig): Promise<FastifyInstance> {
-  const zotera = Fastify({
-    // logger: setup(config.logging),
-    ignoreTrailingSlash: true
-  });
-
-  zotera.register(zoteraPlugin, config);
-
-  return zotera;
-}
-
 export class ZoteraApp {
   public fastify: FastifyInstance;
   public config: ZoteraConfig;

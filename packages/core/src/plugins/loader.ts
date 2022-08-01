@@ -15,7 +15,6 @@ export function loadPlugins(options: ZoteraConfig) {
     allowUnscopedPlugins,
     pluginDir = './plugins',
     plugins: _plugins = [],
-    configPath
   } = options;
 
   // Get correct plugin `names & options` and filtering out based on `allowUnscopedPlugins`
@@ -40,5 +39,5 @@ export function loadPlugins(options: ZoteraConfig) {
 
   debug('Loading plugins from ', dir);
 
-  
+
 }

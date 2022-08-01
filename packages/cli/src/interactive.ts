@@ -32,6 +32,8 @@ export function createInteractive(zotera: ZoteraApp) {
       process.exit(0);
     }
 
+
+
     const name = key.name;
 
     if (name === 'h') {

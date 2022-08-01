@@ -2,10 +2,8 @@ import type { FastifyError, FastifyInstance, FastifyPluginCallback } from 'fasti
 import flugin from 'fastify-plugin';
 
 // import { loadPlugins } from '@zotera/core';
-
 // import { storagePlugin } from './plugins/storage';
 // import { configPlugin } from './plugins/config';
-
 // import { routes } from './routes';
 import type { PluginOptions } from './types';
 
@@ -15,13 +13,16 @@ const plugin: FastifyPluginCallback<PluginOptions> = flugin(
     options: PluginOptions,
     next: (error?: FastifyError) => void
   ) => {
+    console.log(options);
+
+    // Setup plugin loading
+
     // Loading plugins
     // loadPlugins(options);
 
     // fastify.register(configPlugin, options);
     // fastify.register(storagePlugin);
     // fastify.register(routes, options);
-
 
     next();
   },

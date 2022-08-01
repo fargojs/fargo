@@ -34,11 +34,7 @@ export default class Start extends Command {
       const { flags } = await this.parse(Start);
 
       process.title = 'zotera';
-      const zotera = createZotera({
-        host: flags.host,
-        port: flags.port,
-        config: flags.config
-      });
+      const zotera = createZotera(flags.config);
 
       if (process.stdin.isTTY && flags.interactive) {
         createInteractive(zotera);
@@ -55,6 +51,4 @@ export default class Start extends Command {
       console.error('\n\n');
     }
   }
-
- 
 }

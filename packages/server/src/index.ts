@@ -8,22 +8,17 @@ import { ZoteraApp } from './zotera';
 
 export { ZoteraApp };
 
-interface CreateZoteraOptions {
-  host: string;
-  port: number;
-  config?: string | ZoteraConfig;
-}
 
 const debug = _debug('zotera:server');
 
-export function createZotera(options: CreateZoteraOptions): ZoteraApp {
+export function createZotera(config?: string | ZoteraConfig): ZoteraApp {
   debug('Initializing Zotera App');
 
   let configuration: ZoteraConfig;
 
   // Read and locate configuration
-  if (!options.config || typeof options.config === 'string') {
-    const location = locate(options.config);
+  if (!config || typeof config === 'string') {
+    const location = locate(config);
     const fileType = path.extname(location);
 
     if (fileType !== '.yaml' && fileType !== '.json') {
@@ -37,9 +32,12 @@ export function createZotera(options: CreateZoteraOptions): ZoteraApp {
     } else {
       configuration = parseJSON(location);
     }
+    configuration.__location = path.dirname(location);
   } else {
-    configuration = options.config;
+    configuration = config;
+    configuration.__location = process.cwd();
   }
+
 
   // TODO: Deep Merge
   // Add some sort of deep merge here, so configuration

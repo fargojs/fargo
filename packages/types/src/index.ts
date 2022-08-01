@@ -5,6 +5,13 @@ export * from './auth';
 export * from './manifest';
 
 export interface ZoteraConfig {
+
+  /**
+   * The path where the configuration file is located.
+   * @internal
+   */
+  __location: string;
+
   /**
    * Logging options
    */
@@ -52,6 +59,7 @@ export interface ZoteraHttpsConfig {
   ca?: string;
 }
 
+// TODO: Change ZoteraPlugin type
 export interface ZoteraPluginImpl {
   register(ctx: PluginContext<any>): void | Promise<void>;
   options?: any;
