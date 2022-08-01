@@ -1,7 +1,7 @@
 import _debug from 'debug';
 import path from 'path';
 
-import { locate, parseYAML, parseJSON } from '@zotera/config';
+import { locate, parseJSON, parseYAML } from '@zotera/config';
 import type { ZoteraConfig } from '@zotera/types';
 
 import { ZoteraApp } from './zotera';
@@ -16,20 +16,6 @@ interface CreateZoteraOptions {
 }
 
 const debug = _debug('zotera:server');
-
-// export async function createApp(config?: string | ZoteraConfig) {
-//   let parsedConfiguration: ZoteraConfig;
-//   if (!config || typeof config === 'string') {
-//     // TODO: Make this either use a .yaml or .json
-//     parsedConfiguration = parseConfiguration(locate(config));
-//   } else {
-//     parsedConfiguration = config;
-//   }
-
-//   const app = await zotera(parsedConfiguration);
-//   debug('Created App');
-//   return app;
-// }
 
 export function createZotera(options: CreateZoteraOptions): ZoteraApp {
   debug('Initializing Zotera App');
@@ -59,10 +45,10 @@ export function createZotera(options: CreateZoteraOptions): ZoteraApp {
   // TODO: Deep Merge
   // Add some sort of deep merge here, so configuration
   // always has some required values
-  console.log(configuration);
 
-
-  const zotera = new ZoteraApp();
-
+  const zotera = new ZoteraApp(configuration);
+  if (process.stdin.isTTY && options.interactive) {
+    zotera.interactive();
+  }
   return zotera;
 }

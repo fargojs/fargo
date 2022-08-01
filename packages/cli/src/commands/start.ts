@@ -39,7 +39,11 @@ export default class Start extends Command {
         interactive: flags.interactive
       });
 
-      await app.listen();
+      await app.listen({
+        port: flags.port,
+        host: flags.host
+      });
+      
     } catch (e) {
       process.exitCode = 1;
       console.error(`\n${c.red(c.bold(c.inverse(' Unhandled Error ')))}`);
