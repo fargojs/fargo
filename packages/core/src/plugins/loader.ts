@@ -1,9 +1,9 @@
 import _debug from 'debug';
-
-import type { ZoteraConfig } from '@zotera/types';
 import path from 'path';
 
-const debug = _debug('zotera:core:plugins:loader');
+import type { ZoteraConfig } from '@zotera/types';
+
+const debug = _debug('zotera:core:plugin:loader');
 
 interface PluginLoadOptions {
   name: string;
@@ -15,6 +15,7 @@ export function loadPlugins(options: ZoteraConfig) {
     allowUnscopedPlugins,
     pluginDir = './plugins',
     plugins: _plugins = [],
+    __location
   } = options;
 
   // Get correct plugin `names & options` and filtering out based on `allowUnscopedPlugins`
@@ -35,9 +36,7 @@ export function loadPlugins(options: ZoteraConfig) {
     });
 
   debug('Found %d plugin(s)', plugins.length);
-  const dir = path.resolve(configPath, pluginDir);
+  const dir = path.resolve(__location, pluginDir);
 
   debug('Loading plugins from ', dir);
-
-
 }
