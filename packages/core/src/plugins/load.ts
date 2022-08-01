@@ -1,4 +1,3 @@
-// import Ajv from 'ajv';
 import _debug from 'debug';
 import fs from 'fs';
 import path from 'path';
@@ -9,7 +8,6 @@ import { context } from './context';
 
 const debug = _debug('zotera:core:plugins');
 
-// const ajv = new Ajv();
 
 interface PluginLoadOptions {
   name: string;

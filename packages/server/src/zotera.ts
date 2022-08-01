@@ -16,3 +16,19 @@ export async function zotera(config: ZoteraConfig): Promise<FastifyInstance> {
 
   return zotera;
 }
+
+
+export class ZoteraApp {
+
+  constructor() {
+
+  }
+
+  async listen() {
+
+  }
+
+  async close() {
+    
+  }
+}

@@ -6,11 +6,6 @@ export * from './manifest';
 
 export interface ZoteraConfig {
   /**
-   * Used for development, will be moved at some point.
-   */
-  configPath: string;
-
-  /**
    * Logging options
    */
   logging?: ZoteraLoggingConfig;
@@ -58,9 +53,10 @@ export interface ZoteraHttpsConfig {
 }
 
 export interface ZoteraPluginImpl {
-  register(ctx: PluginContext, options?: any): void | Promise<void>;
+  register(ctx: PluginContext<any>): void | Promise<void>;
   options?: any;
 }
+
 export type ZoteraPlugin = string | ZoteraPluginWithOptions;
 export interface ZoteraPluginWithOptions {
   [key: string]: any;

@@ -5,7 +5,7 @@ import { writeConfig } from './create';
 import { fileExists, folderExists } from './utils';
 
 const CONFIG_FILE_NAME = 'zotera.yaml';
-const debug = _debug('zotera:config');
+const debug = _debug('zotera:config:locate');
 
 export function locate(config?: string): string {
   if (config) {

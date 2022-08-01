@@ -8,5 +8,6 @@ export const context: PluginContext = Object.freeze({
   auth: {
     register: () => {}
   },
-  storage: storageContext
+  storage: storageContext,
+
 });
