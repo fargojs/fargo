@@ -24,6 +24,7 @@ export async function zotera(config: ZoteraConfig): Promise<FastifyInstance> {
 
 export const keys: string[][] = [
   ['h', 'show help message'],
+  ['p', 'do something with plugins'],
   ['q', 'quit']
 ];
 
@@ -45,6 +46,8 @@ export class ZoteraApp {
     this.config = configuration;
     this.fastify = Fastify({});
     debug('Loaded configuration %O', configuration);
+
+    this.fastify.register(zoteraPlugin, configuration);
   }
 
   async listen({ port, host }: { port: number; host: string }) {
@@ -88,6 +91,10 @@ export class ZoteraApp {
 
     // help
     if (name === 'h') return stdout.write(helpMessage);
+
+    // plugins
+    if (name === 'p') return stdout.write('plugs!\n');
+
     // quit
     if (name === 'q') return process.exit(0);
   }
