@@ -3,6 +3,8 @@ import c from 'picocolors';
 import { Command, Flags } from '@oclif/core';
 import { createZotera } from '@zotera/server';
 
+import { createInteractive } from '../interactive';
+
 export default class Start extends Command {
   static description = 'Start Zotera Server';
 
@@ -32,18 +34,20 @@ export default class Start extends Command {
       const { flags } = await this.parse(Start);
 
       process.title = 'zotera';
-      const app = createZotera({
+      const zotera = createZotera({
         host: flags.host,
         port: flags.port,
-        config: flags.config,
-        interactive: flags.interactive
+        config: flags.config
       });
 
-      await app.listen({
+      if (process.stdin.isTTY && flags.interactive) {
+        createInteractive(zotera);
+      }
+
+      await zotera.listen({
         port: flags.port,
         host: flags.host
       });
-      
     } catch (e) {
       process.exitCode = 1;
       console.error(`\n${c.red(c.bold(c.inverse(' Unhandled Error ')))}`);
@@ -51,4 +55,6 @@ export default class Start extends Command {
       console.error('\n\n');
     }
   }
+
+ 
 }

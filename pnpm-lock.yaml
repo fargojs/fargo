@@ -163,7 +163,6 @@ importers:
       debug: ^4.3.4
       fastify: ^4.2.0
       fastify-plugin: ^4.0.0
-      picocolors: ^1.0.0
       pino: ^8.1.0
     dependencies:
       '@zotera/config': link:../config
@@ -176,7 +175,6 @@ importers:
       '@types/debug': 4.1.7
       '@types/node': 18.0.3
       '@zotera/types': link:../types
-      picocolors: 1.0.0
 
   packages/types:
     specifiers: {}

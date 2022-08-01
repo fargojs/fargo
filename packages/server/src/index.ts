@@ -12,7 +12,6 @@ interface CreateZoteraOptions {
   host: string;
   port: number;
   config?: string | ZoteraConfig;
-  interactive: boolean;
 }
 
 const debug = _debug('zotera:server');
@@ -47,8 +46,5 @@ export function createZotera(options: CreateZoteraOptions): ZoteraApp {
   // always has some required values
 
   const zotera = new ZoteraApp(configuration);
-  if (process.stdin.isTTY && options.interactive) {
-    zotera.interactive();
-  }
   return zotera;
 }
