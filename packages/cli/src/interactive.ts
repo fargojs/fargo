@@ -5,7 +5,7 @@ import type { ZoteraApp } from '@zotera/server';
 
 export const keys: string[][] = [
   ['h', 'show help message'],
-  ['p', 'do something with plugins'],
+  ['p', 'show enabled plugins'],
   ['q', 'quit']
 ];
 
