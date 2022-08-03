@@ -7,16 +7,14 @@ import type { ZoteraApp } from '../src';
 let zotera: ZoteraApp | undefined;
 
 beforeAll(async () => {
-  const app = createZotera({
-    host: 'localhost',
-    port: 6969,
-    config: {},
-    interactive: false
-  });
+  const app = createZotera();
 
   zotera = app;
 
-  await zotera.listen();
+  await zotera.listen({
+    host: 'localhost',
+    port: 6969,
+  });
 });
 
 afterAll(() => {
@@ -26,8 +24,11 @@ afterAll(() => {
   }
 });
 
-describe('Fastify  Router', () => {
-  it('should return hello, world!', async () => {
-    expect(true).toBe(true);
+describe('Zotera Server', () => {
+  it('should be listening on port 6969', async () => {
+    const response = await got('http://localhost:6969/-/ping');
+    expect(response.body).toBe('Pong!');
   });
+
+
 });

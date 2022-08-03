@@ -6,10 +6,11 @@ import { loadPlugins } from '@zotera/core';
 // import { configPlugin } from './plugins/config';
 // import { routes } from './routes';
 import type { PluginOptions } from './types';
+import { ping } from './routes/ping';
 
 const plugin: FastifyPluginCallback<PluginOptions> = flugin(
   async (
-    fastify: FastifyInstance,
+    app: FastifyInstance,
     options: PluginOptions,
     next: (error?: FastifyError) => void
   ) => {
@@ -18,6 +19,10 @@ const plugin: FastifyPluginCallback<PluginOptions> = flugin(
     // Loading plugins
     // loadPlugins(options);
 
+
+    app.register(ping, {
+      prefix: '/-/ping'
+    });
     // fastify.register(configPlugin, options);
     // fastify.register(storagePlugin);
     // fastify.register(routes, options);
