@@ -1,10 +1,10 @@
+import type { FastifyInstance } from 'fastify';
 import got from 'got';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import { createZotera } from '../src';
-import type { ZoteraApp } from '../src';
 
-let zotera: ZoteraApp | undefined;
+let zotera: FastifyInstance | undefined;
 
 beforeAll(async () => {
   const app = createZotera();

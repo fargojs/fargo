@@ -15,21 +15,21 @@ export class StorageManager {
   private static readonly storages: Record<string, StorageWithOptions> = {};
   public storage: ZoteraStorage = new LocalStorage();
   public constructor(private readonly storageConfig: ZoteraStorageConfig) {
-    // debug('constructor(%o)', storageConfig);
+    debug('constructor(%o)', storageConfig);
 
     if (!storageConfig) {
-      // debug('Storage configuration not found, using default');
+      debug('Storage configuration not found, using default');
     }
   }
 
   async init() {
-    // debug('storage#init()');
+    debug('storage#init()');
     const isStorageLoaded = StorageManager.storages[this.storageConfig];
-    // debug('isStorageLoaded: %O', isStorageLoaded);
-    // debug('storage: %O', this.storage);
+    debug('isStorageLoaded: %O', isStorageLoaded);
+    debug('storage: %O', this.storage);
 
     if (!isStorageLoaded) {
-      // debug('Storage with id %s not found', this.storageConfig);
+      debug('Storage with id %s not found', this.storageConfig);
     } else {
       this.storage = isStorageLoaded.storage;
     }
@@ -38,7 +38,7 @@ export class StorageManager {
   }
 
   static register(id: string, storage: ZoteraStorage) {
-    // debug('storage#register(%s)', id, storage);
+    debug('storage#register(%s)', id, storage);
     if (this.storages[id]) {
       throw new Error(`Storage with id ${id} already registered`);
     }

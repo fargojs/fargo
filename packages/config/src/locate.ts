@@ -22,7 +22,7 @@ export function locate(config?: string): string {
   const existingConfig = fileExists(configPath);
 
   if (existingConfig) {
-    debug('Found config file at %s', existingConfig);
+    debug('Found config file at %s', configPath);
     return configPath;
   }
 
