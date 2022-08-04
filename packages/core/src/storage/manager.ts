@@ -25,12 +25,16 @@ export class StorageManager {
   async init() {
     debug('storage#init()');
     const isStorageLoaded = StorageManager.storages[this.storageConfig];
+    debug('isStorageLoaded: %O', isStorageLoaded);
+    debug('storage: %O', this.storage);
+
     if (!isStorageLoaded) {
       debug('Storage with id %s not found', this.storageConfig);
     } else {
       this.storage = isStorageLoaded.storage;
     }
-    await this.storage.init(isStorageLoaded.options);
+    // Just for now.
+    await this.storage.init(isStorageLoaded?.options || {});
   }
 
   static register(id: string, storage: ZoteraStorage) {

@@ -3,7 +3,7 @@ import flugin from 'fastify-plugin';
 
 import type { ZoteraConfig } from '@zotera/types';
 
-export const configPlugin = flugin(
+export const configDecorator = flugin(
   (zotera: FastifyInstance, options: FastifyPluginOptions, next: () => FastifyError): void => {
     zotera.decorate('config', options);
     next();

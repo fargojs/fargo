@@ -30,7 +30,7 @@ export interface ZoteraConfig {
   /**
    * Zotera plugins to load.
    */
-  plugins?: ZoteraPlugin[];
+  plugins?: ZoteraPluginsConfig;
 
   /**
    * HTTPS options
@@ -59,13 +59,12 @@ export interface ZoteraHttpsConfig {
   ca?: string;
 }
 
-// TODO: Change ZoteraPlugin type
-export interface ZoteraPluginImpl {
+export interface ZoteraPlugin {
   register(ctx: PluginContext<any>): void | Promise<void>;
   options?: any;
 }
 
-export type ZoteraPlugin = string | ZoteraPluginWithOptions;
+export type ZoteraPluginsConfig = (string | ZoteraPluginWithOptions)[];
 export interface ZoteraPluginWithOptions {
   [key: string]: any;
 }
