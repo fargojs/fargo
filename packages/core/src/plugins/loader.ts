@@ -1,3 +1,4 @@
+import Ajv from 'ajv';
 import _debug from 'debug';
 import fs from 'fs';
 import path from 'path';
@@ -12,6 +13,10 @@ interface PluginLoadOptions {
   name: string;
   options?: any;
 }
+
+const ajv = new Ajv({
+  useDefaults: true
+});
 
 export function loadPlugins(options: ZoteraConfig) {
   const {
@@ -43,50 +48,48 @@ export function loadPlugins(options: ZoteraConfig) {
 
   debug('Loading plugins from ', dir);
 
-  plugins.forEach((plugin) => {
+  for (const _plugin of plugins) {
     try {
-      const pluginImpl = loadPlugin(plugin.name, dir, plugin.options);
-      if (!pluginImpl) {
-        debug('Plugin %s is not loaded correctly', plugin.name);
-        return;
-      }
+      const plugin = loadPlugin(_plugin.name, dir, _plugin.options);
+      console.log(plugin?.options);
 
-      const _context = {
-        ...context,
-        options: plugin.options
-      };
-      pluginImpl.register(_context);
-    } catch (e) {}
-  });
+      if (plugin) {
+        const _context = {
+          ...context,
+          options: plugin.options
+        };
+        plugin.register(_context);
+      }
+    } catch (e) {
+      debug('Plugin %s is not loaded', _plugin.name);
+    }
+  }
 }
 
-function loadPlugin(plugin: string, dir: string, options: any): ZoteraPlugin | undefined {
+function loadPlugin(plugin: string, dir: string, pluginOptions: any): ZoteraPlugin | undefined {
   debug('Loading plugin %s', plugin);
   const pluginPath = path.resolve(dir, plugin);
 
   try {
     const isUnpacked = fs.statSync(pluginPath);
     if (isUnpacked.isDirectory()) {
-      debug('Plugin path %s', pluginPath);
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { register, options } = require(pluginPath);
 
-      // TODO: 25-07-22: @luxass should be using a validation here for plugin options and the options given.
+      const validate = ajv.compile({
+        ...options,
+        type: 'object'
+      });
 
-      // TODO: 24-27-22: Convert as to a type.
 
-      // Getting zotera options from package.json
-      // const { zotera } = require(path.resolve(pluginPath, 'package.json')) as {
-      //   zotera: {
-      //     options?: any;
-      //   };
-      // };
 
-      // debug('Plugin options %O', zotera);
-      debug('given options %O', options);
+      if (!validate(pluginOptions)) {
+        console.log(validate.errors);
+      }
 
-      const pluginOptions = options;
       return {
-        ...require(pluginPath),
-        pluginOptions
+        register,
+        options
       } as ZoteraPlugin;
     }
     debug('Plugin is neither packed, nor unpacked. it is probably a file.');

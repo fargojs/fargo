@@ -5,7 +5,7 @@ interface PluginOptions {
 }
 
 export function register(ctx: PluginContext<PluginOptions>) {
-  ctx.log.info('Registering routing plugin');
+  ctx.log.info('Registering storage plugin');
   ctx.log.info('Minion: ' + ctx.options.minion);
 
   const customStorage = new CustomStorage();
