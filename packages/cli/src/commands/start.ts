@@ -1,17 +1,20 @@
+import c from 'picocolors';
+
 import { Command, Flags } from '@oclif/core';
-import { createApp } from '@zotera/server';
+import { createZotera } from '@zotera/server';
 
 export default class Start extends Command {
   static description = 'Start Zotera Server';
 
   static examples = [
     '$ zotera start',
-    '$ zotera start --port 5050',
+    '$ zotera start --port 5050 --host localhost',
     '$ zotera start --config ./zotera.yaml'
   ];
 
   static flags = {
-    port: Flags.string({ char: 'p', description: 'The port to use', default: '4000' }),
+    port: Flags.integer({ char: 'p', description: 'The port to use', default: 4000 }),
+    host: Flags.string({ char: 'h', description: 'The host to use', default: 'localhost' }),
     config: Flags.string({
       char: 'c',
       description: 'The configuration file to use'
@@ -19,12 +22,21 @@ export default class Start extends Command {
   };
 
   async run(): Promise<void> {
-    const { flags } = await this.parse(Start);
-    process.title = 'zotera';
-    const app = await createApp(flags.config);
+    try {
+      const { flags } = await this.parse(Start);
 
-    await app.listen({
-      port: parseInt(process.env.PORT || flags.port)
-    });
+      process.title = 'zotera';
+      const zotera = createZotera(flags.config);
+
+      await zotera.listen({
+        port: flags.port,
+        host: flags.host
+      });
+    } catch (e) {
+      process.exitCode = 1;
+      console.error(`\n${c.red(c.bold(c.inverse(' Unhandled Error ')))}`);
+      console.error(e);
+      console.error('\n\n');
+    }
   }
 }

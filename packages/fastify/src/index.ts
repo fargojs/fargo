@@ -3,26 +3,29 @@ import flugin from 'fastify-plugin';
 
 import { loadPlugins } from '@zotera/core';
 
-import { storagePlugin } from './plugins/storage';
-import { configPlugin } from './plugins/config';
-
+import { configDecorator } from './decorators/config';
+import { storageDecorator } from './decorators/storage';
 import { routes } from './routes';
+import { ping } from './routes/ping';
 import type { PluginOptions } from './types';
 
 const plugin: FastifyPluginCallback<PluginOptions> = flugin(
-  async (
-    fastify: FastifyInstance,
-    options: PluginOptions,
-    next: (error?: FastifyError) => void
-  ) => {
-    // Loading plugins
+  async (app: FastifyInstance, options: PluginOptions, next: (error?: FastifyError) => void) => {
+    app.register(configDecorator, options);
+
+    // Setup plugin loading
     loadPlugins(options);
 
-    fastify.register(configPlugin, options);
-    fastify.register(storagePlugin);
-    fastify.register(routes, options);
+    // This needs to be after the plugins are loaded
+    // so that the plugins that are a storage plugin
+    // will be available to the storage decorator
+    app.register(storageDecorator);
 
+    app.register(ping, {
+      prefix: '/-/ping'
+    });
 
+    app.register(routes);
     next();
   },
   {
@@ -31,3 +34,4 @@ const plugin: FastifyPluginCallback<PluginOptions> = flugin(
 );
 
 export default plugin;
+

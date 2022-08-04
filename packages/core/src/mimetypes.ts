@@ -1,3 +1,5 @@
 export enum MimeTypes {
-  VSIX = 'application/vsix'
+  VSIX = 'application/vsix',
+  JSON = 'application/json',
+  HTML = 'text/html'
 }

@@ -1,22 +1,15 @@
-import _debug from 'debug';
 import { readFileSync } from 'fs';
 import YAML from 'js-yaml';
-import path from 'path';
+import JSON5 from 'json5';
 
 import type { ZoteraConfig } from '@zotera/types';
 
-const debug = _debug('zotera:config');
-
-/**
- * Parse a configuration file
- * @param {string} config path to config file or config object
- * @returns {ZoteraConfig} configuration object
- */
-export function parseConfiguration(config: string): ZoteraConfig {
+export function parseYAML(config: string): ZoteraConfig {
   const yaml = YAML.load(readFileSync(config, 'utf8')) as ZoteraConfig;
-  debug('Parsed configuration file %O', yaml);
-  return {
-    ...yaml,
-    configPath: path.dirname(config)
-  };
+  return yaml;
+}
+
+export function parseJSON(config: string): ZoteraConfig {
+  const json = JSON5.parse<ZoteraConfig>(readFileSync(config, 'utf8'));
+  return json;
 }

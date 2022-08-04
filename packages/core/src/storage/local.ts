@@ -4,7 +4,6 @@ import type { ExtensionManifest, ZoteraStorage } from '@zotera/types';
 export class LocalStorage implements ZoteraStorage {
 
   async init() {
-    throw new Error('Method not implemented.');
   }
 
   async search(): Promise<any> {

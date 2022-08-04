@@ -5,10 +5,12 @@ export * from './auth';
 export * from './manifest';
 
 export interface ZoteraConfig {
+
   /**
-   * Used for development, will be moved at some point.
+   * The path where the configuration file is located.
+   * @internal
    */
-  configPath: string;
+  __location: string;
 
   /**
    * Logging options
@@ -28,7 +30,7 @@ export interface ZoteraConfig {
   /**
    * Zotera plugins to load.
    */
-  plugins?: ZoteraPlugin[];
+  plugins?: ZoteraPluginsConfig;
 
   /**
    * HTTPS options
@@ -57,11 +59,12 @@ export interface ZoteraHttpsConfig {
   ca?: string;
 }
 
-export interface ZoteraPluginImpl {
-  register(ctx: PluginContext, options?: any): void | Promise<void>;
+export interface ZoteraPlugin {
+  register(ctx: PluginContext<any>): void | Promise<void>;
   options?: any;
 }
-export type ZoteraPlugin = string | ZoteraPluginWithOptions;
+
+export type ZoteraPluginsConfig = (string | ZoteraPluginWithOptions)[];
 export interface ZoteraPluginWithOptions {
   [key: string]: any;
 }
@@ -80,15 +83,4 @@ export type ZoteraStorageConfig = string;
 
 export interface ZoteraWebConfig {
   enabled: boolean;
-}
-
-export interface PluginManifest {
-  name: string;
-  version: string;
-  main: string;
-}
-
-export interface PluginFile {
-  path: string;
-  localPath: string;
 }

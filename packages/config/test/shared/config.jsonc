@@ -1,0 +1,9 @@
+{
+  // This is a comment.
+  "this": {
+    "is": {
+      "a": "test"
+    }
+  },
+  "and": 10
+}

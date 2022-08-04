@@ -9,7 +9,7 @@
     </a>
     <a href="https://svelte.dev" target="_blank" class="text-center" >Hello</a>
   </div>
-  <h1>Vite + Svelte</h1>
+  <h1>Vite +++ Svelte</h1>
 
   <div class="card">
     <Counter />
@@ -22,6 +22,6 @@
 
   <p class="read-the-docs">Click on the Vite and Svelte logos to learn more</p>
 
-  
+
 </main>
 
