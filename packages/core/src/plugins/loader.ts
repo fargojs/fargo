@@ -1,7 +1,10 @@
 import _debug from 'debug';
+import fs from 'fs';
 import path from 'path';
 
-import type { ZoteraConfig } from '@zotera/types';
+import type { ZoteraConfig, ZoteraPlugin } from '@zotera/types';
+
+import { context } from './context';
 
 const debug = _debug('zotera:core:plugin:loader');
 
@@ -39,4 +42,55 @@ export function loadPlugins(options: ZoteraConfig) {
   const dir = path.resolve(__location, pluginDir);
 
   debug('Loading plugins from ', dir);
+
+  plugins.forEach((plugin) => {
+    try {
+      const pluginImpl = loadPlugin(plugin.name, dir, plugin.options);
+      if (!pluginImpl) {
+        debug('Plugin %s is not loaded correctly', plugin.name);
+        return;
+      }
+
+      const _context = {
+        ...context,
+        options: plugin.options
+      };
+      pluginImpl.register(_context);
+    } catch (e) {}
+  });
+}
+
+function loadPlugin(plugin: string, dir: string, options: any): ZoteraPlugin | undefined {
+  debug('Loading plugin %s', plugin);
+  const pluginPath = path.resolve(dir, plugin);
+
+  try {
+    const isUnpacked = fs.statSync(pluginPath);
+    if (isUnpacked.isDirectory()) {
+      debug('Plugin path %s', pluginPath);
+
+      // TODO: 25-07-22: @luxass should be using a validation here for plugin options and the options given.
+
+      // TODO: 24-27-22: Convert as to a type.
+
+      // Getting zotera options from package.json
+      // const { zotera } = require(path.resolve(pluginPath, 'package.json')) as {
+      //   zotera: {
+      //     options?: any;
+      //   };
+      // };
+
+      // debug('Plugin options %O', zotera);
+      debug('given options %O', options);
+
+      const pluginOptions = options;
+      return {
+        ...require(pluginPath),
+        pluginOptions
+      } as ZoteraPlugin;
+    }
+    debug('Plugin is neither packed, nor unpacked. it is probably a file.');
+  } catch (e) {
+    debug('Plugin %s is not unpacked, skipping', plugin);
+  }
 }

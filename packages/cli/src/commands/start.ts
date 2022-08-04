@@ -3,26 +3,18 @@ import c from 'picocolors';
 import { Command, Flags } from '@oclif/core';
 import { createZotera } from '@zotera/server';
 
-import { createInteractive } from '../interactive';
-
 export default class Start extends Command {
   static description = 'Start Zotera Server';
 
   static examples = [
     '$ zotera start',
     '$ zotera start --port 5050 --host localhost',
-    '$ zotera start --config ./zotera.yaml',
-    '$ zotera start --interactive'
+    '$ zotera start --config ./zotera.yaml'
   ];
 
   static flags = {
     port: Flags.integer({ char: 'p', description: 'The port to use', default: 4000 }),
     host: Flags.string({ char: 'h', description: 'The host to use', default: 'localhost' }),
-    interactive: Flags.boolean({
-      char: 'i',
-      description: 'Use interactive with keypresses',
-      default: false
-    }),
     config: Flags.string({
       char: 'c',
       description: 'The configuration file to use'
@@ -35,10 +27,6 @@ export default class Start extends Command {
 
       process.title = 'zotera';
       const zotera = createZotera(flags.config);
-
-      if (process.stdin.isTTY && flags.interactive) {
-        createInteractive(zotera);
-      }
 
       await zotera.listen({
         port: flags.port,

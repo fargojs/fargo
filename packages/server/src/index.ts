@@ -1,17 +1,16 @@
 import _debug from 'debug';
 import path from 'path';
-
+import Fastify from 'fastify';
+import type { FastifyInstance } from 'fastify';
 import { locate, parseJSON, parseYAML } from '@zotera/config';
 import type { ZoteraConfig } from '@zotera/types';
+import zoteraPlugin from '@zotera/fastify';
 
-import { ZoteraApp } from './zotera';
-
-export { ZoteraApp };
 
 
 const debug = _debug('zotera:server');
 
-export function createZotera(config?: string | ZoteraConfig): ZoteraApp {
+export function createZotera(config?: string | ZoteraConfig): FastifyInstance {
   debug('Initializing Zotera App');
 
   let configuration: ZoteraConfig;
@@ -43,6 +42,8 @@ export function createZotera(config?: string | ZoteraConfig): ZoteraApp {
   // Add some sort of deep merge here, so configuration
   // always has some required values
 
-  const zotera = new ZoteraApp(configuration);
+  const zotera = Fastify();
+  debug('Loaded configuration %O', configuration);
+  zotera.register(zoteraPlugin, configuration);
   return zotera;
 }
