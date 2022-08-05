@@ -3,8 +3,8 @@ name: Template Dependency Version Updater
 on:
   workflow_dispatch:
   schedule:
-    # At minute 12 past every 10th hour.
-    - cron: '12 0 * * *'
+    # Every Monday at 00:12
+    - cron: '12 0 * * 1'
 
 jobs:
   update-dependencies:
