@@ -26,7 +26,7 @@ export class LocalStorage implements ZoteraStorage {
       releasedOn: '',
       lastUpdated: '',
       license: '',
-      repository: ''
+      repository: 'tt'
     };
   }
 

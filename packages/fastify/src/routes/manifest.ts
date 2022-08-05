@@ -10,7 +10,7 @@ export async function manifest(zotera: FastifyInstance) {
     debug('identifier lookup: %s', identifier);
 
     const manifest = await zotera.storage.getPackage(identifier);
-    return 'manifest';
+    return manifest;
   });
 
   zotera.get('/:version', async (req) => {
