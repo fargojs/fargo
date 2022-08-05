@@ -1,6 +1,6 @@
 {
   "name": "@zotera/types",
-  "version": "0.0.4",
+  "version": "0.0.1",
   "description": "zotera type definitions",
   "main": "./dist/index.d.ts",
   "module": "./dist/index.d.ts",

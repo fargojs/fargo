@@ -4,6 +4,9 @@ export interface ZoteraStorage {
   init(options?: any): Promise<void>;
   search(): Promise<any>;
 
+  addPackage(identifier: string): Promise<void>;
+
+
   getPackage(identifier: string, version?: string): Promise<ExtensionManifest | undefined>;
   getPackageVersions(identifier: string): Promise<string[]>;
 }
