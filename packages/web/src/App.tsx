@@ -1,25 +1,38 @@
-import { useState } from 'react';
+import { Suspense, lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
+import Header from './components/Header';
+
+const Home = lazy(() => import('./pages/Home'));
+const Identifier = () => <div>Identifier</div>;
+const IdentifierLatest = () => <div>Identifier Latest</div>;
+const IdentifierVersions = () => <div>Identifier Versions</div>;
+const IdentifierVersion = () => <div>Identifier Version</div>;
+
+
+/**
+ * / -> Home
+ * /:identifier -> extension page
+ * /:identifier/latest -> extension page
+ * /:identifier/:version -> extension page with specific version
+ * /:identifier/versions -> all versions of a extension
+ */
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  // Fallback should be changed to a loading component
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </div>
+    <Suspense fallback={null}>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/test/:identifier" element={<Identifier />} />
+        <Route path=":identifier" element={<Identifier />}>
+          <Route path="latest" element={<IdentifierLatest />} />
+          <Route path="versions" element={<IdentifierVersions />} />
+          <Route path=":version" element={<IdentifierVersion />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
 

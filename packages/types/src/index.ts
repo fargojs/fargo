@@ -83,4 +83,5 @@ export type ZoteraStorageConfig = string;
 
 export interface ZoteraWebConfig {
   enabled: boolean;
+  title: string;
 }
