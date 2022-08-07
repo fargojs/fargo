@@ -1,5 +1,10 @@
 lockfileVersion: 5.4
 
+patchedDependencies:
+  vite@3.0.0:
+    hash: z5qr7euqtu3adp74xgttyakopy
+    path: patches/vite@3.0.0.patch
+
 importers:
 
   .:
@@ -183,7 +188,7 @@ importers:
       postcss: 8.4.14
       tailwindcss: 3.1.6
       typescript: 4.7.4
-      vite: 3.0.0
+      vite: 3.0.0_z5qr7euqtu3adp74xgttyakopy
 
 packages:
 
@@ -1479,7 +1484,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.18.6_@babel+core@7.18.10
       magic-string: 0.26.2
       react-refresh: 0.14.0
-      vite: 3.0.0
+      vite: 3.0.0_z5qr7euqtu3adp74xgttyakopy
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6456,7 +6461,7 @@ packages:
       remove-trailing-separator: 1.1.0
       replace-ext: 1.0.1
 
-  /vite/3.0.0:
+  /vite/3.0.0_z5qr7euqtu3adp74xgttyakopy:
     resolution: {integrity: sha512-M7phQhY3+fRZa0H+1WzI6N+/onruwPTBTMvaj7TzgZ0v2TE+N2sdLKxJOfOv9CckDWt5C4HmyQP81xB4dwRKzA==}
     engines: {node: '>=14.18.0'}
     hasBin: true
@@ -6482,6 +6487,7 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+    patched: true
 
   /vitest/0.18.1:
     resolution: {integrity: sha512-4F/1K/Vn4AvJwe7i2YblR02PT5vMKcw9KN4unDq2KD0YcSxX0B/6D6Qu9PJaXwVuxXMFTQ5ovd4+CQaW3bwofA==}
@@ -6513,7 +6519,7 @@ packages:
       local-pkg: 0.4.2
       tinypool: 0.2.4
       tinyspy: 1.0.0
-      vite: 3.0.0
+      vite: 3.0.0_z5qr7euqtu3adp74xgttyakopy
     transitivePeerDependencies:
       - less
       - sass

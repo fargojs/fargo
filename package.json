@@ -25,5 +25,10 @@
   "engines": {
     "node": ">=16"
   },
-  "packageManager": "pnpm@7.5.0"
+  "packageManager": "pnpm@7.5.0",
+  "pnpm": {
+    "patchedDependencies": {
+      "vite@3.0.0": "patches/vite@3.0.0.patch"
+    }
+  }
 }
