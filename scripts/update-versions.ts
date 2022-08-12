@@ -5,7 +5,7 @@ import { depVersions } from '../packages/cli/src/dep-versions';
 
 const baseUrl = 'https://registry.npmjs.org/';
 
-const BANNER = "// This needs to be exports because it's used in update-versions.ts script.";
+const BANNER = "// This needs to be exported because it's used in update-versions.ts script.";
 
 const deps: Record<string, string> = {};
 

@@ -1,9 +1,13 @@
 pluginDir: ./plugins
 
+# disabling this, will allow unscoped plugins to be loaded.
 allowUnscopedPlugins: true
 
 web:
   enabled: true
+
+auth:
+  allowAnonymousDownload: true
 
 logging:
   type: stdout

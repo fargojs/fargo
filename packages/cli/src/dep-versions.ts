@@ -1,4 +1,4 @@
-// This needs to be exports because it's used in update-versions.ts script.
+// This needs to be exported because it's used in update-versions.ts script.
 export const depVersions: Record<string, string> = {
   "@zotera/types": "0.0.1",
   "@rollup/plugin-node-resolve": "13.3.0",

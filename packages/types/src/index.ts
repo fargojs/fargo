@@ -5,7 +5,6 @@ export * from './auth';
 export * from './manifest';
 
 export interface ZoteraConfig {
-
   /**
    * The path where the configuration file is located.
    * @internal
@@ -77,11 +76,29 @@ export interface ZoteraLoggingConfig {
 
 export type LogLevel = 'debug' | 'info' | 'warn' | 'warn' | 'fatal';
 
-export interface ZoteraAuthConfig {}
+export interface ZoteraAuthConfig {
+  /**
+   * Should everyone be allowed to download extensions.
+   */
+  allowAnonymousDownload?: boolean;
+  /**
+   * Auth provider to use.
+   * These are registered through `auth.register()`.
+   */
+  provider?: string;
+}
 
 export type ZoteraStorageConfig = string;
 
 export interface ZoteraWebConfig {
-  enabled: boolean;
-  title: string;
+  enabled?: boolean;
+  title?: string;
+  logo?: string;
+  footer?: WebFooterOptions;
+}
+
+export interface WebFooterOptions {
+  enabled?: boolean;
+  message?: string;
+  copyright?: string;
 }
