@@ -8,7 +8,8 @@ import type { ZoteraConfig } from '@zotera/types';
 export const configDecorator = flugin(
   (zotera: FastifyInstance, options: FastifyPluginOptions, next: () => FastifyError): void => {
     const mergedConfiguration = deepmerge(DEFAULT_CONFIGURATION_OBJECT, options);
-    zotera.decorate('config', options);
+
+    zotera.decorate('config', mergedConfiguration);
     next();
   }
 );

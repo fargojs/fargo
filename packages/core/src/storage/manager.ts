@@ -8,22 +8,27 @@ const debug = _debug('zotera:core:storage:manager');
 
 export class StorageManager {
   private static readonly storages: Map<string, ZoteraStorage> = new Map();
-  public storage: ZoteraStorage = new LocalStorage();
+  public storage: ZoteraStorage | undefined;
+
   public constructor(private readonly storageConfig: ZoteraStorageConfig) {
-    if (!storageConfig) {
+    if (!storageConfig.provider) {
       debug('Custom storage configuration not found, using default');
+      this.storage = new LocalStorage(storageConfig.location);
     }
   }
 
   async init() {
-    const storage = StorageManager.storages.get[this.storageConfig.provider];
-
-    if (!storage) {
-      debug('Storage with id %s not found', this.storageConfig);
-    } else {
+    if (this.storageConfig.provider) {
+      const storage = StorageManager.storages.get(this.storageConfig.provider);
+      if (!storage) {
+        throw new Error(`Storage with id ${this.storageConfig.provider} not found`);
+      }
       this.storage = storage;
     }
-    // Just for now.
+
+    if (!this.storage) {
+      throw new Error('Storage not found, please check your configuration');
+    }
     await this.storage.init();
   }
 

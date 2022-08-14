@@ -1,7 +1,7 @@
 import type { ExtensionManifest } from './manifest';
 
 export interface ZoteraStorage {
-  init(options?: any): Promise<void>;
+  init(): Promise<void>;
   search(): Promise<any>;
 
   addPackage(identifier: string): Promise<void>;
