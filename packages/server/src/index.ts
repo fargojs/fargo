@@ -1,12 +1,11 @@
 import _debug from 'debug';
-import path from 'path';
 import Fastify from 'fastify';
 import type { FastifyInstance } from 'fastify';
+import path from 'path';
+
 import { locate, parseJSON, parseYAML } from '@zotera/config';
-import type { ZoteraConfig } from '@zotera/types';
 import zoteraPlugin from '@zotera/fastify';
-
-
+import type { ZoteraConfig } from '@zotera/types';
 
 const debug = _debug('zotera:server');
 
@@ -36,11 +35,6 @@ export function createZotera(config?: string | ZoteraConfig): FastifyInstance {
     configuration = config;
     configuration.__location = process.cwd();
   }
-
-
-  // TODO: Deep Merge
-  // Add some sort of deep merge here, so configuration
-  // always has some required values
 
   const zotera = Fastify();
   debug('Loaded configuration %O', configuration);

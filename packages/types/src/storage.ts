@@ -6,7 +6,7 @@ export interface ZoteraStorage {
 
   addPackage(identifier: string): Promise<void>;
 
-
+  getPackages(): Promise<ExtensionManifest[]>;
   getPackage(identifier: string, version?: string): Promise<ExtensionManifest | undefined>;
   getPackageVersions(identifier: string): Promise<string[]>;
 }

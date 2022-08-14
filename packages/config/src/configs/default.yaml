@@ -4,7 +4,10 @@ pluginDir: ./plugins
 allowUnscopedPlugins: true
 
 web:
-  enabled: true
+  title: Zotera Web
+  footer:
+    message: Powered by Zotera
+    copyright: Copyright © 2022
 
 auth:
   allowAnonymousDownload: true
@@ -12,3 +15,8 @@ auth:
 logging:
   type: stdout
   level: info
+
+storage:
+  # Default provider is local storage.
+  # provider: <provider>
+  location: ./storage

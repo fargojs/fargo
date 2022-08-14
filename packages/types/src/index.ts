@@ -88,17 +88,18 @@ export interface ZoteraAuthConfig {
   provider?: string;
 }
 
-export type ZoteraStorageConfig = string;
-
-export interface ZoteraWebConfig {
-  enabled?: boolean;
-  title?: string;
-  logo?: string;
-  footer?: WebFooterOptions;
+export interface ZoteraStorageConfig {
+  provider?: string;
+  location?: string;
 }
 
 export interface WebFooterOptions {
-  enabled?: boolean;
   message?: string;
   copyright?: string;
+}
+
+export interface ZoteraWebConfig {
+  title?: string;
+  logo?: string;
+  footer?: WebFooterOptions;
 }

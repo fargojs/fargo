@@ -2,10 +2,18 @@ import type { ExtensionManifest, ZoteraStorage } from '@zotera/types';
 
 // Used when storage entry point is not set, e.g. default configuration
 export class LocalStorage implements ZoteraStorage {
-  async init() {}
+  async init(options: ) {
+    console.log('LocalStorage.init()');
+    console.log();
+
+  }
 
   async search(): Promise<any> {
     return '';
+  }
+
+  getPackages(): Promise<ExtensionManifest[]> {
+    throw new Error('Method not implemented.');
   }
 
   async getPackage(

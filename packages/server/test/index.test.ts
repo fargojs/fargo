@@ -13,7 +13,7 @@ beforeAll(async () => {
 
   await zotera.listen({
     host: 'localhost',
-    port: 6969,
+    port: 6969
   });
 });
 
@@ -29,6 +29,4 @@ describe('Zotera Server', () => {
     const response = await got('http://localhost:6969/-/ping');
     expect(response.body).toBe('Pong!');
   });
-
-
 });

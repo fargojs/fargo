@@ -14,7 +14,7 @@ const plugin: FastifyPluginCallback<PluginOptions> = flugin(
     app.register(configDecorator, options);
 
     // Setup plugin loading
-    loadPlugins(options);
+    loadPlugins(app.config);
 
     // This needs to be after the plugins are loaded
     // so that the plugins that are a storage plugin
@@ -34,4 +34,3 @@ const plugin: FastifyPluginCallback<PluginOptions> = flugin(
 );
 
 export default plugin;
-

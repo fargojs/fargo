@@ -7,7 +7,7 @@ import { LocalStorage } from './local';
 const debug = _debug('zotera:core:storage:manager');
 
 export class StorageManager {
-  private static readonly storages: Record<string, ZoteraStorage> = {};
+  private static readonly storages: Map<string, ZoteraStorage> = new Map();
   public storage: ZoteraStorage = new LocalStorage();
   public constructor(private readonly storageConfig: ZoteraStorageConfig) {
     if (!storageConfig) {
@@ -16,7 +16,7 @@ export class StorageManager {
   }
 
   async init() {
-    const storage = StorageManager.storages[this.storageConfig];
+    const storage = StorageManager.storages.get[this.storageConfig.provider];
 
     if (!storage) {
       debug('Storage with id %s not found', this.storageConfig);
@@ -29,9 +29,10 @@ export class StorageManager {
 
   static register(id: string, storage: ZoteraStorage) {
     debug('storage#register(%s)', id, storage);
-    if (this.storages[id]) {
+    const existing = StorageManager.storages.get(id);
+    if (existing) {
       throw new Error(`Storage with id ${id} already registered`);
     }
-    this.storages[id] = storage;
+    StorageManager.storages.set(id, storage);
   }
 }
