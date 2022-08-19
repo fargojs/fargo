@@ -11,7 +11,7 @@ export class LocalStorage implements ZoteraStorage {
   }
 
   getPackages(): Promise<ExtensionManifest[]> {
-    throw new Error('Method not implemented.');
+    return Promise.resolve([]);
   }
 
   async getPackage(

@@ -6,8 +6,9 @@ export default class Publish extends Command {
   static examples = [];
 
   async run(): Promise<void> {
-    // const { flags } = await this.parse(Publish);
+    const { flags } = await this.parse(Publish);
 
     this.log('This is not implemented yet.');
+    this.log(flags);
   }
 }
