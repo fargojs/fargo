@@ -5,5 +5,8 @@ export default defineConfig({
   format: ['cjs', 'esm'],
   clean: true,
   splitting: false,
-  dts: true
+  dts: true,
+  // this only sets env to prod when minified, but we dont want to minify it.
+  // so maybe we should monkey patch tsup to set env to prod when not watched.
+  replaceNodeEnv: true,
 });

@@ -175,6 +175,7 @@ importers:
       '@vitejs/plugin-react': ^2.0.0
       '@zotera/types': workspace:*
       autoprefixer: ^10.4.7
+      phosphor-react: ^1.4.1
       postcss: ^8.4.14
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -184,6 +185,7 @@ importers:
       vite: ^3.0.0
       zustand: ^4.0.0
     dependencies:
+      phosphor-react: 1.4.1_react@18.2.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-router-dom: 6.3.0_biqbaboplfbrettd7655fr4n2y
@@ -5205,6 +5207,15 @@ packages:
   /pathval/1.1.1:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
     dev: true
+
+  /phosphor-react/1.4.1_react@18.2.0:
+    resolution: {integrity: sha512-gO5j7U0xZrdglTAYDYPACU4xDOFBTJmptrrB/GeR+tHhCZF3nUMyGmV/0hnloKjuTrOmpSFlbfOY78H39rgjUQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}

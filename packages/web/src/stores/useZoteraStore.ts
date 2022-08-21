@@ -4,17 +4,21 @@ import { devtools } from 'zustand/middleware';
 import type { ZoteraWebConfig } from '@zotera/types';
 
 interface ZoteraState {
-  options: ZoteraWebConfig;
+  options: ZoteraWebConfig & {
+    allowAnonymousDownload: boolean;
+  };
 }
 
 export const useZoteraStore = create<ZoteraState>()(
   devtools((set) => ({
-    options: window.__ZOTERA_WEB_OPTIONS
+    options: window.__ZOTERA_OPTIONS
   }))
 );
 
 declare global {
   interface Window {
-    __ZOTERA_WEB_OPTIONS: ZoteraWebConfig;
+    __ZOTERA_OPTIONS: ZoteraWebConfig & {
+      allowAnonymousDownload: boolean;
+    };
   }
 }
