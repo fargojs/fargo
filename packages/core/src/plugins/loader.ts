@@ -18,7 +18,7 @@ const ajv = new Ajv({
   useDefaults: true
 });
 
-export function loadPlugins(options: ZoteraConfig) {
+export async function loadPlugins(options: ZoteraConfig) {
   const {
     allowUnscopedPlugins,
     pluginDir = './plugins',
@@ -54,8 +54,9 @@ export function loadPlugins(options: ZoteraConfig) {
       const pluginPath = path.resolve(dir, _plugin.name);
       const pluginFolder = fs.statSync(pluginPath);
       if (pluginFolder.isDirectory()) {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        // const { register, options } = await import(pluginPath).then((plugin) => plugin.default);
         const { register, options } = require(pluginPath);
+
 
         const validate = ajv.compile({
           ...options,
@@ -76,6 +77,8 @@ export function loadPlugins(options: ZoteraConfig) {
         debug('Plugin %s loaded', _plugin.name);
       }
     } catch (e) {
+      console.log(e);
+
       debug('Plugin %s is not loaded', _plugin.name);
     }
   }

@@ -1,11 +1,5 @@
-import { Command } from '@oclif/core';
+import { Command } from 'commander';
 
-export default class List extends Command {
-  static description = 'List all plugins';
-
-  async run(): Promise<void> {
-    // const { flags } = await this.parse(List);
-
-    this.log('This is not implemented yet.');
-  }
-}
+export const list = new Command('list').description('List all Community plugins').action(() => {
+  console.log('This is not implemented yet.');
+});

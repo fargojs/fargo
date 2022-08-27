@@ -1,10 +1,5 @@
-import { Command } from '@oclif/core';
+import { Command } from 'commander';
 
-export default class WhoAmI extends Command {
-  static description = 'Whoami';
-
-  async run(): Promise<void> {
-    // const { } = await this.parse(WhoAmI);
-    this.log('This is not implemented yet.');
-  }
-}
+export const whoami = new Command('whoami').action(() => {
+  console.log('This is not implemented yet.');
+});

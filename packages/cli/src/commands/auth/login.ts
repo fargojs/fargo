@@ -1,10 +1,5 @@
-import { Command } from '@oclif/core';
+import { Command } from 'commander';
 
-export default class Login extends Command {
-  static description = 'Login to Zotera';
-
-  async run(): Promise<void> {
-    // const { } = await this.parse(Login);
-    this.log('This is not implemented yet.');
-  }
-}
+export const login = new Command('login').action(() => {
+  console.log('This is not implemented yet.');
+});

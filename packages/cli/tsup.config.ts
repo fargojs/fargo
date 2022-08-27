@@ -1,18 +1,27 @@
 import { copy } from 'esbuild-plugin-copy';
 import { defineConfig } from 'tsup';
 
+import { version } from './package.json';
+
 export default defineConfig({
-  entry: ['src/**/*.ts', '!src/templates/**/*.ts'],
-  format: ['cjs'],
+  entry: ['src/index.ts'],
+  format: ['esm'],
   clean: true,
-  bundle: false,
   splitting: false,
   dts: true,
+  define: {
+    __VERSION__: `'${version}'`
+  },
+  outExtension({ format }) {
+    return {
+      js: '.js'
+    };
+  },
   esbuildPlugins: [
     copy({
       assets: {
         keepStructure: true,
-        from: ['src/templates/**/*'],
+        from: ['templates/**/*'],
         to: ['templates']
       }
     })
