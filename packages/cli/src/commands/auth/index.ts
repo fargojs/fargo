@@ -1,11 +1,10 @@
-import { Command, Help } from '@oclif/core';
+import { Command } from 'commander';
 
-export default class Auth extends Command {
-  static description = 'Authenticate with Zotera';
+import { login } from './login';
+import { logout } from './logout';
+import { whoami } from './whoami';
 
-  async run(): Promise<void> {
-    const { argv } = await this.parse(Auth);
-    const help = new Help(this.config, { all: false });
-    await help.showHelp(argv);
-  }
-}
+export const auth = new Command('auth');
+auth.addCommand(login);
+auth.addCommand(logout);
+auth.addCommand(whoami);

@@ -1,22 +1,12 @@
-import { Command, Flags } from '@oclif/core';
-import { pack, readManifest } from '@zotera/core';
+import { Command } from 'commander';
 
-export default class Pack extends Command {
-  static description = 'Pack a plugin';
+import { pack as packPlugin, readManifest } from '@zotera/core';
 
-  static flags = {
-    out: Flags.string({
-      char: 'o',
-      description: 'Output location'
-    })
-  };
-
-  static examples = ['$ zotera plugins pack'];
-
-  async run(): Promise<void> {
-    const { flags } = await this.parse(Pack);
+export const pack = new Command('pack')
+  .description('Pack a plugin')
+  .option('-o, --out <out>', 'Output location')
+  .action(async () => {
     const manifest = await readManifest(process.cwd());
-    await pack(manifest, flags.out);
-    this.log(`Plugin ${manifest.name} packed`);
-  }
-}
+    await packPlugin(manifest, pack.opts().out);
+    console.log(`Plugin ${manifest.name} packed`);
+  });

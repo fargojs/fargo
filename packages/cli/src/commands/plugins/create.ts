@@ -1,29 +1,19 @@
+import { Command, Option } from 'commander';
 import * as inquirer from 'inquirer';
-import { createEnv } from 'yeoman-environment';
-
-import { Command, Flags } from '@oclif/core';
 
 const pluginTypes = ['storage', 'auth'];
 
-export default class Create extends Command {
-  static description = 'Create a plugin';
+const typeOption = new Option('-t, --type [type]', 'type of plugin').choices(pluginTypes);
 
-  static flags = {
-    type: Flags.enum({
-      char: 't',
-      options: pluginTypes,
-      description: 'type of plugin'
-    }),
-    name: Flags.string({ char: 'n', description: 'name of the plugin' }),
-    rollup: Flags.boolean({ description: 'use rollup', default: false }),
-    git: Flags.boolean({ description: 'use git', default: false }),
-    vitest: Flags.boolean({ description: 'use vitest', default: false })
-  };
-
-  async run(): Promise<void> {
-    const { flags } = await this.parse(Create);
-
-    let { type, name, rollup, git, vitest } = flags;
+export const create = new Command('create')
+  .description('Create a plugin')
+  .addOption(typeOption)
+  .option('-n, --name [name]', 'name of the plugin')
+  .option('--rollup', 'use rollup')
+  .option('--git', 'use git')
+  .option('--vitest', 'use vitest')
+  .action(async () => {
+    let { type, name, rollup, git, vitest } = create.opts();
     if (!type) {
       type = await (
         await inquirer.prompt([
@@ -92,7 +82,8 @@ export default class Create extends Command {
       ).vitest;
     }
 
-    const env = createEnv();
+    const yeoman = await import('yeoman-environment');
+    const env = yeoman.default.createEnv();
 
     env.register(require.resolve(`../../generators/${type}`), `zotera:plugin:${type}`);
     env.run(`zotera:plugin:${type}`, {
@@ -102,5 +93,4 @@ export default class Create extends Command {
       description,
       vitest
     });
-  }
-}
+  });

@@ -11,11 +11,10 @@ import type { PluginOptions } from './types';
 
 const plugin: FastifyPluginCallback<PluginOptions> = flugin(
   async (app: FastifyInstance, options: PluginOptions, next: (error?: FastifyError) => void) => {
-    app.register(configDecorator, options).after(() => {
+    app.register(configDecorator, options).after(async () => {
       // This is running after the config decorator is attached.
-      loadPlugins(app.config);
+      await loadPlugins(app.config);
     });
-    
 
     app.register(storageDecorator);
 

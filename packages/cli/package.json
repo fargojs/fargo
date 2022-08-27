@@ -2,15 +2,14 @@
   "name": "@zotera/cli",
   "version": "0.0.1",
   "description": "",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.js"
     }
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
     "zotera": "./bin/zotera"
@@ -36,12 +35,10 @@
     "url": "https://luxass.dev"
   },
   "dependencies": {
-    "@oclif/core": "^1.9.5",
-    "@oclif/plugin-help": "^5.1.12",
-    "@oclif/plugin-not-found": "^2.3.1",
     "@zotera/config": "workspace:*",
     "@zotera/core": "workspace:*",
     "@zotera/server": "workspace:*",
+    "commander": "^9.4.0",
     "conf": "^10.2.0",
     "inquirer": "8.2.4",
     "joycon": "^3.1.1",
@@ -55,21 +52,6 @@
     "@types/yeoman-generator": "^5.2.10",
     "esbuild": "^0.14.49",
     "esbuild-plugin-copy": "^1.3.0",
-    "oclif": "^3.1.0",
     "picocolors": "^1.0.0"
-  },
-  "oclif": {
-    "bin": "zotera",
-    "commands": "./dist/commands",
-    "plugins": [
-      "@oclif/plugin-help",
-      "@oclif/plugin-not-found"
-    ],
-    "topicSeparator": " ",
-    "topics": {
-      "plugins": {
-        "description": "manage zotera community plugins"
-      }
-    }
   }
 }
