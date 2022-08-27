@@ -5,7 +5,7 @@ export default class Auth extends Command {
 
   async run(): Promise<void> {
     const { argv } = await this.parse(Auth);
-    const help = new Help(this.config, { all: true });
+    const help = new Help(this.config, { all: false });
     await help.showHelp(argv);
   }
 }

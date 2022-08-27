@@ -3,6 +3,7 @@ import JoyCon from 'joycon';
 import path from 'path';
 
 import { Command, Flags } from '@oclif/core';
+import { publish } from "@zotera/core";
 
 interface ZoteraRC {
   registry: string;
@@ -52,8 +53,10 @@ export default class Publish extends Command {
     if (rc && rc.registry && !registry) {
       registry = rc.registry;
     }
+
+    // TODO: Authentication check
     this.log(registry);
     this.log(file);
-    // TODO: publish to registry
+    await publish(file, registry as string);
   }
 }
