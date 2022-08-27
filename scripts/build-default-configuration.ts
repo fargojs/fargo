@@ -19,7 +19,7 @@ async function run() {
 
   fs.writeFile(
     './packages/config/src/configs/default.ts',
-    `${BANNER}\n\nimport type { ZoteraConfig } from '@zotera/types';\n\nexport const DEFAULT_CONFIGURATION_OBJECT: Omit<ZoteraConfig, '__location'> = ${JSON.stringify(
+    `${BANNER}\n\nimport type { OmitSafe, ZoteraConfig } from '@zotera/types';\n\nexport const DEFAULT_CONFIGURATION_OBJECT: OmitSafe<ZoteraConfig, '__location'> = ${JSON.stringify(
       contents,
       null,
       2

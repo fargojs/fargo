@@ -1,3 +1,3 @@
-import type { ZoteraConfig } from '@zotera/types';
+import type { OmitSafe, ZoteraConfig } from '@zotera/types';
 
-export type PluginOptions = Omit<ZoteraConfig, 'logging'>;
+export type PluginOptions = OmitSafe<ZoteraConfig, 'logging' | 'pluginDir' | '__location'>;

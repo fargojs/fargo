@@ -15,6 +15,7 @@ const plugin: FastifyPluginCallback<PluginOptions> = flugin(
       // This is running after the config decorator is attached.
       loadPlugins(app.config);
     });
+    
 
     app.register(storageDecorator);
 

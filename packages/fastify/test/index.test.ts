@@ -14,7 +14,12 @@ beforeAll(async () => {
   const app = Fastify();
 
   // Add zotera to the express app
-  app.register(zotera, {} as ZoteraConfig);
+  app.register(zotera, {
+    
+    plugins: [
+      '@zotera/plugin-auth',
+    ]
+  });
 
   server = app;
 

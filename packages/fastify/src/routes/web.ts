@@ -3,11 +3,11 @@ import { FastifyInstance } from 'fastify';
 import { MimeTypes } from '@zotera/core';
 
 export async function web(zotera: FastifyInstance) {
-  if (process.env.NODE_ENV) {
+  if (process.env.NODE_ENV === 'development') {
     zotera.get('/__zotera_options__', async (_, res) => {
       res.type(MimeTypes.JSON).send({
         ...zotera.config.web,
-        allowAnonymousDownload: zotera.config.auth.allowAnonymousDownload,
+        allowAnonymousDownload: zotera.config.auth.allowAnonymousDownload
       });
     });
   }

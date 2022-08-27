@@ -86,6 +86,7 @@ export interface ZoteraAuthConfig {
    * These are registered through `auth.register()`.
    */
   provider?: string;
+  
 }
 
 export interface ZoteraStorageConfig {
@@ -103,3 +104,6 @@ export interface ZoteraWebConfig {
   logo?: string;
   footer?: WebFooterOptions;
 }
+
+export type OmitSafe<T extends object, K extends keyof T> = Omit<T, K>;
+// export type NodeOptions = OmitSafe<ZoteraConfig, 'logging' | 'pluginDir' | '__location'>;
