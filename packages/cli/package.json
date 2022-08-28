@@ -43,7 +43,6 @@
     "conf": "^10.2.0",
     "inquirer": "9.1.0",
     "joycon": "^3.1.1",
-    "neoman": "^0.1.6",
     "yeoman-environment": "^3.9.1",
     "yeoman-generator": "^5.6.1"
   },
