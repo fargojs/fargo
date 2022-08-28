@@ -9,6 +9,7 @@
       "import": "./dist/index.js"
     }
   },
+  "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
@@ -40,18 +41,19 @@
     "@zotera/server": "workspace:*",
     "commander": "^9.4.0",
     "conf": "^10.2.0",
-    "inquirer": "8.2.4",
+    "inquirer": "9.1.0",
     "joycon": "^3.1.1",
+    "neoman": "^0.1.6",
     "yeoman-environment": "^3.9.1",
     "yeoman-generator": "^5.6.1"
   },
   "devDependencies": {
-    "@types/inquirer": "^8.2.1",
+    "@types/inquirer": "^9.0.1",
     "@types/node": "^18.0.3",
     "@types/yeoman-environment": "^2.10.7",
     "@types/yeoman-generator": "^5.2.10",
+    "chalk": "^5.0.1",
     "esbuild": "^0.14.49",
-    "esbuild-plugin-copy": "^1.3.0",
-    "picocolors": "^1.0.0"
+    "esbuild-plugin-copy": "^1.3.0"
   }
 }

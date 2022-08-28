@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-// import c from 'picocolors';
+import chalk from 'chalk';
 
 import { createZotera } from '@zotera/server';
 
@@ -20,7 +20,7 @@ export const start = new Command('start')
       });
     } catch (e) {
       process.exitCode = 1;
-      // console.error(`\n${c.red(c.bold(c.inverse(' Unhandled Error ')))}`);
+      console.error(`\n${chalk.red(chalk.bold(chalk.inverse(' Unhandled Error ')))}`);
       console.error(e);
       console.error('\n\n');
     }

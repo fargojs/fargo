@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs';
 import got from 'got';
-
+import { version as pkgVersion } from '../packages/types/package.json';
 import { depVersions } from '../packages/cli/src/dep-versions';
 
 const baseUrl = 'https://registry.npmjs.org/';
@@ -24,7 +24,7 @@ async function run() {
         return;
       }
 
-      if (!version && dep === '@zotera/types') version = '0.0.1';
+      if (!version && dep === '@zotera/types') version = pkgVersion;
 
       deps[dep] = version || '*';
     })

@@ -1,5 +1,10 @@
 import { Command, Option } from 'commander';
-import * as inquirer from 'inquirer';
+import inquirer from 'inquirer';
+import { createEnvironment } from 'neoman';
+import path from 'path';
+
+import { depVersions } from '../../dep-versions';
+import { AuthPluginGenerator, StoragePluginGenerator } from '../../generators';
 
 const pluginTypes = ['storage', 'auth'];
 
@@ -82,15 +87,40 @@ export const create = new Command('create')
       ).vitest;
     }
 
-    const yeoman = await import('yeoman-environment');
-    const env = yeoman.default.createEnv();
+    const neomanEnv = createEnvironment({
+      name,
+      rollup,
+      git,
+      description,
+      vitest,
+      dep(dep: string): string {
+        const version = depVersions[dep];
+        if (!version) {
+          throw new Error(`No version found for ${dep}`);
+        }
 
-    env.register(require.resolve(`../../generators/${type}`), `zotera:plugin:${type}`);
-    env.run(`zotera:plugin:${type}`, {
+        return `"${dep}": "${version}"`;
+      }
+    });
+
+    const generator = type === 'auth' ? AuthPluginGenerator : StoragePluginGenerator;
+    neomanEnv.register(`zotera:plugin:${type}`, generator);
+    neomanEnv.run(`zotera:plugin:${type}`, {
       name,
       rollup,
       git,
       description,
       vitest
     });
+
+    // const yeoman = await import('yeoman-environment');
+    // const env = yeoman.default.createEnv();
+    // env.register(path.join(__dirname, `./generators/${type}`), `zotera:plugin:${type}`);
+    // env.run(`zotera:plugin:${type}`, {
+    //   name,
+    //   rollup,
+    //   git,
+    //   description,
+    //   vitest
+    // });
   });
