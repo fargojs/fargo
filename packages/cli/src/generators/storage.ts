@@ -6,7 +6,7 @@ import { ZoteraGenerator } from './base';
 export default class StoragePluginGenerator extends ZoteraGenerator {
   options: {
     name: string;
-    rollup: boolean;
+    esbuild: boolean;
     git: boolean;
     vitest: boolean;
     description: string;
@@ -17,7 +17,7 @@ export default class StoragePluginGenerator extends ZoteraGenerator {
 
     this.options = {
       name: opts.name,
-      rollup: opts.rollup,
+      esbuild: opts.esbuild,
       git: opts.git,
       description: opts.description,
       vitest: opts.vitest
@@ -28,11 +28,11 @@ export default class StoragePluginGenerator extends ZoteraGenerator {
     this.destinationRoot(resolve(this.options.name));
     this.sourceRoot(join(this.dirname, '../templates/storage'));
 
-    this.fs.copyTpl(this.templatePath('_package.json'), this.destinationPath('package.json'), {
+    this.fs.copyTpl(this.templatePath('../shared/_package.json'), this.destinationPath('package.json'), {
       name: this.options.name,
       description: this.options.description,
       vitest: this.options.vitest,
-      rollup: this.options.rollup,
+      esbuild: this.options.esbuild,
       dep: this.getDependencyVersion
     });
 
@@ -42,13 +42,6 @@ export default class StoragePluginGenerator extends ZoteraGenerator {
     );
 
     this.fs.copyTpl(this.templatePath('src/plugin.ts'), this.destinationPath('src/plugin.ts'));
-
-    if (this.options.rollup) {
-      this.fs.copyTpl(
-        this.templatePath('../shared/rollup.config.ts'),
-        this.destinationPath('rollup.config.ts')
-      );
-    }
 
     if (this.options.git) {
       this.fs.copy(this.templatePath('../shared/gitignore'), this.destinationPath('.gitignore'));

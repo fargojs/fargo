@@ -11,11 +11,11 @@ export const create = new Command('create')
   .description('Create a plugin')
   .addOption(typeOption)
   .option('-n, --name [name]', 'name of the plugin')
-  .option('--rollup', 'use rollup')
+  .option('--esbuild', 'use esbuild')
   .option('--git', 'use git')
   .option('--vitest', 'use vitest')
   .action(async () => {
-    let { type, name, rollup, git, vitest } = create.opts();
+    let { type, name, esbuild, git, vitest } = create.opts();
     if (!type) {
       type = await (
         await inquirer.prompt([
@@ -54,14 +54,14 @@ export const create = new Command('create')
       })
     ).description;
 
-    if (!rollup) {
-      rollup = await (
+    if (!esbuild) {
+      esbuild = await (
         await inquirer.prompt({
-          name: 'rollup',
-          message: 'Use rollup as buildtool?',
+          name: 'esbuild',
+          message: 'Use esbuild as buildtool?',
           type: 'confirm'
         })
-      ).rollup;
+      ).esbuild;
     }
 
     if (!git) {
@@ -90,7 +90,7 @@ export const create = new Command('create')
     env.register(path.join(dirname, `./generators/${type}.js`), `zotera:plugin:${type}`);
     env.run(`zotera:plugin:${type}`, {
       name,
-      rollup,
+      esbuild,
       git,
       description,
       vitest

@@ -5,6 +5,7 @@ import path from 'path';
 
 import type { ZoteraConfig, ZoteraPlugin } from '@zotera/types';
 
+import { readManifest } from './bundle';
 import { buildContext } from './context';
 
 const debug = _debug('zotera:core:plugin:loader');
@@ -54,9 +55,12 @@ export async function loadPlugins(options: ZoteraConfig) {
       const pluginPath = path.resolve(dir, _plugin.name);
       const pluginFolder = fs.statSync(pluginPath);
       if (pluginFolder.isDirectory()) {
-        // const { register, options } = await import(pluginPath).then((plugin) => plugin.default);
-        const { register, options } = require(pluginPath);
+        const manifest = await readManifest(pluginPath);
+        console.log(manifest);
 
+        const { register, options } = await import(pluginPath).catch((err) => {
+          console.log(err);
+        });
 
         const validate = ajv.compile({
           ...options,

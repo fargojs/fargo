@@ -5,12 +5,8 @@
 
 // This needs to be exported because it's used in update-versions.ts script.
 export const depVersions: Record<string, string> = {
-  "vitest": "0.22.1",
-  "typescript": "4.7.4",
+  "esbuild": "0.15.5",
   "@zotera/types": "0.0.1",
-  "tslib": "2.4.0",
-  "@rollup/plugin-commonjs": "22.0.2",
-  "rollup": "2.78.1",
-  "@rollup/plugin-node-resolve": "13.3.0",
-  "@rollup/plugin-typescript": "8.3.4"
+  "vitest": "0.22.1",
+  "typescript": "4.8.2"
 };
