@@ -7,7 +7,7 @@ index 67b120f7296a3bd7fa369cea83b2310b67256818..2279dbbb8ed03caac360c0b36b19e8a7
      /**
       * Replace `process.env.NODE_ENV` with `production` or `development`
 -     * `production` when the bundled is minified, `development` otherwise
-+     * `development` when the bundle is watched, `production` otherwise
++     * `development` when its watched, `production` otherwise
       */
      replaceNodeEnv?: boolean;
      /**

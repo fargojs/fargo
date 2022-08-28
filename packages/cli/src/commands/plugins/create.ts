@@ -1,5 +1,7 @@
 import { Command, Option } from 'commander';
-import * as inquirer from 'inquirer';
+import inquirer from 'inquirer';
+import path from "path";
+import { fileURLToPath } from 'url';
 
 const pluginTypes = ['storage', 'auth'];
 
@@ -82,10 +84,10 @@ export const create = new Command('create')
       ).vitest;
     }
 
+    const dirname = path.dirname(fileURLToPath(import.meta.url));
     const yeoman = await import('yeoman-environment');
     const env = yeoman.default.createEnv();
-
-    env.register(require.resolve(`../../generators/${type}`), `zotera:plugin:${type}`);
+    env.register(path.join(dirname, `./generators/${type}.js`), `zotera:plugin:${type}`);
     env.run(`zotera:plugin:${type}`, {
       name,
       rollup,

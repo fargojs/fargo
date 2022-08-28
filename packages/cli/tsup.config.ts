@@ -4,7 +4,7 @@ import { defineConfig } from 'tsup';
 import { version } from './package.json';
 
 export default defineConfig({
-  entry: ['src/index.ts'],
+  entry: ['src/index.ts', 'src/generators/**/*.ts'],
   format: ['esm'],
   clean: true,
   splitting: false,

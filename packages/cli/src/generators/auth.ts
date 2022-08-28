@@ -26,7 +26,7 @@ export default class AuthPluginGenerator extends ZoteraGenerator {
 
   writing() {
     this.destinationRoot(resolve(this.options.name));
-    this.sourceRoot(join(__dirname, '../templates/auth'));
+    this.sourceRoot(join(this.dirname, '../templates/auth'));
 
     this.fs.copyTpl(this.templatePath('_package.json'), this.destinationPath('package.json'), {
       name: this.options.name,

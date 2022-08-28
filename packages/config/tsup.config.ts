@@ -4,10 +4,15 @@ import YAMLPlugin from '@zotera/esbuild-yaml';
 
 export default defineConfig({
   entry: ['src/index.ts'],
-  format: ['cjs', 'esm'],
+  format: ['esm'],
   clean: true,
-  splitting: false,
+  splitting: true,
   dts: true,
+  outExtension() {
+    return {
+      js: '.js'
+    };
+  },
   esbuildPlugins: [
     YAMLPlugin({
       output: 'text'
