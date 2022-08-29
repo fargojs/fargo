@@ -7,6 +7,8 @@ export const install = new Command('install')
   .argument('<plugins...>', 'Plugin(s) to download')
   .action((plugins) => {
     console.log('This is not implemented yet.');
-    console.log(JSON.stringify(install.opts().dir, null, 2));
+    console.log(install.opts());
+    console.log('PARENT', install.parent?.opts());
+
     console.log(JSON.stringify(plugins, null, 2));
   });

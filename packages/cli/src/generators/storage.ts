@@ -44,7 +44,7 @@ export default class StoragePluginGenerator extends ZoteraGenerator {
     this.fs.copyTpl(this.templatePath('src/plugin.ts'), this.destinationPath('src/plugin.ts'));
 
     if (this.options.git) {
-      this.fs.copy(this.templatePath('../shared/gitignore'), this.destinationPath('.gitignore'));
+      this.fs.copy(this.templatePath('../shared/_gitignore'), this.destinationPath('.gitignore'));
     }
 
     if (this.options.vitest) {

@@ -1,9 +1,11 @@
 import { program } from 'commander';
 
-import { auth } from './commands/auth';
+import { login } from './commands/login';
+import { logout } from './commands/logout';
 import { plugins } from './commands/plugins';
 import { publish } from './commands/publish';
 import { start } from './commands/start';
+import { whoami } from './commands/whoami';
 
 declare global {
   const __VERSION__: string;
@@ -16,7 +18,9 @@ program
 
 program.addCommand(start);
 program.addCommand(publish);
-program.addCommand(auth);
 program.addCommand(plugins);
+program.addCommand(login);
+program.addCommand(logout);
+program.addCommand(whoami);
 
 program.parse(process.argv);

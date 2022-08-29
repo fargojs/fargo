@@ -10,7 +10,8 @@ interface PluginFile {
 interface PluginManifest {
   name: string;
   version: string;
-  main: string;
+  main?: string;
+  module?: string;
 }
 
 /**
