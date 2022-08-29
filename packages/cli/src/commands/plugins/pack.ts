@@ -8,5 +8,5 @@ export const pack = new Command('pack')
   .action(async () => {
     const manifest = await readManifest(process.cwd());
     await packPlugin(manifest, pack.opts().out);
-    console.log(`Plugin ${manifest.name} packed`);
+    console.log(`${manifest.name} is now packed, and ready to be installed.`);
   });

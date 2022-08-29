@@ -52,7 +52,7 @@ export async function pack(manifest: PluginManifest, out?: string) {
       path: ''
     },
     {
-      localPath: path.join(cwd, manifest.main || 'dist/plugin.js'),
+      localPath: path.join(cwd, manifest.main || manifest.module || 'dist/plugin.js'),
       path: '/dist'
     }
   ];
