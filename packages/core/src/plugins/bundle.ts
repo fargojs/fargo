@@ -94,7 +94,10 @@ async function getOutput(manifest: PluginManifest, out?: string): Promise<string
  * Unpacks a .zop file to a directory.
  * @param {String} location path to the zip file
  */
-export function unpack(location: string) {
-  const zip = new AdmZip(`${location}.zop`);
+export function unpack(file: string, location: string) {  
+  if (path.extname(file) !== '.zop') {
+    throw new Error('Not a .zop file');
+  }
+  const zip = new AdmZip(file);
   zip.extractAllTo(location);
 }

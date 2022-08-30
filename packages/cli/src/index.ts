@@ -14,7 +14,7 @@ declare global {
 program
   .name('zotera')
   .version(__VERSION__)
-  .option('-c, --config <path>', 'set config path', './deploy.conf');
+  .option('-c, --config <path>', 'set config path');
 
 program.addCommand(start);
 program.addCommand(publish);

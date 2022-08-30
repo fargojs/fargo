@@ -64,9 +64,8 @@ export async function loadPlugins(options: ZoteraConfig) {
             debug('Error loading plugin: %s', err);
           }
         );
-
         const validate = ajv.compile({
-          ...options,
+          properties: options,
           type: 'object'
         });
 
@@ -84,8 +83,6 @@ export async function loadPlugins(options: ZoteraConfig) {
         debug('Plugin %s loaded', _plugin.name);
       }
     } catch (e) {
-      console.log(e);
-
       debug('Plugin %s is not loaded', _plugin.name);
     }
   }

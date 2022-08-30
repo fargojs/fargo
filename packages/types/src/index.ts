@@ -19,7 +19,7 @@ export interface ZoteraConfig {
   /**
    * The directory to store plugins in.
    */
-  pluginDir?: string;
+  pluginDir: string;
 
   /**
    * Allow loading of unscoped plugins.

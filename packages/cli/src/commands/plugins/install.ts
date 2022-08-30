@@ -1,35 +1,26 @@
 import { Command } from 'commander';
 import path from 'path';
 
+import { readConfiguration } from '@zotera/config';
+import { unpack } from '@zotera/core';
+
 export const install = new Command('install')
   .description('install plugin(s)')
   .option('-d, --dir <dir>', 'Directory to download to')
   .argument('<plugins...>', 'Plugin(s) to download')
   .action((plugins: string[]) => {
+    const { pluginDir, __location } = readConfiguration(install.parent?.parent?.opts().config);
+
+    const baseDownloadDir = path.join(__location, pluginDir);
     plugins.forEach((plugin) => {
-      const configPath = install.parent?.parent?.opts().config;
-
-      console.log(configPath);
-
-
-      const downloadDir = path.join(process.cwd(), install.opts().dir || 'plugins', plugin);
-      console.log(downloadDir);
-
-      console.log(`Downloading ${plugin}`);
+      console.log(`Downloading ${plugin} to ${baseDownloadDir}`);
       if (/github:(.+)/.test(plugin)) {
         console.log(`Downloading ${plugin} from GitHub`);
-
       }
 
       if (path.extname(plugin) === '.zop') {
-        console.log(`Downloading ${plugin} from local file`);
+        unpack(plugin, path.join(baseDownloadDir, plugin.replace(/\.zop$/, '')));
       }
 
-
     });
-    console.log('This is not implemented yet.');
-    console.log(install.opts());
-    console.log('PARENT', install.parent?.opts());
-
-    console.log(JSON.stringify(plugins, null, 2));
   });
