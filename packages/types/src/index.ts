@@ -86,7 +86,6 @@ export interface ZoteraAuthConfig {
    * These are registered through `auth.register()`.
    */
   provider?: string;
-  
 }
 
 export interface ZoteraStorageConfig {

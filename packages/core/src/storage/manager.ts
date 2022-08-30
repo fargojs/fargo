@@ -13,7 +13,7 @@ export class StorageManager {
   public constructor(private readonly storageConfig: ZoteraStorageConfig) {
     if (!storageConfig.provider) {
       debug('Custom storage configuration not found, using default');
-      this.storage = new LocalStorage(storageConfig.location || "");
+      this.storage = new LocalStorage(storageConfig.location || '');
     }
   }
 

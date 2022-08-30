@@ -1,6 +1,8 @@
+import axios from 'axios';
 import { Command } from 'commander';
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
+
 import { readConfiguration } from '@zotera/config';
 import { unpack } from '@zotera/core';
 
@@ -17,13 +19,10 @@ export const install = new Command('install')
 
       if (path.extname(plugin) === '.zop') {
         if (!fs.existsSync(baseDownloadDir)) {
-          fs.mkdirSync(baseDownloadDir);
-          
+          axios;
         }
         // File should exists on disk.
         unpack(plugin, path.join(baseDownloadDir, plugin.replace(/\.zop$/, '')));
       }
-
-
     });
   });

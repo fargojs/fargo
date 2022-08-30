@@ -11,10 +11,7 @@ declare global {
   const __VERSION__: string;
 }
 
-program
-  .name('zotera')
-  .version(__VERSION__)
-  .option('-c, --config <path>', 'set config path');
+program.name('zotera').version(__VERSION__).option('-c, --config <path>', 'set config path');
 
 program.addCommand(start);
 program.addCommand(publish);
