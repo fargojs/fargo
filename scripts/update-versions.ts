@@ -1,7 +1,8 @@
+import axios from 'axios';
 import { promises as fs } from 'fs';
-import got from 'got';
-import { version as pkgVersion } from '../packages/types/package.json';
+
 import { depVersions } from '../packages/cli/src/dep-versions';
+import { version as pkgVersion } from '../packages/types/package.json';
 
 const baseUrl = 'https://registry.npmjs.org/';
 
@@ -30,20 +31,19 @@ async function run() {
     })
   );
 
-  fs.writeFile(
-    './packages/cli/src/dep-versions.ts',
-    `${BANNER}\n\n// This needs to be exported because it's used in update-versions.ts script.\nexport const depVersions: Record<string, string> = ${JSON.stringify(
-      deps,
-      null,
-      2
-    )};`
-  );
+  const content = `${BANNER}\n\n// This needs to be exported because it's used in update-versions.ts script.\nexport const depVersions: Record<string, string> = ${JSON.stringify(
+    deps,
+    null,
+    2
+  )};`;
+
+  fs.writeFile('./packages/cli/src/dep-versions.ts', content);
 }
 
 async function getVersion(packageName: string): Promise<string | undefined> {
   try {
     const url = `${baseUrl}${packageName}/latest`;
-    const parsed: { version: string } = await got(url).json();
+    const parsed: { version: string } = await (await axios(url)).data;
     return parsed.version;
   } catch (e) {
     return undefined;

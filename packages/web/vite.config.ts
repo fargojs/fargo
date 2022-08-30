@@ -1,4 +1,4 @@
-import got from 'got';
+import axios from 'axios';
 import { defineConfig } from 'vite';
 
 import react from '@vitejs/plugin-react';
@@ -14,7 +14,7 @@ const defaultZoteraWebOptions = {
 export default defineConfig(async () => {
   let options = defaultZoteraWebOptions;
   try {
-    options = await got('http://localhost:4000/__zotera_options__').json();
+    options = await (await axios('http://localhost:4000/__zotera_options__')).data;
   } catch (e) {
     console.error('Could not fetch Zotera web options, using default options for development.');
   }
