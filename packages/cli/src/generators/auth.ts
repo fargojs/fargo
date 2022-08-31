@@ -28,13 +28,17 @@ export default class AuthPluginGenerator extends ZoteraGenerator {
     this.destinationRoot(resolve(this.options.name));
     this.sourceRoot(join(this.dirname, '../templates/auth'));
 
-    this.fs.copyTpl(this.templatePath('../shared/_package.json'), this.destinationPath('package.json'), {
-      name: this.options.name,
-      description: this.options.description,
-      vitest: this.options.vitest,
-      esbuild: this.options.esbuild,
-      dep: this.getDependencyVersion
-    });
+    this.fs.copyTpl(
+      this.templatePath('../shared/_package.json'),
+      this.destinationPath('package.json'),
+      {
+        name: this.options.name,
+        description: this.options.description,
+        vitest: this.options.vitest,
+        esbuild: this.options.esbuild,
+        dep: this.getDependencyVersion
+      }
+    );
 
     this.fs.copy(
       this.templatePath('../shared/tsconfig.json'),
@@ -44,7 +48,7 @@ export default class AuthPluginGenerator extends ZoteraGenerator {
     this.fs.copyTpl(this.templatePath('src/plugin.ts'), this.destinationPath('src/plugin.ts'));
 
     if (this.options.git) {
-      this.fs.copy(this.templatePath('../shared/gitignore'), this.destinationPath('.gitignore'));
+      this.fs.copy(this.templatePath('../shared/_gitignore'), this.destinationPath('.gitignore'));
     }
 
     if (this.options.vitest) {

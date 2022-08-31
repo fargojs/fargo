@@ -55,15 +55,17 @@ export async function loadPlugins(options: ZoteraConfig) {
       const pluginPath = path.resolve(dir, _plugin.name);
       const pluginFolder = fs.statSync(pluginPath);
       if (pluginFolder.isDirectory()) {
-        const manifest = await readManifest(pluginPath);
-        console.log(manifest);
+        const { main, module } = await readManifest(pluginPath);
 
-        const { register, options } = await import(pluginPath).catch((err) => {
-          console.log(err);
-        });
+        const pluginMain = main || module || 'dist/plugin.js';
 
+        const { register, options } = await import(path.join(pluginPath, pluginMain)).catch(
+          (err) => {
+            debug('Error loading plugin: %s', err);
+          }
+        );
         const validate = ajv.compile({
-          ...options,
+          properties: options,
           type: 'object'
         });
 
@@ -81,8 +83,6 @@ export async function loadPlugins(options: ZoteraConfig) {
         debug('Plugin %s loaded', _plugin.name);
       }
     } catch (e) {
-      console.log(e);
-
       debug('Plugin %s is not loaded', _plugin.name);
     }
   }

@@ -1,5 +1,5 @@
-import path from "path";
-import { fileURLToPath } from "url";
+import path from 'path';
+import { fileURLToPath } from 'url';
 import Generator from 'yeoman-generator';
 
 import { depVersions } from '../dep-versions';
@@ -14,5 +14,5 @@ export class ZoteraGenerator extends Generator {
     return `"${dep}": "${version}"`;
   }
 
-  dirname = path.dirname(fileURLToPath(import.meta.url))
+  dirname = path.dirname(fileURLToPath(import.meta.url));
 }

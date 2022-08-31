@@ -1,6 +1,6 @@
 import { Command, Option } from 'commander';
 import inquirer from 'inquirer';
-import path from "path";
+import path from 'path';
 import { fileURLToPath } from 'url';
 
 const pluginTypes = ['storage', 'auth'];

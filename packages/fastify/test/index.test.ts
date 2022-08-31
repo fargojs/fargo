@@ -1,10 +1,7 @@
 /* eslint-disable no-console */
 import Fastify from 'fastify';
 import type { FastifyInstance } from 'fastify';
-import got from 'got';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-
-import type { ZoteraConfig } from '@zotera/types';
 
 import zotera from '../src';
 
@@ -15,10 +12,7 @@ beforeAll(async () => {
 
   // Add zotera to the express app
   app.register(zotera, {
-    
-    plugins: [
-      '@zotera/plugin-auth',
-    ]
+    plugins: ['@zotera/plugin-auth']
   });
 
   server = app;
@@ -42,14 +36,14 @@ afterAll(() => {
 
 describe('Fastify  Router', () => {
   it('should return hello, world!', async () => {
-    const response = await got('http://localhost:3500/');
+    const response = await (await fetch('http://localhost:3500/')).json();
     expect(JSON.parse(response.body)).toStrictEqual({
       message: 'Hello World'
     });
   });
 
   it('', async () => {
-    const { body } = await got.get('http://localhost:3500/');
-    console.log(body);
+    const data = await (await fetch('http://localhost:3500/')).json();
+    console.log(data);
   });
 });

@@ -1,2 +1,3 @@
 dist
 packages/cli/templates
+pnpm-lock.yaml

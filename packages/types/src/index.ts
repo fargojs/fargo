@@ -19,7 +19,7 @@ export interface ZoteraConfig {
   /**
    * The directory to store plugins in.
    */
-  pluginDir?: string;
+  pluginDir: string;
 
   /**
    * Allow loading of unscoped plugins.
@@ -86,7 +86,6 @@ export interface ZoteraAuthConfig {
    * These are registered through `auth.register()`.
    */
   provider?: string;
-  
 }
 
 export interface ZoteraStorageConfig {

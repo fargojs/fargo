@@ -16,12 +16,12 @@
     "@luxass/eslint-config": "^1.0.7",
     "@luxass/prettier-config": "^1.0.4",
     "@types/js-yaml": "^4.0.5",
-    "eslint": "^8.22.0",
-    "got": "^12.3.1",
+    "eslint": "^8.23.0",
+    "node-fetch": "^3.2.10",
     "prettier": "^2.7.1",
-    "tsup": "^6.2.2",
-    "tsx": "^3.8.2",
-    "typescript": "^4.7.4",
+    "tsup": "^6.2.3",
+    "tsx": "^3.9.0",
+    "typescript": "^4.8.2",
     "vitest": "^0.18.1"
   },
   "dependencies": {
@@ -34,7 +34,7 @@
   "pnpm": {
     "patchedDependencies": {
       "vite@3.0.0": "patches/vite@3.0.0.patch",
-      "tsup@6.2.2": "patches/tsup@6.2.2.patch"
+      "tsup@6.2.3": "patches/tsup@6.2.3.patch"
     }
   }
 }
