@@ -42,7 +42,7 @@ export const install = new Command('install')
           await stream.pipeline(Readable.from(response.body!), createWriteStream(path.join(baseDownloadDir, fileName)));
 
           unpack(path.join(baseDownloadDir, fileName), path.join(baseDownloadDir, fileName.replace(/\.zop$/, '')));
-          
+
         } catch (e) {
           console.error(e);
         }
