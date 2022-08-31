@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { promises as fs } from 'fs';
+import fetch from 'node-fetch';
 
 import { depVersions } from '../packages/cli/src/dep-versions';
 import { version as pkgVersion } from '../packages/types/package.json';
@@ -43,7 +43,7 @@ async function run() {
 async function getVersion(packageName: string): Promise<string | undefined> {
   try {
     const url = `${baseUrl}${packageName}/latest`;
-    const parsed: { version: string } = await (await axios(url)).data;
+    const parsed = (await (await fetch(url)).json()) as { version: string };
     return parsed.version;
   } catch (e) {
     return undefined;

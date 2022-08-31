@@ -1,10 +1,7 @@
 /* eslint-disable no-console */
-import axios from 'axios';
 import Fastify from 'fastify';
 import type { FastifyInstance } from 'fastify';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-
-import type { ZoteraConfig } from '@zotera/types';
 
 import zotera from '../src';
 
@@ -39,14 +36,14 @@ afterAll(() => {
 
 describe('Fastify  Router', () => {
   it('should return hello, world!', async () => {
-    const response = await (await axios('http://localhost:3500/')).data;
+    const response = await (await fetch('http://localhost:3500/')).json();
     expect(JSON.parse(response.body)).toStrictEqual({
       message: 'Hello World'
     });
   });
 
   it('', async () => {
-    const { data } = await axios.get('http://localhost:3500/');
+    const data = await (await fetch('http://localhost:3500/')).json();
     console.log(data);
   });
 });

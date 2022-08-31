@@ -1,4 +1,4 @@
-import axios from 'axios';
+import fetch from 'node-fetch';
 import type { FastifyInstance } from 'fastify';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
@@ -26,7 +26,7 @@ afterAll(() => {
 
 describe('Zotera Server', () => {
   it('should be listening on port 6969', async () => {
-    const { data } = await axios('http://localhost:6969/-/ping');
+    const data = await (await fetch('http://localhost:6969/-/ping')).json();
     expect(data).toBe('Pong!');
   });
 });

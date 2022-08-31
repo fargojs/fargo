@@ -1,7 +1,8 @@
-import axios from 'axios';
 import { Command } from 'commander';
-import fs from 'fs';
-import path from 'path';
+import fetch from 'node-fetch';
+import { createWriteStream, existsSync } from 'node:fs';
+import path from 'node:path';
+import { Readable, promises as stream } from 'node:stream';
 
 import { readConfiguration } from '@zotera/config';
 import { unpack } from '@zotera/core';
@@ -16,28 +17,32 @@ export const install = new Command('install')
     const { pluginDir, __location } = readConfiguration(install.parent?.parent?.opts().config);
 
     const baseDownloadDir = path.join(__location, pluginDir);
+
     plugins.forEach(async (plugin) => {
       console.log(`Downloading ${plugin} to ${baseDownloadDir}`);
 
       if (path.extname(plugin) === '.zop') {
-        if (fs.existsSync(plugin)) {
+        if (existsSync(plugin)) {
           unpack(plugin, path.join(baseDownloadDir, plugin.replace(/\.zop$/, '')));
           return;
         }
 
         try {
+          const fileName = path.basename(plugin);
+
           const { protocol, href } = new URL(plugin);
-          if (!allowedProtocols.has(protocol)) {
+
+          if (!allowedProtocols.has(protocol.split(':')[0])) {
             throw new Error(`Protocol ${protocol} is not allowed`);
           }
-          const response = await axios.get(href, {
-            responseType: 'stream'
-          });
+          const response = await fetch(href);
+          if (!response.ok) {
+            throw new Error(`Could not download ${href}`);
+          }
+          await stream.pipeline(Readable.from(response.body!), createWriteStream(path.join(baseDownloadDir, fileName)));
 
-          /*           const pf = response.data.pipe(fs.createWriteStream(pathFile));
-          pf.on('finish', () => {
-            console.log('File downloaded successfully :)');
-          }); */
+          unpack(path.join(baseDownloadDir, fileName), path.join(baseDownloadDir, fileName.replace(/\.zop$/, '')));
+          
         } catch (e) {
           console.error(e);
         }
