@@ -13,8 +13,8 @@ export default function App() {
       <div className="h-screen flex flex-col">
         <Header />
         <div className="max-w-7xl w-full mx-auto flex-1">
-          {JSON.stringify(zotera)}
           <WebRoutes />
+          
         </div>
         {zotera.options.footer && (
           <Footer

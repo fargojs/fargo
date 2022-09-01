@@ -3,7 +3,7 @@ import Fastify from 'fastify';
 import type { FastifyInstance } from 'fastify';
 import path from 'path';
 
-import { locate, parseJSON, parseYAML } from '@zotera/config';
+import { locate, parseJSON, parseYAML, readConfiguration } from '@zotera/config';
 import zoteraPlugin from '@zotera/fastify';
 import type { ZoteraConfig } from '@zotera/types';
 
@@ -16,21 +16,7 @@ export function createZotera(config?: string | ZoteraConfig): FastifyInstance {
 
   // Read and locate configuration
   if (!config || typeof config === 'string') {
-    const location = locate(config);
-    const fileType = path.extname(location);
-
-    if (fileType !== '.yaml' && fileType !== '.json') {
-      throw new Error(`Invalid configuration file type: ${fileType}`);
-    }
-
-    debug('Parsing %s configuration', fileType.replace('.', ''));
-
-    if (fileType === '.yaml') {
-      configuration = parseYAML(location);
-    } else {
-      configuration = parseJSON(location);
-    }
-    configuration.__location = path.dirname(location);
+    configuration = readConfiguration(config);
   } else {
     configuration = config;
     configuration.__location = process.cwd();
