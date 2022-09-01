@@ -1,72 +1,44 @@
 import { join, resolve } from 'path';
-import type { GeneratorOptions } from 'yeoman-generator';
 
-import { ZoteraGenerator } from './base';
+import { NeomanGenerator } from '@luxass/neoman';
+import { readFileSync } from "node:fs";
+import { writeFileSync } from "fs";
 
-export default class StoragePluginGenerator extends ZoteraGenerator {
-  options: {
-    name: string;
-    esbuild: boolean;
-    git: boolean;
-    vitest: boolean;
-    description: string;
-  };
+export default function StoragePluginGenerator(ctx: {
+  dirname: string;
+  name: string;
+  esbuild: boolean;
+  git: boolean;
+  vitest: boolean;
+  description: string;
+  dep: (dep: string) => string;
+}): NeomanGenerator {
+  return {
+    destinationRoot: resolve(ctx.name),
+    sourceRoot: join(ctx.dirname, 'templates/storage'),
+    writing({ copy, templatePath, destinationPath, spawn }) {
+      copy(templatePath('../shared/_package.json'), destinationPath('package.json'), ctx);
 
-  constructor(args: string | string[], opts: GeneratorOptions) {
-    super(args, opts);
+      copy(templatePath('../shared/tsconfig.json'), destinationPath('tsconfig.json'));
 
-    this.options = {
-      name: opts.name,
-      esbuild: opts.esbuild,
-      git: opts.git,
-      description: opts.description,
-      vitest: opts.vitest
-    };
-  }
+      copy(templatePath('src/plugin.ts'), destinationPath('src/plugin.ts'));
 
-  writing() {
-    this.destinationRoot(resolve(this.options.name));
-    this.sourceRoot(join(this.dirname, '../templates/storage'));
-
-    this.fs.copyTpl(
-      this.templatePath('../shared/_package.json'),
-      this.destinationPath('package.json'),
-      {
-        name: this.options.name,
-        description: this.options.description,
-        vitest: this.options.vitest,
-        esbuild: this.options.esbuild,
-        dep: this.getDependencyVersion
+      if (ctx.git) {
+        copy(templatePath('../shared/_gitignore'), destinationPath('.gitignore'));
       }
-    );
 
-    this.fs.copy(
-      this.templatePath('../shared/tsconfig.json'),
-      this.destinationPath('tsconfig.json')
-    );
+      if (ctx.vitest) {
+        copy(templatePath('../shared/vitest.config.ts'), destinationPath('vitest.config.ts'));
+        copy(templatePath('test'), destinationPath('test'));
+      }
 
-    this.fs.copyTpl(this.templatePath('src/plugin.ts'), this.destinationPath('src/plugin.ts'));
+      copy(templatePath('../shared/README.md'), destinationPath('README.md'), {
+        name: ctx.name
+      });
 
-    if (this.options.git) {
-      this.fs.copy(this.templatePath('../shared/_gitignore'), this.destinationPath('.gitignore'));
+      if (ctx.git) {
+        spawn('git', ['init', '--quiet']);
+      }
     }
-
-    if (this.options.vitest) {
-      this.fs.copy(
-        this.templatePath('../shared/vitest.config.ts'),
-        this.destinationPath('vitest.config.ts')
-      );
-      this.fs.copy(this.templatePath('test'), this.destinationPath('test'));
-    }
-
-    this.fs.copyTpl(this.templatePath('../shared/README.md'), this.destinationPath('README.md'), {
-      name: this.options.name
-    });
-  }
-
-  end() {
-    if (this.options.git) {
-      this.spawnCommand('git', ['init', '--quiet']);
-    }
-  }
+  };
 }
