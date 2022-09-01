@@ -36,6 +36,7 @@
     "url": "https://luxass.dev"
   },
   "dependencies": {
+    "@luxass/neoman": "0.1.4",
     "@zotera/config": "workspace:*",
     "@zotera/core": "workspace:*",
     "@zotera/server": "workspace:*",
