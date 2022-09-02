@@ -1,8 +1,8 @@
+import { writeFileSync } from 'fs';
+import { readFileSync } from 'node:fs';
 import { join, resolve } from 'path';
 
 import { NeomanGenerator } from '@luxass/neoman';
-import { readFileSync } from "node:fs";
-import { writeFileSync } from "fs";
 
 export default function StoragePluginGenerator(ctx: {
   dirname: string;
@@ -17,6 +17,8 @@ export default function StoragePluginGenerator(ctx: {
     destinationRoot: resolve(ctx.name),
     sourceRoot: join(ctx.dirname, 'templates/storage'),
     writing({ copy, templatePath, destinationPath, spawn }) {
+      // console.log(templatePath('src/plugin.ts'));
+      // console.log(destinationPath('src/plugin.ts'));
       copy(templatePath('../shared/_package.json'), destinationPath('package.json'), ctx);
 
       copy(templatePath('../shared/tsconfig.json'), destinationPath('tsconfig.json'));
