@@ -2,6 +2,8 @@ import _debug from 'debug';
 
 import { ZoteraAuth, ZoteraAuthConfig } from '@zotera/types';
 
+import { HTPasswd } from './htpasswd';
+
 const debug = _debug('zotera:core:auth:manager');
 
 export class AuthManager {
@@ -10,8 +12,8 @@ export class AuthManager {
 
   public constructor(private readonly authConfig: ZoteraAuthConfig) {
     if (!authConfig.provider) {
-      debug('Custom storage configuration not found, using default');
-      // this.auth = new HTPasswd();
+      debug('Custom auth configuration not found, using default');
+      this.auth = new HTPasswd();
     }
   }
 

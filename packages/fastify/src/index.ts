@@ -8,6 +8,7 @@ import { storageDecorator } from './decorators/storage';
 import { routes } from './routes';
 import { ping } from './routes/ping';
 import type { PluginOptions } from './types';
+import { authDecorator } from "./decorators/auth";
 
 const plugin: FastifyPluginCallback<PluginOptions> = flugin(
   async (app: FastifyInstance, options: PluginOptions, next: (error?: FastifyError) => void) => {
@@ -17,7 +18,8 @@ const plugin: FastifyPluginCallback<PluginOptions> = flugin(
     });
 
     app.register(storageDecorator);
-
+    app.register(authDecorator);
+    
     app.register(ping, {
       prefix: '/-/ping'
     });
