@@ -22,5 +22,5 @@ export interface ZoteraStorageContext {
 }
 
 export interface ZoteraAuthContext {
-  register(auth: ZoteraAuth): void;
+  register(id: string, auth: ZoteraAuth): void;
 }
