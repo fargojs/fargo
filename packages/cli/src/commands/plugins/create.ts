@@ -3,7 +3,7 @@ import inquirer from 'inquirer';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { NeomanGenerator, createEnvironment } from '@luxass/neoman';
+import { createEnvironment } from '@luxass/neoman';
 
 import { depVersions } from '../../dep-versions';
 import AuthPluginGenerator from '../../generators/auth';
@@ -110,17 +110,5 @@ export const create = new Command('create')
     neomanEnv.register('zotera:plugin:auth', AuthPluginGenerator);
     neomanEnv.register('zotera:plugin:storage', StoragePluginGenerator);
 
-
-    // const dirname = path.dirname(fileURLToPath(import.meta.url));
-    // const yeoman = await import('yeoman-environment');
-    // const env = yeoman.default.createEnv();
-    // env.register(path.join(dirname, `./generators/${type}.js`), `zotera:plugin:${type}`);
-    // env.run(`zotera:plugin:${type}`, {
-    //   name,
-    //   esbuild,
-    //   git,
-    //   description,
-    //   vitest
-    // });
     neomanEnv.run(`zotera:plugin:${type}`);
   });
