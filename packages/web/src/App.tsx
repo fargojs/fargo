@@ -14,7 +14,7 @@ export default function App() {
         <Header />
         <div className="max-w-7xl w-full mx-auto flex-1">
           <WebRoutes />
-          
+          {JSON.stringify(zotera)}
         </div>
         {zotera.options.footer && (
           <Footer

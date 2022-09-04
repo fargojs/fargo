@@ -1,9 +1,8 @@
 import _debug from 'debug';
 import Fastify from 'fastify';
 import type { FastifyInstance } from 'fastify';
-import path from 'path';
 
-import { locate, parseJSON, parseYAML, readConfiguration } from '@zotera/config';
+import { readConfiguration } from '@zotera/config';
 import zoteraPlugin from '@zotera/fastify';
 import type { ZoteraConfig } from '@zotera/types';
 

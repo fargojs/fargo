@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: '../extension/dist/webview',
+    emptyOutDir: true,
     rollupOptions: {
       output: {
         entryFileNames: 'assets/[name].js',

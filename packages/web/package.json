@@ -2,17 +2,6 @@
   "name": "@zotera/web",
   "version": "0.0.1",
   "type": "module",
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/zotera-web.umd.cjs",
-  "module": "./dist/zotera-web.js",
-  "exports": {
-    ".": {
-      "import": "./dist/zotera-web.js",
-      "require": "./dist/zotera-web.umd.cjs"
-    }
-  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -31,6 +20,7 @@
     "url": "https://luxass.dev"
   },
   "devDependencies": {
+    "@iconify/react": "^3.2.2",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.0",
@@ -42,6 +32,7 @@
     "vite": "^3.0.0"
   },
   "dependencies": {
+    "@headlessui/react": "^1.6.6",
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
