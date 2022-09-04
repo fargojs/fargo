@@ -10,11 +10,10 @@ export default function App() {
   const zotera = useZoteraStore();
   return (
     <Suspense fallback={<LoadingSpinner />}>
-      <div className="h-screen flex flex-col">
+      <div className="h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         <Header />
-        <div className="max-w-7xl w-full mx-auto flex-1">
+        <div className="max-w-7xl w-full mx-auto h-[calc(100vh-130px)]">
           <WebRoutes />
-          {JSON.stringify(zotera)}
         </div>
         {zotera.options.footer && (
           <Footer
