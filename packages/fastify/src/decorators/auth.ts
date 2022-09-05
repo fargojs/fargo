@@ -1,8 +1,8 @@
-import type { FastifyError, FastifyInstance, FastifyPluginOptions } from 'fastify';
+import { FastifyError, FastifyInstance, FastifyPluginOptions } from 'fastify';
 import flugin from 'fastify-plugin';
 
 import { AuthManager } from '@zotera/core';
-import type { ZoteraAuth } from '@zotera/types';
+import { ZoteraAuth } from '@zotera/types';
 
 export const authDecorator = flugin(
   async (

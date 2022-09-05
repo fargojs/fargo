@@ -1,4 +1,4 @@
-import type { ZoteraAuthContext, ZoteraStorageContext } from '@zotera/types/api';
+import { ZoteraAuthContext, ZoteraStorageContext } from '@zotera/types/api';
 
 import { AuthManager } from '../../auth';
 

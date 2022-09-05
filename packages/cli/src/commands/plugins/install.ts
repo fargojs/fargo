@@ -39,10 +39,15 @@ export const install = new Command('install')
           if (!response.ok) {
             throw new Error(`Could not download ${href}`);
           }
-          await stream.pipeline(Readable.from(response.body!), createWriteStream(path.join(baseDownloadDir, fileName)));
+          await stream.pipeline(
+            Readable.from(response.body!),
+            createWriteStream(path.join(baseDownloadDir, fileName))
+          );
 
-          unpack(path.join(baseDownloadDir, fileName), path.join(baseDownloadDir, fileName.replace(/\.zop$/, '')));
-
+          unpack(
+            path.join(baseDownloadDir, fileName),
+            path.join(baseDownloadDir, fileName.replace(/\.zop$/, ''))
+          );
         } catch (e) {
           console.error(e);
         }

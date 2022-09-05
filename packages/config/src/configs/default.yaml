@@ -23,4 +23,3 @@ storage:
   # Default provider is local storage.
   # provider: <provider>
   location: ./storage
-

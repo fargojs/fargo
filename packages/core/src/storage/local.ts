@@ -1,4 +1,4 @@
-import type { ExtensionManifest, ZoteraStorage } from '@zotera/types';
+import { ExtensionManifest, ZoteraStorage } from '@zotera/types';
 
 // Used when storage entry point is not set, e.g. default configuration
 export class LocalStorage implements ZoteraStorage {

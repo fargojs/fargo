@@ -5,8 +5,8 @@
 
 // This needs to be exported because it's used in update-versions.ts script.
 export const depVersions: Record<string, string> = {
-  "@zotera/types": "0.0.1",
-  "esbuild": "0.15.5",
-  "vitest": "0.22.1",
-  "typescript": "4.8.2"
+  '@zotera/types': '0.0.1',
+  esbuild: '0.15.5',
+  vitest: '0.22.1',
+  typescript: '4.8.2'
 };

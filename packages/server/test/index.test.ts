@@ -1,5 +1,5 @@
-import fetch from 'node-fetch';
 import type { FastifyInstance } from 'fastify';
+import fetch from 'node-fetch';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import { createZotera } from '../src';

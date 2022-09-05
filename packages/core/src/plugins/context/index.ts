@@ -1,4 +1,4 @@
-import type { PluginContext } from '@zotera/types/api';
+import { PluginContext } from '@zotera/types/api';
 
 import { authContext } from './auth';
 import { loggingContext } from './logging';

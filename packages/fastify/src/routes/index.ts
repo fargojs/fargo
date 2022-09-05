@@ -1,6 +1,6 @@
-import type { FastifyPluginCallback } from 'fastify';
+import { FastifyPluginCallback } from 'fastify';
 
-import type { PluginOptions } from '../types';
+import { PluginOptions } from '../types';
 import { extensions } from './extensions';
 import { manifest } from './manifest';
 import { vsix } from './vsix';

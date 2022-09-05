@@ -7,7 +7,6 @@ export default function Login() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-
   };
 
   return (

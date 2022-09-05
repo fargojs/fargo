@@ -47,8 +47,6 @@ export async function activate(context: ExtensionContext) {
     })
   );
 
-
-
   // Integrate with VSCODE-YAML for YAML Schema Support.
   // const yamlExtension = extensions.getExtension('redhat.vscode-yaml');
 

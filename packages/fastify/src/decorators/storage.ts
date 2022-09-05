@@ -1,8 +1,8 @@
-import type { FastifyError, FastifyInstance, FastifyPluginOptions } from 'fastify';
+import { FastifyError, FastifyInstance, FastifyPluginOptions } from 'fastify';
 import flugin from 'fastify-plugin';
 
 import { StorageManager } from '@zotera/core';
-import type { ZoteraStorage } from '@zotera/types';
+import { ZoteraStorage } from '@zotera/types';
 
 export const storageDecorator = flugin(
   async (

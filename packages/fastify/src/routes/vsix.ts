@@ -1,5 +1,5 @@
 import _debug from 'debug';
-import type { FastifyInstance } from 'fastify';
+import { FastifyInstance } from 'fastify';
 
 // import { MimeTypes } from '@zotera/core';
 

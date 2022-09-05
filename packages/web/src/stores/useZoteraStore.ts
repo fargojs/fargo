@@ -1,7 +1,7 @@
 import create from 'zustand';
 import { devtools } from 'zustand/middleware';
 
-import type { ZoteraWebConfig } from '@zotera/types';
+import { ZoteraWebConfig } from '@zotera/types';
 
 interface ZoteraState {
   options: ZoteraWebConfig & {
