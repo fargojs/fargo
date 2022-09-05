@@ -20,10 +20,15 @@ export async function extensions(zotera: FastifyInstance) {
       //   done();
       // }
     },
-    async (_) => {
+    async (req) => {
+      let { q } = req.query as {
+        q?: string | string[];
+      };
+      q = Array.isArray(q) ? q[0] : q;
+
       debug('all extensions lookup');
-      const packages = await zotera.storage.getPackages();
-      return [];
+      const packages = await zotera.storage.getPackages(q);
+      return packages;
     }
   );
 }

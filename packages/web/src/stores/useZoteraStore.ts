@@ -7,11 +7,15 @@ interface ZoteraState {
   options: ZoteraWebConfig & {
     allowAnonymousDownload: boolean;
   };
+  search: string;
+  setSearch: (search: string) => void;
 }
 
 export const useZoteraStore = create<ZoteraState>()(
   devtools((set) => ({
-    options: window.__ZOTERA_OPTIONS
+    options: window.__ZOTERA_OPTIONS,
+    search: '',
+    setSearch: (search: string) => set({ search })
   }))
 );
 
