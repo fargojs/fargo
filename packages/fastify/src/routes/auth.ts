@@ -18,7 +18,7 @@ export async function auth(zotera: FastifyInstance) {
     }
     const user = await zotera.auth.login(username, password);
     debug('authenticate %o', username);
-    
+
     return {
       username,
       password

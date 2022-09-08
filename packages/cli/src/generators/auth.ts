@@ -14,7 +14,7 @@ export default function AuthPluginGenerator(ctx: {
   return {
     destinationRoot: resolve(ctx.name),
     sourceRoot: join(ctx.dirname, 'templates/auth'),
-    writing({ copy, templatePath, destinationPath, spawn }) {  
+    writing({ copy, templatePath, destinationPath, spawn }) {
       copy(templatePath('../shared/_package.json'), destinationPath('package.json'), ctx);
 
       copy(templatePath('../shared/tsconfig.json'), destinationPath('tsconfig.json'));

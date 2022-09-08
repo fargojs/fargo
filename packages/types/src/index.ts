@@ -90,7 +90,6 @@ export interface ZoteraAuthConfig {
   location?: string;
 }
 
-
 export interface ZoteraStorageConfig {
   provider?: string;
   location?: string;
