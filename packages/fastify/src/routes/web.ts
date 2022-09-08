@@ -30,7 +30,7 @@ export async function web(zotera: FastifyInstance) {
         <script type="module" crossorigin src="/public/index.js"></script>
         <link rel="stylesheet" href="/public/index.css">
       </head>
-      <body>
+      <body class="bg-gray-50 dark:bg-gray-900">
         <div id="root"></div>
       </body>
     </html>

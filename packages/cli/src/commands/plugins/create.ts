@@ -1,6 +1,6 @@
 import { Command, Option } from 'commander';
-import inquirer from 'inquirer';
 import path from 'path';
+import prompts from 'prompts';
 import { fileURLToPath } from 'url';
 
 import { createEnvironment } from '@luxass/neoman';
@@ -24,12 +24,12 @@ export const create = new Command('create')
     let { type, name, esbuild, git, vitest } = create.opts();
     if (!type) {
       type = await (
-        await inquirer.prompt([
+        await prompts([
           {
             type: 'list',
             name: 'type',
             message: 'What type of plugin would you like to create?',
-            choices: pluginTypes
+            choices: pluginTypes.map((type) => ({ title: type, value: type }))
           }
         ])
       ).type;
@@ -37,10 +37,10 @@ export const create = new Command('create')
 
     if (!name) {
       name = await (
-        await inquirer.prompt({
+        await prompts({
           name: 'name',
           message: 'What is the name of the plugin?',
-          type: 'input',
+          type: 'text',
           validate: (input: string) => {
             if (!input || input.trim().length === 0) {
               return 'Please enter a name';
@@ -52,17 +52,17 @@ export const create = new Command('create')
     }
 
     const description = await (
-      await inquirer.prompt({
+      await prompts({
         name: 'description',
         message: 'What is the description of your plugin?',
-        type: 'input',
-        default: 'A plugin for zotera'
+        type: 'text',
+        initial: 'A plugin for zotera'
       })
     ).description;
 
     if (!esbuild) {
       esbuild = await (
-        await inquirer.prompt({
+        await prompts({
           name: 'esbuild',
           message: 'Use esbuild as buildtool?',
           type: 'confirm'
@@ -72,7 +72,7 @@ export const create = new Command('create')
 
     if (!git) {
       git = await (
-        await inquirer.prompt({
+        await prompts({
           name: 'git',
           message: 'Initialize a git repository?',
           type: 'confirm'
@@ -82,7 +82,7 @@ export const create = new Command('create')
 
     if (!vitest) {
       vitest = await (
-        await inquirer.prompt({
+        await prompts({
           name: 'vitest',
           message: 'Use vitest for testing?',
           type: 'confirm'

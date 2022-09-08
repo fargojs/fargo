@@ -81,6 +81,12 @@ export interface ZoteraAuthConfig {
    * Should everyone be allowed to download extensions.
    */
   allowAnonymousDownload?: boolean;
+
+  /**
+   * Allow users to register.
+   */
+  allowRegistration?: boolean;
+
   /**
    * Auth provider to use.
    * These are registered through `auth.register()`.

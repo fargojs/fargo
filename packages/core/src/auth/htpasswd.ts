@@ -1,11 +1,11 @@
-import { ZoteraAuth } from '@zotera/types';
+import { ZoteraAuth, ZoteraConfig } from '@zotera/types';
 
 import { parseHTPasswd } from './utils';
 
 export class HTPasswd implements ZoteraAuth {
   private users: Map<string, string> = new Map();
 
-  constructor() {
+  constructor(private readonly config: ZoteraConfig) {
     // Testing htpasswd parsing
     const htpasswd = `
     luxass:gg
@@ -21,6 +21,9 @@ export class HTPasswd implements ZoteraAuth {
   }
 
   register(): Promise<void> {
+    if (!this.config.auth?.allowRegistration) {
+      throw new Error('Registration is not allowed');
+    }
     throw new Error('Method not implemented.');
   }
 
