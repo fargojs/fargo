@@ -1,18 +1,18 @@
 import { FastifyError, FastifyInstance, FastifyPluginOptions } from 'fastify';
 import flugin from 'fastify-plugin';
 
-import { StorageManager } from '@zotera/core';
-import { ZoteraStorage } from '@zotera/types';
+import { AuthManager } from '@zotera/core';
+import { ZoteraAuth } from '@zotera/types';
 
-export const storageDecorator = flugin(
+export const authDecorator = flugin(
   async (
     zotera: FastifyInstance,
     _: FastifyPluginOptions,
     next: () => FastifyError
   ): Promise<void> => {
-    const storageManager = new StorageManager(zotera.config.storage);
-    await storageManager.init();
-    zotera.decorate('storage', storageManager.storage);
+    const authManager = new AuthManager(zotera.config.auth);
+    await authManager.init();
+    zotera.decorate('auth', authManager.auth);
 
     next();
   }
@@ -20,6 +20,6 @@ export const storageDecorator = flugin(
 
 declare module 'fastify' {
   interface FastifyInstance {
-    storage: ZoteraStorage;
+    auth: ZoteraAuth;
   }
 }

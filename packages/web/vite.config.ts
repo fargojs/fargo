@@ -11,23 +11,47 @@ const defaultZoteraWebOptions = {
   }
 };
 
-export default defineConfig(async () => {
-  let options = defaultZoteraWebOptions;
-  try {
-    options = await (await fetch('http://localhost:4000/__zotera_options__')).json() as typeof defaultZoteraWebOptions;
-  } catch (e) {
-    console.error('Could not fetch Zotera web options, using default options for development.');
+export default defineConfig(async ({ mode }) => {
+  let defined = {};
+  if (mode === 'development') {
+    let options = defaultZoteraWebOptions;
+    try {
+      options = (await (
+        await fetch('http://localhost:4000/__zotera_options__')
+      ).json()) as typeof defaultZoteraWebOptions;
+    } catch (e) {
+      console.error('Could not fetch Zotera web options, using default options for development.');
+    }
+    defined = {
+      'window.__ZOTERA_OPTIONS': options
+    };
   }
 
   return {
-    plugins: [react()],
+    plugins: [
+      react({
+        jsxRuntime: 'classic'
+      })
+    ],
+
     define: {
-      'window.__ZOTERA_OPTIONS': options
+      ...defined
     },
     server: {
       proxy: {
         '^/-/.*': {
           target: 'http://localhost:4000'
+        }
+      }
+    },
+    build: {
+      outDir: '../fastify/dist/public',
+      manifest: true,
+      rollupOptions: {
+        output: {
+          entryFileNames: '[name].js',
+          chunkFileNames: '[name].js',
+          assetFileNames: '[name][extname]'
         }
       }
     }

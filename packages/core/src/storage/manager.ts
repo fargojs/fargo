@@ -1,6 +1,6 @@
 import _debug from 'debug';
 
-import type { ZoteraStorage, ZoteraStorageConfig } from '@zotera/types';
+import { ZoteraStorage, ZoteraStorageConfig } from '@zotera/types';
 
 import { LocalStorage } from './local';
 

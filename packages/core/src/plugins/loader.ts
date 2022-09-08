@@ -3,7 +3,7 @@ import _debug from 'debug';
 import fs from 'fs';
 import path from 'path';
 
-import type { ZoteraConfig, ZoteraPlugin } from '@zotera/types';
+import { ZoteraConfig, ZoteraPlugin } from '@zotera/types';
 
 import { readManifest } from './bundle';
 import { buildContext } from './context';

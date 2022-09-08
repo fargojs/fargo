@@ -1,4 +1,4 @@
-import type { ZoteraLoggingContext } from '@zotera/types/api';
+import { ZoteraLoggingContext } from '@zotera/types/api';
 
 export const loggingContext: ZoteraLoggingContext = {
   info: (message: string) => console.log('PLUGIN', message),

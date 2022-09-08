@@ -1,4 +1,4 @@
-import type { ZoteraStorageContext } from '@zotera/types/api';
+import { ZoteraStorageContext } from '@zotera/types/api';
 
 import { StorageManager } from '../../storage';
 

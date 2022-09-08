@@ -1,8 +1,12 @@
 import type { FastifyError, FastifyInstance, FastifyPluginCallback } from 'fastify';
 import flugin from 'fastify-plugin';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
+import fastifyStatic from '@fastify/static';
 import { loadPlugins } from '@zotera/core';
 
+import { authDecorator } from './decorators/auth';
 import { configDecorator } from './decorators/config';
 import { storageDecorator } from './decorators/storage';
 import { routes } from './routes';
@@ -16,7 +20,13 @@ const plugin: FastifyPluginCallback<PluginOptions> = flugin(
       await loadPlugins(app.config);
     });
 
+    app.register(fastifyStatic, {
+      root: join(dirname(fileURLToPath(import.meta.url)), 'public'),
+      prefix: '/public/'
+    });
+
     app.register(storageDecorator);
+    app.register(authDecorator);
 
     app.register(ping, {
       prefix: '/-/ping'

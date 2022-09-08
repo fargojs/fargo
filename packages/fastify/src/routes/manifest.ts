@@ -1,5 +1,5 @@
 import _debug from 'debug';
-import type { FastifyInstance } from 'fastify';
+import { FastifyInstance } from 'fastify';
 
 const debug = _debug('zotera:fastify:routes:manifest');
 

@@ -11,6 +11,9 @@ web:
 
 auth:
   allowAnonymousDownload: true
+  # provider: github-oauth
+  # Change to HTPasswd Algorithm (brcypt, sha256, sha512)
+  algorithm: bcrypt
 
 logging:
   type: stdout

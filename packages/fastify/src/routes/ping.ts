@@ -1,4 +1,4 @@
-import type { FastifyInstance } from 'fastify';
+import { FastifyInstance } from 'fastify';
 
 export async function ping(zotera: FastifyInstance) {
   zotera.get('/', async () => {

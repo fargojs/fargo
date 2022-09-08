@@ -11,19 +11,27 @@ export async function web(zotera: FastifyInstance) {
       });
     });
   }
-  zotera.get('/', async (req, res) => {
+
+  zotera.get('/:page', async (_, res) => {
+    const options = {
+      ...zotera.config.web,
+      allowAnonymousDownload: zotera.config.auth.allowAnonymousDownload
+    };
     res.type('text/html').send(/* html */ `
     <!DOCTYPE html>
-      <html lang="en-us">
+    <html lang="en">
       <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script>
-          window.__ZOTERA_OPTIONS=${JSON.stringify(zotera.config.web)}
+          window.__ZOTERA_OPTIONS=${JSON.stringify(options)}
         </script>
+        <title>${options.title}</title>
+        <script type="module" crossorigin src="/public/index.js"></script>
+        <link rel="stylesheet" href="/public/index.css">
       </head>
-      <body class="body">
-        <div id="app"></div>
+      <body>
+        <div id="root"></div>
       </body>
     </html>
   `);

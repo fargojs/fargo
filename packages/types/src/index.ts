@@ -86,7 +86,10 @@ export interface ZoteraAuthConfig {
    * These are registered through `auth.register()`.
    */
   provider?: string;
+  algorithm?: 'sha1' | 'md5' | 'bcrypt';
+  location?: string;
 }
+
 
 export interface ZoteraStorageConfig {
   provider?: string;
