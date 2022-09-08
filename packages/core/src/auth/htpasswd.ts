@@ -14,7 +14,10 @@ export class HTPasswd implements ZoteraAuth {
     console.log(parseHTPasswd(htpasswd));
   }
 
-  async init(): Promise<void> {}
+  async init() {
+
+  }
+
 
   login(): Promise<void> {
     throw new Error('Method not implemented.');

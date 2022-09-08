@@ -5,13 +5,17 @@ import { useZoteraStore } from '../stores/useZoteraStore';
 export default function Login() {
   const zotera = useZoteraStore();
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    zotera.login({
+      username: e.currentTarget.username.value,
+      password: e.currentTarget.password.value
+    });
   };
 
   return (
     <div className="flex items-center justify-center h-full">
-      <div className="w-full sm:w-3/4 md:w-1/2 bg-gray-50 dark:bg-gray-800 px-4 py-5 sm:p-6 border-gray-200 dark:border-gray-800">
+      <div className="w-full sm:w-3/4 md:w-1/2 bg-gray-50 dark:bg-gray-800 px-4 py-5 sm:p-6 border-gray-200 dark:border-gray-800 rounded-lg">
         <form onSubmit={handleSubmit}>
           <div className="overflow-hidden shadow sm:rounded-md">
             <div>
