@@ -79,7 +79,7 @@ export async function loadPlugins(options: ZoteraConfig) {
           options
         } as ZoteraPlugin;
 
-        plugin.register(buildContext(plugin.options));
+        plugin.register(buildContext(options, plugin.options));
         debug('Plugin %s loaded', _plugin.name);
       }
     } catch (e) {

@@ -10,7 +10,7 @@ export const authDecorator = flugin(
     _: FastifyPluginOptions,
     next: () => FastifyError
   ): Promise<void> => {
-    const authManager = new AuthManager(zotera.config.auth);
+    const authManager = new AuthManager(zotera.config);
     await authManager.init();
     zotera.decorate('auth', authManager.auth);
 

@@ -37,6 +37,8 @@ export async function auth(zotera: FastifyInstance) {
         message: 'Username or password not provided'
       };
     }
+    console.log(zotera.auth);
+    
     const user = await zotera.auth.register(username, password);
     debug('register %o', username);
 

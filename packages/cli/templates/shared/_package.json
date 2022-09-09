@@ -6,13 +6,15 @@
   "main": "./dist/plugin.js",
   "module": "./dist/plugin.js",
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "devDependencies": {
     <%- dep("@zotera/types") %>,
     <%- dep("typescript") %><% if (vitest) { %>,
     <%- dep("vitest") %><% } %><% if (esbuild) { %>,
-    <%- dep("esbuild") %><% } %>
+    <%- dep("esbuild") %><% } %><% if (framework == 'express') { %>,
+    <%- dep("@types/express") %><% } %><% if (framework == 'fastify') { %>,
+    <%- dep("@types/fastify") %><% } %>
   },
   "keywords": ["zotera-plugin", "zotera"],
   "scripts": {

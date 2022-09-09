@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs';
 import fetch from 'node-fetch';
+import prettier from 'prettier';
 
 import { depVersions } from '../packages/cli/src/dep-versions';
 import { version as pkgVersion } from '../packages/types/package.json';
@@ -21,7 +22,7 @@ async function run() {
     Object.keys(depVersions).map(async (dep) => {
       let version = await getVersion(dep);
       if (!version && dep !== '@zotera/types') {
-        console.log('No version found');
+        console.log(`No version found for ${dep}`);
         return;
       }
 
@@ -37,7 +38,9 @@ async function run() {
     2
   )};`;
 
-  fs.writeFile('./packages/cli/src/dep-versions.ts', content);
+  prettier.resolveConfig(process.cwd()).then((options) => {
+    fs.writeFile('./packages/cli/src/dep-versions.ts', prettier.format(content, options));
+  });
 }
 
 async function getVersion(packageName: string): Promise<string | undefined> {

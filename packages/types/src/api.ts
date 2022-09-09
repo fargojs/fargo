@@ -1,3 +1,4 @@
+import { ZoteraConfig } from '.';
 import type { ZoteraAuth } from './auth';
 import type { ZoteraStorage } from './storage';
 
@@ -7,6 +8,8 @@ export interface PluginContext<T extends object> {
   log: ZoteraLoggingContext;
   auth: ZoteraAuthContext;
   storage: ZoteraStorageContext;
+  routing: ZoteraRoutingContext;
+  config: ZoteraConfig;
   options: T;
 }
 
@@ -23,4 +26,14 @@ export interface ZoteraStorageContext {
 
 export interface ZoteraAuthContext {
   register(id: string, auth: ZoteraAuth): void;
+}
+
+// TODO: Add types to this because types <3
+type Handler = (req: any, res: any) => void | Promise<void>;
+
+export interface ZoteraRoutingContext {
+  get(path: string, handler: Handler): void;
+  post(path: string, handler: Handler): void;
+  put(path: string, handler: Handler): void;
+  delete(path: string, handler: Handler): void;
 }

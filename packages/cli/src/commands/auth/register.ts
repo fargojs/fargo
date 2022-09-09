@@ -1,6 +1,6 @@
 import { Command } from 'commander';
+import inquirer from 'inquirer';
 import fetch from 'node-fetch';
-import prompts from 'prompts';
 
 import { loadZoteraRC } from '../../rc';
 
@@ -20,17 +20,29 @@ export const register = new Command('register')
       registry = rc.registry;
     }
 
-    const description = await (
-      await prompts({
-        name: 'description',
-        message: 'What is the description of your plugin?',
-        type: 'text',
-        initial: 'A plugin for zotera'
-      })
-    ).description;
-    const response = await fetch(`${registry}/-/auth/register`, {
-      method: 'POST'
+    const { username } = await inquirer.prompt({
+      name: 'username',
+      message: 'Username',
+      type: 'text'
     });
 
-    fetch;
+    const { password } = await inquirer.prompt({
+      name: 'password',
+      message: 'Password',
+      type: 'password'
+    });
+
+    console.log(username, password);
+
+    const response = await fetch(`${registry}/-/auth/register`, {
+      method: 'POST',
+      body: JSON.stringify({ username, password }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const data = await response.json();
+    console.log(data);
   });

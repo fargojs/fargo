@@ -1,4 +1,5 @@
-import type { PluginContext, ZoteraStorage, ExtensionManifest } from '@zotera/types/api';
+import { ExtensionManifest } from "@zotera/types";
+import type { PluginContext, ZoteraStorage } from '@zotera/types/api';
 
 interface PluginOptions {
   minion: boolean;
@@ -21,6 +22,17 @@ export const options = {
 }
 
 class CustomStorage implements ZoteraStorage {
+  
+  
+  init(): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+  addPackage(identifier: string): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+  getPackages(search?: string | undefined): Promise<ExtensionManifest[]> {
+    throw new Error("Method not implemented.");
+  }
 
   public async search() {
     return [];

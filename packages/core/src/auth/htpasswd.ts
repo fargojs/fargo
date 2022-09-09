@@ -14,7 +14,9 @@ export class HTPasswd implements ZoteraAuth {
     console.log(parseHTPasswd(htpasswd));
   }
 
-  async init() {}
+  async init() {
+    
+  }
 
   login(): Promise<void> {
     throw new Error('Method not implemented.');
@@ -24,6 +26,7 @@ export class HTPasswd implements ZoteraAuth {
     if (!this.config.auth?.allowRegistration) {
       throw new Error('Registration is not allowed');
     }
+
     throw new Error('Method not implemented.');
   }
 

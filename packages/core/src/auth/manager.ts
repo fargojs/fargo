@@ -1,6 +1,6 @@
 import _debug from 'debug';
 
-import { ZoteraAuth, ZoteraAuthConfig } from '@zotera/types';
+import { ZoteraAuth, ZoteraConfig } from '@zotera/types';
 
 import { HTPasswd } from './htpasswd';
 
@@ -10,18 +10,18 @@ export class AuthManager {
   private static readonly auths: Map<string, ZoteraAuth> = new Map();
   public auth: ZoteraAuth | undefined;
 
-  public constructor(private readonly authConfig: ZoteraAuthConfig) {
-    if (!authConfig.provider) {
+  public constructor(private readonly config: ZoteraConfig) {
+    if (!config.auth?.provider) {
       debug('Custom auth configuration not found, using default');
-      this.auth = new HTPasswd();
+      this.auth = new HTPasswd(config);
     }
   }
 
   async init() {
-    if (this.authConfig.provider) {
-      const auth = AuthManager.auths.get(this.authConfig.provider);
+    if (this.config.auth?.provider) {
+      const auth = AuthManager.auths.get(this.config.auth?.provider);
       if (!auth) {
-        throw new Error(`Auth with id ${this.authConfig.provider} not found`);
+        throw new Error(`Auth with id ${this.config.auth?.provider} not found`);
       }
       this.auth = auth;
     }
