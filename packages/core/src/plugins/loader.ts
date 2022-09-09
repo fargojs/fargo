@@ -19,6 +19,7 @@ const ajv = new Ajv({
   useDefaults: true
 });
 
+// TODO: Rewrite this, it's a mess.
 export async function loadPlugins(options: ZoteraConfig) {
   const {
     allowUnscopedPlugins,

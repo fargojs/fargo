@@ -6,7 +6,7 @@ export default function Searchbar() {
   return (
     <div className="relative mt-1 rounded-md shadow-sm">
       <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-        <Icon icon="ph:magnifying-glass" className="text-gray-500 sm:text-sm" />
+        <Icon icon="ph:magnifying-glass" className="text-gray-900 dark:text-gray-100 sm:text-sm" />
       </div>
       <input
         type="text"
