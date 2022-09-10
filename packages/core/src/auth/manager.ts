@@ -11,7 +11,7 @@ export class AuthManager {
   public auth: ZoteraAuth | undefined;
 
   public constructor(private readonly config: ZoteraConfig) {
-    if (!config.auth?.provider) {
+    if (!config.auth?.provider || config.auth.provider === 'htpasswd') {
       debug('Custom auth configuration not found, using default');
       this.auth = new HTPasswd(config);
     }
@@ -29,7 +29,7 @@ export class AuthManager {
     if (!this.auth) {
       throw new Error('Auth not found, please check your configuration');
     }
-    await this.auth.init();
+    await this.auth.initialize();
   }
 
   static register(id: string, auth: ZoteraAuth) {

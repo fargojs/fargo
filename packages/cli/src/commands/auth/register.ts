@@ -33,17 +33,26 @@ export const register = new Command('register')
       type: 'password'
     });
 
-    console.log(username, password);
+    try {
+      const response = await fetch(`${registry}/-/auth/register`, {
+        method: 'POST',
+        body: JSON.stringify({ username, password }),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
 
-    const response = await fetch(`${registry}/-/auth/register`, {
-      method: 'POST',
-      body: JSON.stringify({ username, password }),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(JSON.stringify(data));
       }
-    });
 
-    const data = await response.json();
-    console.log(data);
+      console.log(chalk.green('Successfully registered'));
+    } catch (e) {
+      console.error(`\n${chalk.red(chalk.bold(chalk.inverse(' Unhandled Error ')))}`);
+      console.error(e);
+      console.error('\n\n');
+    }
   });

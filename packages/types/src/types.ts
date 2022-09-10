@@ -87,7 +87,15 @@ export interface ZoteraAuthConfig {
    * These are registered through `auth.register()`.
    */
   provider?: string;
+
+  /**
+   * Algorithm to use for hashing passwords.
+   */
   algorithm?: 'sha1' | 'md5' | 'bcrypt';
+  /**
+   * Location of the htpasswd file.
+   * Only used if provider is not set or set to `htpasswd`.
+   */
   location?: string;
 }
 
