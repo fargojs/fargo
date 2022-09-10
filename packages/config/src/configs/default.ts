@@ -6,7 +6,6 @@ import { OmitSafe, ZoteraConfig } from '@zotera/types';
 
 export const DEFAULT_CONFIGURATION_OBJECT: OmitSafe<ZoteraConfig, '__location'> = {
   pluginDir: './plugins',
-  allowUnscopedPlugins: true,
   web: {
     title: 'Zotera Web',
     footer: {

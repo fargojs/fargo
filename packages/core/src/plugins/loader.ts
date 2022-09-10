@@ -21,29 +21,20 @@ const ajv = new Ajv({
 
 // TODO: Rewrite this, it's a mess.
 export async function loadPlugins(options: ZoteraConfig) {
-  const {
-    allowUnscopedPlugins,
-    pluginDir = './plugins',
-    plugins: _plugins = [],
-    __location
-  } = options;
+  const { pluginDir = './plugins', plugins: _plugins = [], __location } = options;
 
   // Get correct plugin `names & options` and filtering out based on `allowUnscopedPlugins`
-  const plugins: PluginLoadOptions[] = _plugins
-    .map((plugin) => {
-      if (typeof plugin === 'object') {
-        const name = Object.keys(plugin)[0];
-        return {
-          name,
-          options: plugin[name]
-        };
-      } else {
-        return { name: plugin };
-      }
-    })
-    .filter((plugin) => {
-      return allowUnscopedPlugins || plugin.name.startsWith('@');
-    });
+  const plugins: PluginLoadOptions[] = _plugins.map((plugin) => {
+    if (typeof plugin === 'object') {
+      const name = Object.keys(plugin)[0];
+      return {
+        name,
+        options: plugin[name]
+      };
+    } else {
+      return { name: plugin };
+    }
+  });
 
   debug('Found %d plugin(s)', plugins.length);
   const dir = path.resolve(__location, pluginDir);

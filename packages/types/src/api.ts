@@ -1,6 +1,6 @@
-import { ZoteraConfig } from '.';
-import type { ZoteraAuth } from './auth';
-import type { ZoteraStorage } from './storage';
+import { ZoteraAuth } from './auth';
+import { ZoteraStorage } from './storage';
+import { ZoteraConfig } from './types';
 
 export { ZoteraAuth, ZoteraStorage };
 

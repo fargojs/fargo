@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import { Command } from 'commander';
 import inquirer from 'inquirer';
 import fetch from 'node-fetch';

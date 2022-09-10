@@ -37,7 +37,6 @@
     "@zotera/core": "workspace:*",
     "@zotera/web": "workspace:*",
     "debug": "^4.3.4",
-    "deepmerge": "^4.2.2",
     "fastify-plugin": "^4.0.0"
   },
   "devDependencies": {

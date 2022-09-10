@@ -1,4 +1,4 @@
-import type { PluginContext } from './api';
+import { PluginContext } from './api';
 
 export * from './storage';
 export * from './auth';
@@ -20,11 +20,6 @@ export interface ZoteraConfig {
    * The directory to store plugins in.
    */
   pluginDir: string;
-
-  /**
-   * Allow loading of unscoped plugins.
-   */
-  allowUnscopedPlugins?: boolean;
 
   /**
    * Zotera plugins to load.

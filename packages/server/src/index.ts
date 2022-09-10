@@ -1,10 +1,11 @@
 import _debug from 'debug';
-import Fastify from 'fastify';
-import type { FastifyInstance } from 'fastify';
+import Fastify, { FastifyInstance } from 'fastify';
 
 import { readConfiguration } from '@zotera/config';
 import zoteraPlugin from '@zotera/fastify';
-import type { ZoteraConfig } from '@zotera/types';
+import { ZoteraConfig } from '@zotera/types';
+
+import { setup } from './logging';
 
 const debug = _debug('zotera:server');
 
@@ -21,7 +22,9 @@ export function createZotera(config?: string | ZoteraConfig): FastifyInstance {
     configuration.__location = process.cwd();
   }
 
-  const zotera = Fastify();
+  const zotera = Fastify({
+    // logger: setup(configuration.logging)
+  });
   debug('Loaded configuration %O', configuration);
   zotera.register(zoteraPlugin, configuration);
   return zotera;

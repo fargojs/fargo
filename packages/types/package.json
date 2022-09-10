@@ -2,14 +2,14 @@
   "name": "@zotera/types",
   "version": "0.0.1",
   "description": "zotera type definitions",
-  "main": "./dist/index.d.ts",
-  "module": "./dist/index.d.ts",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/types.d.ts",
+  "module": "./dist/types.d.ts",
+  "types": "./dist/types.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.d.ts",
-      "import": "./dist/index.d.ts"
+      "types": "./dist/types.d.ts",
+      "require": "./dist/types.d.ts",
+      "import": "./dist/types.d.ts"
     },
     "./api": {
       "types": "./dist/api.d.ts",
