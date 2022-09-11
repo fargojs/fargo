@@ -1,7 +1,7 @@
 {
-  "name": "@zotera/server",
+  "name": "@zotera/express",
   "version": "0.0.1",
-  "description": "Zotera standalone server",
+  "description": "Zotera plugin for Express.js",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -17,20 +17,19 @@
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch",
-    "test": "vitest run"
+    "dev": "tsup --watch"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/zotera/zotera",
-    "directory": "packages/server"
+    "directory": "packages/express"
   },
   "keywords": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/zotera/zotera/issues"
   },
-  "homepage": "https://github.com/zotera/zotera/blob/main/packages/server#readme",
+  "homepage": "https://github.com/zotera/zotera/blob/main/packages/express#readme",
   "author": {
     "name": "Lucas Norgaard",
     "email": "lucasnrgaard@gmail.com",
@@ -38,14 +37,15 @@
   },
   "dependencies": {
     "@zotera/config": "workspace:*",
-    "@zotera/fastify": "workspace:*",
+    "@zotera/core": "workspace:*",
+    "@zotera/web": "workspace:*",
     "debug": "^4.3.4",
-    "fastify": "^4.2.0",
-    "fastify-plugin": "^4.0.0",
-    "pino": "^8.1.0"
+    "express": "^4.18.1"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
+    "@types/express": "^4.17.13",
+    "@types/express-serve-static-core": "^4.17.30",
     "@types/node": "^18.0.3",
     "@zotera/types": "workspace:*"
   }

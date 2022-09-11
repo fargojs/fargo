@@ -1,7 +1,7 @@
 {
   "name": "@zotera/config",
   "version": "0.0.1",
-  "description": "",
+  "description": "Manages configurations for Zotera",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -20,7 +20,11 @@
     "dev": "tsup --watch",
     "test": "vitest run"
   },
-  "repository": "https://github.com/zotera/zotera/blob/main/packages/config",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zotera/zotera",
+    "directory": "packages/config"
+  },
   "keywords": [],
   "license": "MIT",
   "bugs": {

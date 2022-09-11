@@ -19,7 +19,11 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
-  "repository": "https://github.com/zotera/zotera/blob/main/packages/fastify",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zotera/zotera",
+    "directory": "packages/fastify"
+  },
   "keywords": [],
   "license": "MIT",
   "bugs": {

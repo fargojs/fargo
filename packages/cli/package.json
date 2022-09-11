@@ -1,7 +1,7 @@
 {
   "name": "@zotera/cli",
   "version": "0.0.1",
-  "description": "",
+  "description": "Zotera's CLI",
   "type": "module",
   "exports": {
     ".": {
@@ -23,7 +23,11 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
-  "repository": "https://github.com/zotera/zotera/blob/main/packages/cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zotera/zotera",
+    "directory": "packages/cli"
+  },
   "keywords": [],
   "license": "MIT",
   "bugs": {

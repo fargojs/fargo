@@ -19,7 +19,11 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
-  "repository": "https://github.com/zotera/zotera/blob/main/packages/core",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zotera/zotera",
+    "directory": "packages/core"
+  },
   "keywords": [],
   "license": "MIT",
   "bugs": {

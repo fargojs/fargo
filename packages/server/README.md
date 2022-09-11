@@ -1,3 +1,9 @@
-<h1 align="center">Zotera</h1>
+# @zotera/server
 
-A private marketplace for your VSIX extensions
+> Zotera Server
+
+[![npm version](https://img.shields.io/npm/v/@zotera/server.svg)](https://www.npmjs.com/package/@zotera/server)
+
+## License
+
+MIT
