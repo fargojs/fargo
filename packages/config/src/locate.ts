@@ -5,8 +5,16 @@ import path from 'node:path';
 
 import { writeConfig } from './write';
 
-const CONFIG_FILE_NAME = 'zotera.json';
 const debug = _debug('zotera:config:locate');
+export const fileExtensions = ['.json', '.json5', '.jsonc'];
+function findConfigurationFile(dir: string): string {
+  for (const ext of fileExtensions) {
+    const configPath = path.join(dir, `zotera${ext}`);
+    if (fileExists(configPath)) {
+      return configPath;
+    }
+  }
+}
 
 function fileExists(path: string): boolean {
   try {
@@ -26,13 +34,9 @@ export async function locate(config?: string): Promise<string> {
     suffix: ''
   });
 
-  // TODO: Allow multiple config file names.
-  // e.g. zotera.json, zotera.jsonc, zotera.json5
-  const configPath = path.resolve(paths.config, CONFIG_FILE_NAME);
+  const configPath = findConfigurationFile(paths.config);
 
-  const existingConfig = fileExists(configPath);
-
-  if (existingConfig) {
+  if (configPath) {
     debug('Found config file at %s', configPath);
     return configPath;
   }
