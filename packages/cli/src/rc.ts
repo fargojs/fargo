@@ -1,6 +1,6 @@
-import { promises as fs } from 'fs';
 import JoyCon from 'joycon';
-import path from 'path';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 
 interface ZoteraRC {
   registry: string;
@@ -17,7 +17,7 @@ export async function loadZoteraRC(): Promise<ZoteraRC | undefined> {
   });
 
   if (joyconResult) {
-    let data = JSON.parse(await fs.readFile(joyconResult, 'utf8'));
+    let data = JSON.parse(await readFile(joyconResult, 'utf8'));
     if (joyconResult.endsWith('package.json')) {
       data = data.zotera;
     }

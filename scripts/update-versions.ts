@@ -1,5 +1,5 @@
-import { promises as fs } from 'fs';
 import fetch from 'node-fetch';
+import { writeFile } from 'node:fs/promises';
 import prettier from 'prettier';
 
 import { depVersions } from '../packages/cli/src/dep-versions';
@@ -39,7 +39,7 @@ async function run() {
   )};`;
 
   prettier.resolveConfig(process.cwd()).then((options) => {
-    fs.writeFile('./packages/cli/src/dep-versions.ts', prettier.format(content, options));
+    writeFile('./packages/cli/src/dep-versions.ts', prettier.format(content, options));
   });
 }
 

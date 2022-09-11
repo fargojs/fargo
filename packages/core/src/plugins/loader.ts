@@ -1,7 +1,7 @@
 import Ajv from 'ajv';
 import _debug from 'debug';
-import fs from 'fs';
-import path from 'path';
+import { stat } from 'node:fs/promises';
+import path from 'node:path';
 
 import { ZoteraConfig, ZoteraPlugin } from '@zotera/types';
 
@@ -45,7 +45,7 @@ export async function loadPlugins(options: ZoteraConfig) {
     try {
       debug('Loading plugin %s', _plugin.name);
       const pluginPath = path.resolve(dir, _plugin.name);
-      const pluginFolder = fs.statSync(pluginPath);
+      const pluginFolder = await stat(pluginPath);
       if (pluginFolder.isDirectory()) {
         const { main, module } = await readManifest(pluginPath);
 

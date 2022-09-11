@@ -1,6 +1,6 @@
 import AdmZip from 'adm-zip';
-import { promises as fs } from 'fs';
-import path from 'path';
+import { readFile, stat } from 'node:fs/promises';
+import path from 'node:path';
 
 interface PluginFile {
   path: string;
@@ -22,8 +22,7 @@ interface PluginManifest {
 export async function readManifest(dir: string): Promise<PluginManifest> {
   const manifestPath = path.join(dir, 'package.json');
 
-  const manifest = await fs
-    .readFile(manifestPath, 'utf8')
+  const manifest = await readFile(manifestPath, 'utf8')
     .catch(() => Promise.reject(new Error(`Could not find manifest at ${manifestPath}`)))
     .then<PluginManifest>((content) => {
       try {
@@ -78,7 +77,7 @@ async function getOutput(manifest: PluginManifest, out?: string): Promise<string
   }
 
   try {
-    const _stat = await fs.stat(out);
+    const _stat = await stat(out);
 
     if (_stat.isDirectory()) {
       return path.join(out, `${manifest.name}.zop`);

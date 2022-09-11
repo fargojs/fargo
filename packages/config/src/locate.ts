@@ -1,9 +1,9 @@
 import _debug from 'debug';
 import envPaths from 'env-paths';
-import { statSync } from 'fs';
-import path from 'path';
+import { statSync } from 'node:fs';
+import path from 'node:path';
 
-import { writeConfig } from './create';
+import { writeConfig } from './write';
 
 const CONFIG_FILE_NAME = 'zotera.json';
 const debug = _debug('zotera:config:locate');

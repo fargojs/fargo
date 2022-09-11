@@ -1,6 +1,6 @@
 import _debug from 'debug';
 import { mkdir, writeFile } from 'node:fs/promises';
-import { dirname } from 'path';
+import { dirname } from 'node:path';
 
 import defaultConfig from './configs/default-config.json';
 

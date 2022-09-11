@@ -1,7 +1,7 @@
 import { Command, Option } from 'commander';
 import inquirer from 'inquirer';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import { createEnvironment } from '@luxass/neoman';
 

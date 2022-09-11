@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
-import { parseJSON, parseYAML } from '../src';
+import { parseJSON } from '../src';
 
 describe('parse', () => {
-  it('parse YAML', () => {
-    const config = parseYAML('./test/shared/config.yaml');
+  it('parse JSON', async () => {
+    const config = await parseJSON('./test/shared/file1.json');
 
     expect(config).toStrictEqual({
       this: {
@@ -17,22 +17,8 @@ describe('parse', () => {
     expect(config).toBeTypeOf('object');
   });
 
-  it('parse JSON', () => {
-    const config = parseJSON('./test/shared/config.json');
-
-    expect(config).toStrictEqual({
-      this: {
-        is: {
-          a: 'test'
-        }
-      },
-      and: 10
-    });
-    expect(config).toBeTypeOf('object');
-  });
-
-  it('parse JSONC', () => {
-    const config = parseJSON('./test/shared/config.jsonc');
+  it('parse JSONC', async () => {
+    const config = await parseJSON('./test/shared/file2.jsonc');
 
     expect(config).toStrictEqual({
       this: {
