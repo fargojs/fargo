@@ -91,7 +91,8 @@ export interface ZoteraAuthConfig {
   /**
    * Algorithm to use for hashing passwords.
    */
-  algorithm?: 'sha1' | 'md5' | 'bcrypt';
+  algorithm?: 'sha256' | 'sha512' | 'bcrypt';
+
   /**
    * Location of the htpasswd file.
    * Only used if provider is not set or set to `htpasswd`.
