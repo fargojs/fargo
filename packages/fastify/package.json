@@ -39,6 +39,7 @@
     "@fastify/static": "^6.5.0",
     "@zotera/config": "workspace:*",
     "@zotera/core": "workspace:*",
+    "@zotera/logger": "workspace:*",
     "@zotera/web": "workspace:*",
     "debug": "^4.3.4",
     "fastify-plugin": "^4.0.0"

@@ -13,8 +13,10 @@ export const install = new Command('install')
   .description('install plugin(s)')
   .option('-d, --dir <dir>', 'Directory to download to')
   .argument('<plugins...>', 'Plugin(s) to download')
-  .action((plugins: string[]) => {
-    const { pluginDir, __location } = readConfiguration(install.parent?.parent?.opts().config);
+  .action(async (plugins: string[]) => {
+    const { pluginDir, __location } = await readConfiguration(
+      install.parent?.parent?.opts().config
+    );
 
     const baseDownloadDir = path.join(__location, pluginDir);
 

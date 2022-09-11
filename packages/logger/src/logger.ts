@@ -1,41 +1,40 @@
 import _debug from 'debug';
-import pino from 'pino';
-import type { Logger } from 'pino';
+import pino, { Logger } from 'pino';
 
-import type { ZoteraLoggingConfig } from '@zotera/types';
+import { ZoteraLoggingConfig } from '@zotera/types';
 
-const DEFAULT_LOGGING_OPTIONS: ZoteraLoggingConfig = {
-  level: 'info',
-  type: 'stdout'
-};
+const debug = _debug('zotera:logger');
 
-const debug = _debug('zotera:server:logging');
+let logger: Logger;
 
-/**
- * Setup logging for zotera core.
- * @param config Zotera Logging options
- * @returns {Logger} Pino Logger
- */
-export function setup(config?: ZoteraLoggingConfig): Logger {
-  const loggingConfig: ZoteraLoggingConfig = { ...DEFAULT_LOGGING_OPTIONS, ...config };
+export function initialize(options: ZoteraLoggingConfig) {
+  debug('initializing logger');
+  if (logger) return logger;
   let destination = pino.destination(1);
   const pinoConfig: pino.LoggerOptions = {
-    level: loggingConfig.level,
+    level: options.level,
     serializers: {
       err: pino.stdSerializers.err,
       req: pino.stdSerializers.req,
       res: pino.stdSerializers.res
+    },
+    transport: {
+      target: 'pino-pretty',
+      options: {
+        colorize: true
+      }
     }
   };
 
-  if (loggingConfig.type === 'file') {
+  if (options.type === 'file') {
     debug('file logging is used');
-    destination = pino.destination(loggingConfig.destination);
+    destination = pino.destination(options.destination);
     process.on('SIGUSR2', () => destination.reopen());
   } else {
     debug('stdout logging is used');
   }
-  const logger = pino(pinoConfig, destination);
+
+  logger = pino(pinoConfig, destination);
 
   if (process.env.DEBUG) {
     logger.on('level-change', (level, value, preLevel, preValue) =>

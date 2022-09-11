@@ -64,9 +64,9 @@ export interface ZoteraPluginWithOptions {
 }
 
 export interface ZoteraLoggingConfig {
-  type?: 'stdout' | 'file';
+  type: 'stdout' | 'file';
   destination?: string;
-  level?: LogLevel;
+  level: LogLevel;
 }
 
 export type LogLevel = 'debug' | 'info' | 'warn' | 'warn' | 'fatal';

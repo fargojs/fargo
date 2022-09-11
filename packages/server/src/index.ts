@@ -3,9 +3,8 @@ import Fastify, { FastifyInstance } from 'fastify';
 
 import { readConfiguration } from '@zotera/config';
 import zoteraPlugin from '@zotera/fastify';
+import { initialize } from '@zotera/logger';
 import { ZoteraConfig } from '@zotera/types';
-
-import { setup } from './logging';
 
 const debug = _debug('zotera:server');
 
@@ -23,7 +22,7 @@ export async function createZotera(config?: string | ZoteraConfig): Promise<Fast
   }
 
   const zotera = Fastify({
-    // logger: setup(configuration.logging)
+    logger: initialize(configuration.logging)
   });
   debug('Loaded configuration %O', configuration);
   zotera.register(zoteraPlugin, configuration);
