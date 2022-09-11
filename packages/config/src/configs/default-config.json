@@ -1,0 +1,20 @@
+{
+  "pluginDir": "./plugins",
+  "web": {
+    "title": "Zotera Web",
+    "footer": {
+      "message": "Powered by Zotera",
+      "copyright": "Copyright © 2022"
+    }
+  },
+  "auth": {
+    "allowAnonymous": true
+  },
+  "logging": {
+    "type": "stdout",
+    "level": "info"
+  },
+  "storage": {
+    "location": "./storage"
+  }
+}

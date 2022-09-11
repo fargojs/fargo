@@ -14,9 +14,7 @@ importers:
     specifiers:
       '@luxass/eslint-config': ^1.0.7
       '@luxass/prettier-config': ^1.0.4
-      '@types/js-yaml': ^4.0.5
       eslint: ^8.23.0
-      js-yaml: ^4.1.0
       lint-staged: ^13.0.3
       node-fetch: ^3.2.10
       prettier: ^2.7.1
@@ -25,12 +23,9 @@ importers:
       tsx: ^3.9.0
       typescript: ^4.8.2
       vitest: ^0.18.1
-    dependencies:
-      js-yaml: 4.1.0
     devDependencies:
       '@luxass/eslint-config': 1.0.7_yqf6kl63nyoq5megxukfnom5rm
       '@luxass/prettier-config': 1.0.4_prettier@2.7.1
-      '@types/js-yaml': 4.0.5
       eslint: 8.23.0
       lint-staged: 13.0.3
       node-fetch: 3.2.10
@@ -78,19 +73,17 @@ importers:
     specifiers:
       '@types/debug': ^4.1.7
       '@types/node': ^18.0.3
-      '@zotera/esbuild-yaml': 0.1.0
       '@zotera/types': workspace:*
       debug: ^4.3.4
       env-paths: 2.2.1
-      json5: ^2.2.1
+      strip-json-comments: ^5.0.0
     dependencies:
       debug: 4.3.4
       env-paths: 2.2.1
-      json5: 2.2.1
+      strip-json-comments: 5.0.0
     devDependencies:
       '@types/debug': 4.1.7
       '@types/node': 18.0.3
-      '@zotera/esbuild-yaml': 0.1.0
       '@zotera/types': link:../types
 
   packages/core:
@@ -1051,10 +1044,6 @@ packages:
       rxjs: 7.5.6
     dev: true
 
-  /@types/js-yaml/4.0.5:
-    resolution: {integrity: sha512-FhpRzf927MNQdRZP0J5DLIdTXhjLYzeUTmLAu69mnVksLH9CJY3IuSeEgbKUki7GQZm0WqDkGzyxju2EZGD2wA==}
-    dev: true
-
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
@@ -1328,13 +1317,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@zotera/esbuild-yaml/0.1.0:
-    resolution: {integrity: sha512-QVYT3TjpkUm1rr7CY/EriCdkJPkC5z91aq4YoDZ+2kNq0IEGry9ooqB2DyZ/BfFre7uH+CQsHj5034fHhEJITw==}
-    requiresBuild: true
-    dependencies:
-      js-yaml: 4.1.0
-    dev: true
-
   /abbrev/1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
     dev: false
@@ -1508,6 +1490,7 @@ packages:
 
   /argparse/2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
+    dev: true
 
   /array-flatten/1.1.1:
     resolution: {integrity: sha512-PCVAQswWemu6UdxsDFFX/+gVeYqKAod3D3UVm91jHwynguOwAvYPhx8nNlM++NqRcK6CxxpUafjmhIdKiHibqg==}
@@ -4026,6 +4009,7 @@ packages:
     hasBin: true
     dependencies:
       argparse: 2.0.1
+    dev: true
 
   /jsesc/2.5.2:
     resolution: {integrity: sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==}
@@ -4063,6 +4047,7 @@ packages:
     resolution: {integrity: sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==}
     engines: {node: '>=6'}
     hasBin: true
+    dev: true
 
   /jsonc-eslint-parser/2.1.0:
     resolution: {integrity: sha512-qCRJWlbP2v6HbmKW7R3lFbeiVWHo+oMJ0j+MizwvauqnCV/EvtAeEeuCgoc/ErtsuoKgYB8U4Ih8AxJbXoE6/g==}
@@ -5576,6 +5561,11 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
     dev: true
+
+  /strip-json-comments/5.0.0:
+    resolution: {integrity: sha512-V1LGY4UUo0jgwC+ELQ2BNWfPa17TIuwBLg+j1AA/9RPzKINl1lhxVEu2r+ZTTO8aetIsUzE5Qj6LMSBkoGYKKw==}
+    engines: {node: '>=14.16'}
+    dev: false
 
   /sucrase/3.25.0:
     resolution: {integrity: sha512-WxTtwEYXSmZArPGStGBicyRsg5TBEFhT5b7N+tF+zauImP0Acy+CoUK0/byJ8JNPK/5lbpWIVuFagI4+0l85QQ==}

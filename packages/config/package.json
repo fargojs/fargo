@@ -39,12 +39,11 @@
   "dependencies": {
     "debug": "^4.3.4",
     "env-paths": "2.2.1",
-    "json5": "^2.2.1"
+    "strip-json-comments": "^5.0.0"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
     "@types/node": "^18.0.3",
-    "@zotera/esbuild-yaml": "0.1.0",
     "@zotera/types": "workspace:*"
   }
 }

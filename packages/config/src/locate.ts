@@ -1,14 +1,23 @@
 import _debug from 'debug';
 import envPaths from 'env-paths';
+import { statSync } from 'fs';
 import path from 'path';
 
 import { writeConfig } from './create';
-import { fileExists } from './utils';
 
-const CONFIG_FILE_NAME = 'zotera.yaml';
+const CONFIG_FILE_NAME = 'zotera.json';
 const debug = _debug('zotera:config:locate');
 
-export function locate(config?: string): string {
+function fileExists(path: string): boolean {
+  try {
+    const stat = statSync(path);
+    return stat.isFile();
+  } catch (err) {
+    return false;
+  }
+}
+
+export async function locate(config?: string): Promise<string> {
   if (config) {
     return path.resolve(config);
   }
@@ -17,6 +26,8 @@ export function locate(config?: string): string {
     suffix: ''
   });
 
+  // TODO: Allow multiple config file names.
+  // e.g. zotera.json, zotera.jsonc, zotera.json5
   const configPath = path.resolve(paths.config, CONFIG_FILE_NAME);
 
   const existingConfig = fileExists(configPath);
@@ -26,5 +37,5 @@ export function locate(config?: string): string {
     return configPath;
   }
 
-  return writeConfig(configPath);
+  return await writeConfig(configPath);
 }

@@ -1,8 +1,8 @@
 import _debug from 'debug';
-import { mkdirSync, writeFileSync } from 'fs';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname } from 'path';
 
-import defaultConfig from './configs/default.yaml';
+import defaultConfig from './configs/default-config.json';
 
 const debug = _debug('zotera:config');
 
@@ -11,11 +11,11 @@ const debug = _debug('zotera:config');
  * @param {string} loc Location of the config file
  * @returns {string} Path to the config file
  */
-export function writeConfig(loc: string): string {
-  mkdirSync(dirname(loc), { recursive: true });
+export async function writeConfig(loc: string): Promise<string> {
+  await mkdir(dirname(loc), { recursive: true });
   debug('Creating config folder at %s', loc);
   const defaultConfiguration = defaultConfig;
-  writeFileSync(loc, defaultConfiguration);
+  await writeFile(loc, JSON.stringify(defaultConfiguration, null, 2));
 
   return loc;
 }

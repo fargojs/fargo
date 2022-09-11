@@ -12,7 +12,7 @@ export const start = new Command('start')
       const flags = start.opts();
       const config = start.parent?.opts().config;
       process.title = 'zotera';
-      const zotera = createZotera(config);
+      const zotera = await createZotera(config);
 
       await zotera.listen({
         port: parseInt(flags.port),
