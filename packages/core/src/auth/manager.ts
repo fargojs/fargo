@@ -7,7 +7,7 @@ import { HTPasswd } from './htpasswd';
 const debug = _debug('zotera:core:auth:manager');
 
 export class AuthManager {
-  private static readonly auths: Map<string, ZoteraAuth> = new Map();
+  private static readonly plugins: Map<string, ZoteraAuth> = new Map();
   public auth: ZoteraAuth | undefined;
 
   public constructor(private readonly config: ZoteraConfig) {
@@ -19,7 +19,7 @@ export class AuthManager {
 
   async init() {
     if (this.config.auth?.provider) {
-      const auth = AuthManager.auths.get(this.config.auth?.provider);
+      const auth = AuthManager.plugins.get(this.config.auth?.provider);
       if (!auth) {
         throw new Error(`Auth with id ${this.config.auth?.provider} not found`);
       }
@@ -34,10 +34,10 @@ export class AuthManager {
 
   static register(id: string, auth: ZoteraAuth) {
     debug('auth#register(%s)', id, auth);
-    const existing = AuthManager.auths.get(id);
+    const existing = AuthManager.plugins.get(id);
     if (existing) {
       throw new Error(`Storage with id ${id} already registered`);
     }
-    AuthManager.auths.set(id, auth);
+    AuthManager.plugins.set(id, auth);
   }
 }

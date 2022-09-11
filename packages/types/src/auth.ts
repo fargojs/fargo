@@ -1,8 +1,24 @@
 export interface ZoteraAuth {
-  initialize(): Promise<void> | void;
-  login(username: string, password: string): Promise<void> | void;
-  register?(username: string, password: string): Promise<void> | void;
-  publish(): Promise<void> | void;
-  unpublish(): Promise<void> | void;
-  access?(): Promise<void> | void;
+  /**
+   * Initialize the auth plugin
+   */
+  initialize(): Promise<void>;
+
+  /**
+   * Login a user.
+   * @param {string} username username
+   * @param {string} password password
+   * @returns {Promise<string | null>} username or null if login failed.
+   */
+  login(username: string, password: string): Promise<string | null>;
+
+  /**
+   * Registers a user
+   * @param {string} username username
+   * @param {string} password password
+   */
+  register?(username: string, password: string): Promise<void>;
+  publish(): Promise<void>;
+  unpublish(): Promise<void>;
+  access?(): Promise<void>;
 }

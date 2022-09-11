@@ -4,14 +4,19 @@ import crypto from 'node:crypto';
 import { appendFile, readFile, stat, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
-import { ZoteraAuth, ZoteraConfig } from '@zotera/types';
+import { HTPasswdAlgorithms, ZoteraAuth, ZoteraConfig } from '@zotera/types';
 
-import { parseHTPasswd } from './utils';
+import { parseHTPasswd, verify } from './utils';
 
 const debug = _debug('zotera:core:auth:htpasswd');
 
+export interface HTPasswdUser {
+  hash: string;
+  algorithm: HTPasswdAlgorithms;
+}
+
 export class HTPasswd implements ZoteraAuth {
-  private users: Map<string, string> = new Map();
+  private users: Map<string, HTPasswdUser> = new Map();
   private htpasswdPath: string;
   constructor(private readonly config: ZoteraConfig) {
     this.htpasswdPath = resolve(this.config.__location, this.config.auth?.location || '.htpasswd');
@@ -21,8 +26,18 @@ export class HTPasswd implements ZoteraAuth {
     this.loadUsers();
   }
 
-  login(): Promise<void> {
-    throw new Error('Method not implemented. 444');
+  async login(username: string, password: string): Promise<string | null> {
+    debug('authenticate %o', username);
+    const user = this.users.get(username);
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    const { hash, algorithm } = user;
+
+    const isValid = await verify(password, hash, algorithm);
+
+    return isValid ? username : null;
   }
 
   async register(username: string, password: string): Promise<void> {

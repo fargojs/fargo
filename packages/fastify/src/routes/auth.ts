@@ -16,12 +16,21 @@ export async function auth(zotera: FastifyInstance) {
         message: 'Username or password not provided'
       };
     }
+
     const user = await zotera.auth.login(username, password);
     debug('login %o', username);
 
+    if (!user) {
+      return {
+        status: 'error',
+        message: 'Invalid username or password'
+      };
+    }
+
+    const token = await jwt.sign;
+
     return {
-      username,
-      password
+      token: ''
     };
   });
 
@@ -43,7 +52,7 @@ export async function auth(zotera: FastifyInstance) {
       });
     }
 
-    const registeredUser = await zotera.auth.register(username, password);
+    await zotera.auth.register(username, password);
     debug('registered user %o', username);
 
     return {

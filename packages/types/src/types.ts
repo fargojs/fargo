@@ -91,14 +91,18 @@ export interface ZoteraAuthConfig {
   /**
    * Algorithm to use for hashing passwords.
    */
-  algorithm?: 'sha256' | 'sha512' | 'bcrypt';
+  algorithm?: HTPasswdAlgorithms;
 
   /**
    * Location of the htpasswd file.
    * Only used if provider is not set or set to `htpasswd`.
    */
   location?: string;
+
+  groups?: ZoteraAuthGroups;
 }
+
+export interface ZoteraAuthGroups {}
 
 export interface ZoteraStorageConfig {
   provider?: string;
@@ -118,3 +122,4 @@ export interface ZoteraWebConfig {
 
 export type OmitSafe<T extends object, K extends keyof T> = Omit<T, K>;
 // export type NodeOptions = OmitSafe<ZoteraConfig, 'logging' | 'pluginDir' | '__location'>;
+export type HTPasswdAlgorithms = 'sha256' | 'sha512' | 'bcrypt';

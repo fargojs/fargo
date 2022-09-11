@@ -1,10 +1,10 @@
 import { FastifyError, FastifyInstance, FastifyPluginOptions } from 'fastify';
-import flugin from 'fastify-plugin';
+import fplugin from 'fastify-plugin';
 
 import { AuthManager } from '@zotera/core';
 import { ZoteraAuth } from '@zotera/types';
 
-export const authDecorator = flugin(
+export const authDecorator = fplugin(
   async (
     zotera: FastifyInstance,
     _: FastifyPluginOptions,
@@ -13,7 +13,6 @@ export const authDecorator = flugin(
     const authManager = new AuthManager(zotera.config);
     await authManager.init();
     zotera.decorate('auth', authManager.auth);
-
     next();
   }
 );

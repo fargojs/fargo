@@ -1,5 +1,5 @@
-import type { FastifyError, FastifyInstance, FastifyPluginCallback } from 'fastify';
-import flugin from 'fastify-plugin';
+import { FastifyError, FastifyInstance, FastifyPluginCallback } from 'fastify';
+import fplugin from 'fastify-plugin';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -11,9 +11,9 @@ import { configDecorator } from './decorators/config';
 import { storageDecorator } from './decorators/storage';
 import { routes } from './routes';
 import { ping } from './routes/ping';
-import type { PluginOptions } from './types';
+import { PluginOptions } from './types';
 
-const plugin: FastifyPluginCallback<PluginOptions> = flugin(
+const plugin: FastifyPluginCallback<PluginOptions> = fplugin(
   async (app: FastifyInstance, options: PluginOptions, next: (error?: FastifyError) => void) => {
     app.register(configDecorator, options).after(async () => {
       // This is running after the config decorator is attached.
