@@ -43,9 +43,8 @@ importers:
       '@types/node': ^18.0.3
       '@zotera/config': workspace:*
       '@zotera/core': workspace:*
-      '@zotera/logger': workspace:*
       '@zotera/server': workspace:*
-      '@zotera/types': workspace:^0.0.1
+      '@zotera/types': workspace:*
       chalk: ^5.0.1
       commander: ^9.4.0
       conf: ^10.2.0
@@ -57,7 +56,6 @@ importers:
       '@luxass/neoman': 0.1.6
       '@zotera/config': link:../config
       '@zotera/core': link:../core
-      '@zotera/logger': link:../logger
       '@zotera/server': link:../server
       commander: 9.4.0
       conf: 10.2.0
@@ -127,7 +125,6 @@ importers:
       '@types/node': ^18.0.3
       '@zotera/config': workspace:*
       '@zotera/core': workspace:*
-      '@zotera/logger': workspace:*
       '@zotera/types': workspace:*
       '@zotera/web': workspace:*
       debug: ^4.3.4
@@ -135,7 +132,6 @@ importers:
     dependencies:
       '@zotera/config': link:../config
       '@zotera/core': link:../core
-      '@zotera/logger': link:../logger
       '@zotera/web': link:../web
       debug: 4.3.4
       express: 4.18.1
@@ -153,7 +149,6 @@ importers:
       '@types/node': ^18.0.3
       '@zotera/config': workspace:*
       '@zotera/core': workspace:*
-      '@zotera/logger': workspace:*
       '@zotera/types': workspace:*
       '@zotera/web': workspace:*
       debug: ^4.3.4
@@ -163,7 +158,6 @@ importers:
       '@fastify/static': 6.5.0
       '@zotera/config': link:../config
       '@zotera/core': link:../core
-      '@zotera/logger': link:../logger
       '@zotera/web': link:../web
       debug: 4.3.4
       fastify-plugin: 4.0.0

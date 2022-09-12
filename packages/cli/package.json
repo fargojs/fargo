@@ -43,7 +43,6 @@
     "@luxass/neoman": "0.1.6",
     "@zotera/config": "workspace:*",
     "@zotera/core": "workspace:*",
-    "@zotera/logger": "workspace:*",
     "@zotera/server": "workspace:*",
     "commander": "^9.4.0",
     "conf": "^10.2.0",
@@ -53,7 +52,7 @@
   "devDependencies": {
     "@types/inquirer": "^9.0.1",
     "@types/node": "^18.0.3",
-    "@zotera/types": "workspace:^0.0.1",
+    "@zotera/types": "workspace:*",
     "chalk": "^5.0.1",
     "esbuild": "^0.14.49",
     "esbuild-plugin-copy": "^1.3.0"

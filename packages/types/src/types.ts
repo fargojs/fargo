@@ -72,6 +72,7 @@ export interface ZoteraLoggingConfig {
   /**
    * The path to the log file.
    * Only used when `type` is `file`.
+   * @default 'zotera.log'
    */
   destination?: string;
 

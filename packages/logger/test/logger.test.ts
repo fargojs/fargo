@@ -2,7 +2,7 @@ import { mkdtemp, readFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { setTimeout } from 'node:timers/promises';
-import { describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 
 import { setup } from '../src';
 
@@ -11,11 +11,16 @@ const readLog = async (logPath: string) => {
   return readFile(logPath, 'utf8');
 };
 
+let tempDir: string;
+
+beforeAll(async () => {
+  tempDir = await mkdtemp(path.join(os.tmpdir(), 'zotera-logger-'));
+});
+
 describe('logger', () => {
   describe('file', () => {
-    const tmpDirPath = path.join(os.tmpdir(), 'zotera-logger-');
     it('output to file with info level', async () => {
-      const file = path.join(await mkdtemp(tmpDirPath), 'test.log');
+      const file = path.join(tempDir, 'test1.log');
       const logger = setup({
         level: 'info',
         type: 'file',
@@ -33,7 +38,7 @@ describe('logger', () => {
     });
 
     it('output to file with all levels', async () => {
-      const file = path.join(await mkdtemp(tmpDirPath), 'test.log');
+      const file = path.join(tempDir, 'test2.log');
       const logger = setup({
         level: 'trace',
         type: 'file',

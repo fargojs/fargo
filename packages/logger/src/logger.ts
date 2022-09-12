@@ -1,12 +1,14 @@
 import _debug from 'debug';
-import pino, { Logger } from 'pino';
+import pino from 'pino';
 
 import { ZoteraLoggingConfig } from '@zotera/types';
 
 const debug = _debug('zotera:logger');
 
-export function setup(options: ZoteraLoggingConfig) {
-  let destination = pino.destination(1);
+export type Logger<T = pino.LoggerOptions> = pino.Logger<T>;
+
+export function setup(options: ZoteraLoggingConfig): Logger<pino.LoggerOptions> {
+  let destination: ReturnType<typeof pino.destination>;
   let pinoConfig: pino.LoggerOptions = {
     level: options.level,
     serializers: {
@@ -21,6 +23,7 @@ export function setup(options: ZoteraLoggingConfig) {
     destination = pino.destination(options.destination);
     process.on('SIGUSR2', () => destination.reopen());
   } else {
+    destination = pino.destination(1);
     debug('stdout logging is used');
   }
 
@@ -67,9 +70,10 @@ export function setup(options: ZoteraLoggingConfig) {
   return logger;
 }
 
-let logger: Logger;
+let logger: pino.Logger;
 
-export function initialize(options: ZoteraLoggingConfig) {
+// TODO: Make logger create log files based on time.
+export function initialize(options: ZoteraLoggingConfig): Logger<pino.LoggerOptions> {
   debug('initializing logger');
 
   if (logger) return logger;

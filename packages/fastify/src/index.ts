@@ -15,14 +15,14 @@ import { PluginOptions } from './types';
 
 const plugin: FastifyPluginCallback<PluginOptions> = fplugin(
   async (app: FastifyInstance, options: PluginOptions, next: (error?: FastifyError) => void) => {
-    app.register(configDecorator, options).after(async () => {
-      // This is running after the config decorator is attached.
-      await loadPlugins(app.config);
-    });
-
     app.register(fastifyStatic, {
       root: join(dirname(fileURLToPath(import.meta.url)), 'public'),
       prefix: '/public/'
+    });
+
+    app.register(configDecorator, options).after(async () => {
+      // This is running after the config decorator is attached.
+      await loadPlugins(app.config);
     });
 
     app.register(storageDecorator);
