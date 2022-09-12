@@ -7,7 +7,7 @@ import { createZotera } from '../src';
 let zotera: FastifyInstance | undefined;
 
 beforeAll(async () => {
-  const app = createZotera();
+  const app = await createZotera();
 
   zotera = app;
 

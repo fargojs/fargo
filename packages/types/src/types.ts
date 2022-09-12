@@ -64,12 +64,24 @@ export interface ZoteraPluginWithOptions {
 }
 
 export interface ZoteraLoggingConfig {
+  /**
+   * Output type
+   */
   type: 'stdout' | 'file';
+
+  /**
+   * The path to the log file.
+   * Only used when `type` is `file`.
+   */
   destination?: string;
+
+  /**
+   * The minimum level of log messages to output.
+   */
   level: LogLevel;
 }
 
-export type LogLevel = 'debug' | 'info' | 'warn' | 'warn' | 'fatal';
+export type LogLevel = 'debug' | 'info' | 'warn' | 'error' | 'trace';
 
 export interface ZoteraAuthConfig {
   /**

@@ -38,12 +38,12 @@
   },
   "dependencies": {
     "debug": "^4.3.4",
-    "pino": "^8.1.0",
-    "pino-pretty": "^9.1.0"
+    "pino": "^8.1.0"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
     "@types/node": "^18.0.3",
-    "@zotera/types": "workspace:*"
+    "@zotera/types": "workspace:*",
+    "pino-pretty": "^9.1.0"
   }
 }
