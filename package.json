@@ -44,6 +44,9 @@
     ],
     "packages/*/src/**/*.ts": [
       "eslint --cache --fix"
+    ],
+    "packages/types/src/**/*.ts": [
+      "pnpm run update:build-configuration"
     ]
   }
 }
