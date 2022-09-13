@@ -4,6 +4,10 @@ export * from './storage';
 export * from './auth';
 export * from './manifest';
 
+/**
+ * Zotera Configuration Object
+ * @configuration
+ */
 export interface ZoteraConfig {
   /**
    * The path where the configuration file is located.
@@ -121,7 +125,6 @@ export interface ZoteraStorageConfig {
   provider?: string;
   location?: string;
 }
-
 export interface WebFooterOptions {
   message?: string;
   copyright?: string;

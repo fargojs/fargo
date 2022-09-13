@@ -9,21 +9,24 @@
     "dev": "pnpm -r --parallel --filter=@zotera/* run dev",
     "test": "pnpm -r --parallel --filter=@zotera/* run test",
     "update:dep-versions": "tsx scripts/update-versions.ts",
-    "update:build-configuration": "tsx scripts/build-configuration.ts"
+    "build:configuration-schema": "tsx scripts/build-configuration-schema.ts"
   },
   "license": "MIT",
   "devDependencies": {
     "@luxass/eslint-config": "^1.0.7",
     "@luxass/prettier-config": "^1.0.4",
+    "@types/node": "^18.7.14",
     "eslint": "^8.23.0",
     "lint-staged": "^13.0.3",
     "node-fetch": "^3.2.10",
     "prettier": "^2.7.1",
     "simple-git-hooks": "^2.8.0",
     "tsup": "^6.2.3",
+    "tsutils": "^3.21.0",
     "tsx": "^3.9.0",
     "typescript": "^4.8.2",
-    "vitest": "^0.18.1"
+    "vitest": "^0.18.1",
+    "zod": "^3.19.1"
   },
   "engines": {
     "node": ">=16"
@@ -46,7 +49,7 @@
       "eslint --cache --fix"
     ],
     "packages/types/src/**/*.ts": [
-      "pnpm run update:build-configuration"
+      "pnpm run build:configuration-schema"
     ]
   }
 }

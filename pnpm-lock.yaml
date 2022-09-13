@@ -14,27 +14,33 @@ importers:
     specifiers:
       '@luxass/eslint-config': ^1.0.7
       '@luxass/prettier-config': ^1.0.4
+      '@types/node': ^18.7.14
       eslint: ^8.23.0
       lint-staged: ^13.0.3
       node-fetch: ^3.2.10
       prettier: ^2.7.1
       simple-git-hooks: ^2.8.0
       tsup: ^6.2.3
+      tsutils: ^3.21.0
       tsx: ^3.9.0
       typescript: ^4.8.2
       vitest: ^0.18.1
+      zod: ^3.19.1
     devDependencies:
       '@luxass/eslint-config': 1.0.7_yqf6kl63nyoq5megxukfnom5rm
       '@luxass/prettier-config': 1.0.4_prettier@2.7.1
+      '@types/node': 18.7.14
       eslint: 8.23.0
       lint-staged: 13.0.3
       node-fetch: 3.2.10
       prettier: 2.7.1
       simple-git-hooks: 2.8.0
       tsup: 6.2.3_wroksl3lmlojyxxkqzv5flfpdm_typescript@4.8.2
+      tsutils: 3.21.0_typescript@4.8.2
       tsx: 3.9.0
       typescript: 4.8.2
       vitest: 0.18.1
+      zod: 3.19.1
 
   packages/cli:
     specifiers:
@@ -6215,6 +6221,10 @@ packages:
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  /zod/3.19.1:
+    resolution: {integrity: sha512-LYjZsEDhCdYET9ikFu6dVPGp2YH9DegXjdJToSzD9rO6fy4qiRYFoyEYwps88OseJlPyl2NOe2iJuhEhL7IpEA==}
+    dev: true
 
   /zustand/4.0.0_react@18.2.0:
     resolution: {integrity: sha512-OrsfQTnRXF1LZ9/vR/IqN9ws5EXUhb149xmPjErZnUrkgxS/gAHGy2dPNIVkVvoxrVe1sIydn4JjF0dYHmGeeQ==}
