@@ -70,6 +70,7 @@ export interface ZoteraPluginWithOptions {
 export interface ZoteraLoggingConfig {
   /**
    * Output type
+   * @default 'stdout'
    */
   type: 'stdout' | 'file';
 
@@ -82,6 +83,7 @@ export interface ZoteraLoggingConfig {
 
   /**
    * The minimum level of log messages to output.
+   * @default 'info'
    */
   level: LogLevel;
 }
@@ -91,11 +93,13 @@ export type LogLevel = 'debug' | 'info' | 'warn' | 'error' | 'trace';
 export interface ZoteraAuthConfig {
   /**
    * Should everyone be allowed to download extensions.
+   * @default false
    */
   allowAnonymousDownload?: boolean;
 
   /**
    * Allow users to register.
+   * @default true
    */
   allowRegistration?: boolean;
 

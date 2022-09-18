@@ -12,7 +12,7 @@ export default defineConfig({
   define: {
     __VERSION__: `'${version}'`
   },
-  outExtension({ format }) {
+  outExtension() {
     return {
       js: '.js'
     };
