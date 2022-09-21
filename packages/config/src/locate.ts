@@ -41,5 +41,5 @@ export async function locate(config?: string): Promise<string> {
     return configPath;
   }
 
-  return await writeConfig(configPath);
+  return await writeConfig(path.resolve(paths.config, 'zotera.json'));
 }

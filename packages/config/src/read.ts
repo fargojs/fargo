@@ -15,5 +15,6 @@ export async function readConfiguration(config?: string): Promise<ZoteraConfig> 
 
   const configuration = await parseJSON(location);
   configuration.__location = path.dirname(location);
+
   return configuration;
 }

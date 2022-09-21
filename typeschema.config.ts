@@ -4,6 +4,17 @@ export default defineConfig({
   zod: {
     input: ['packages/types/src/**/*.ts'],
     outputDir: '.',
-    tsconfig: 'tsconfig.json'
+    tsconfig: 'tsconfig.json',
+    jsdoc: {
+      useTags: true
+    }
+  },
+  json: {
+    input: ['packages/types/src/**/*.ts'],
+    outputDir: '.',
+    tsconfig: 'tsconfig.json',
+    jsdoc: {
+      useTags: true
+    }
   }
 });

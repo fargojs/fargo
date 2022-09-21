@@ -14,7 +14,6 @@ export async function createZotera(config?: string | ZoteraConfig): Promise<Fast
 
   let configuration: ZoteraConfig;
 
-  // Read and locate configuration
   if (!config || typeof config === 'string') {
     configuration = await readConfiguration(config);
   } else {

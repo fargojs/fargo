@@ -12,6 +12,8 @@ const debug = _debug('zotera:config');
  * @returns {string} Path to the config file
  */
 export async function writeConfig(loc: string): Promise<string> {
+  console.log(loc);
+
   await mkdir(dirname(loc), { recursive: true });
   debug('Creating config folder at %s', loc);
   const defaultConfiguration = defaultConfig;

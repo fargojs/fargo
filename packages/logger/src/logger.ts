@@ -75,6 +75,7 @@ let logger: pino.Logger;
 // TODO: Make logger create log files based on time.
 export function initialize(options: ZoteraLoggingConfig): Logger<pino.LoggerOptions> {
   debug('initializing logger');
+  console.log(options);
 
   if (logger) return logger;
   logger = setup(options);
