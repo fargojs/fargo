@@ -1,5 +1,5 @@
 import { defineConfig } from 'tsup';
-import PLUGIN from 'typeschema/plugin ';
+import PLUGIN from 'typeschema/plugin';
 
 export default defineConfig({
   entry: ['src/types.ts', 'src/api.ts'],

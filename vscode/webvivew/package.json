@@ -25,15 +25,15 @@
     "url": "https://luxass.dev"
   },
   "dependencies": {
-    "@vscode/webview-ui-toolkit": "^1.0.0",
+    "@vscode/webview-ui-toolkit": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.0.1",
-    "typescript": "^4.6.4",
-    "vite": "^3.0.9"
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "typescript": "^4.8.4",
+    "vite": "^3.2.3"
   }
 }
