@@ -125,7 +125,7 @@ importers:
       '@types/node': 18.11.9
       '@zotera/types': link:../types
 
-  packages/express:
+  packages/integrations/express:
     specifiers:
       '@types/debug': ^4.1.7
       '@types/express': ^4.17.14
@@ -138,9 +138,9 @@ importers:
       debug: ^4.3.4
       express: ^4.18.2
     dependencies:
-      '@zotera/config': link:../config
-      '@zotera/core': link:../core
-      '@zotera/web': link:../web
+      '@zotera/config': link:../../config
+      '@zotera/core': link:../../core
+      '@zotera/web': link:../../web
       debug: 4.3.4
       express: 4.18.2
     devDependencies:
@@ -148,9 +148,9 @@ importers:
       '@types/express': 4.17.14
       '@types/express-serve-static-core': 4.17.31
       '@types/node': 18.11.9
-      '@zotera/types': link:../types
+      '@zotera/types': link:../../types
 
-  packages/fastify:
+  packages/integrations/fastify:
     specifiers:
       '@fastify/static': ^6.5.0
       '@types/debug': ^4.1.7
@@ -164,15 +164,15 @@ importers:
       fastify-plugin: ^4.3.0
     dependencies:
       '@fastify/static': 6.5.0
-      '@zotera/config': link:../config
-      '@zotera/core': link:../core
-      '@zotera/web': link:../web
+      '@zotera/config': link:../../config
+      '@zotera/core': link:../../core
+      '@zotera/web': link:../../web
       debug: 4.3.4
       fastify-plugin: 4.3.0
     devDependencies:
       '@types/debug': 4.1.7
       '@types/node': 18.11.9
-      '@zotera/types': link:../types
+      '@zotera/types': link:../../types
       fastify: 4.9.2
 
   packages/logger:
@@ -205,7 +205,7 @@ importers:
       fastify-plugin: ^4.3.0
     dependencies:
       '@zotera/config': link:../config
-      '@zotera/fastify': link:../fastify
+      '@zotera/fastify': link:../integrations/fastify
       '@zotera/logger': link:../logger
       debug: 4.3.4
       fastify: 4.9.2
