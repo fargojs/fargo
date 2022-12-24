@@ -1,6 +1,6 @@
-import { TextDocument, Uri, Webview, WebviewView, WebviewViewProvider } from 'vscode';
+import type { TextDocument, Uri, Webview, WebviewView, WebviewViewProvider } from "vscode";
 
-import { getNonce, getUri } from '../utils';
+import { getNonce, getUri } from "../utils";
 
 export class SidebarProvider implements WebviewViewProvider {
   _view?: WebviewView;
@@ -26,9 +26,9 @@ export class SidebarProvider implements WebviewViewProvider {
   }
 
   private _getHtmlForWebview(webview: Webview, extensionUri: Uri) {
-    const stylesUri = getUri(webview, extensionUri, ['dist', 'webview', 'assets', 'index.css']);
+    const stylesUri = getUri(webview, extensionUri, ["dist", "webview", "assets", "index.css"]);
 
-    const scriptUri = getUri(webview, extensionUri, ['dist', 'webview', 'assets', 'index.js']);
+    const scriptUri = getUri(webview, extensionUri, ["dist", "webview", "assets", "index.js"]);
     console.log(stylesUri.fsPath);
     console.log(scriptUri.fsPath);
 

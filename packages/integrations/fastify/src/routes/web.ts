@@ -1,10 +1,10 @@
-import { FastifyInstance } from 'fastify';
+import type { FastifyInstance } from "fastify";
 
-import { MimeTypes } from '@zotera/core';
+import { MimeTypes } from "@zotera/core";
 
 export async function web(zotera: FastifyInstance) {
-  if (process.env.NODE_ENV === 'development') {
-    zotera.get('/__zotera_options__', async (_, res) => {
+  if (process.env.NODE_ENV === "development") {
+    zotera.get("/__zotera_options__", async (_, res) => {
       res.type(MimeTypes.JSON).send({
         ...zotera.config.web,
         allowAnonymousDownload: zotera.config.auth.allowAnonymousDownload
@@ -12,12 +12,12 @@ export async function web(zotera: FastifyInstance) {
     });
   }
 
-  zotera.get('/:page', async (_, res) => {
+  zotera.get("/:page", async (_, res) => {
     const options = {
       ...zotera.config.web,
       allowAnonymousDownload: zotera.config.auth.allowAnonymousDownload
     };
-    res.type('text/html').send(/* html */ `
+    res.type("text/html").send(/* html */ `
     <!DOCTYPE html>
     <html lang="en">
       <head>

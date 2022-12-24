@@ -1,34 +1,34 @@
-import _debug from 'debug';
-import { FastifyInstance } from 'fastify';
+import _debug from "debug";
+import type { FastifyInstance } from "fastify";
 
 // import { MimeTypes } from '@zotera/core';
 
-const debug = _debug('zotera:fastify:routes:vsix');
+const debug = _debug("zotera:fastify:routes:vsix");
 
 export async function vsix(zotera: FastifyInstance) {
-  zotera.get('/', async (req, res) => {
+  zotera.get("/", async (req, res) => {
     const { identifier } = req.params as { identifier: string };
 
-    debug('identifier lookup: %s', identifier);
+    debug("identifier lookup: %s", identifier);
 
     const manifest = await zotera.storage.getPackage(identifier);
     // res.type(MimeTypes.VSIX).send(file);
-    return 'vsix indentifier';
+    return "vsix indentifier";
   });
 
-  zotera.get('/:version', async (req) => {
+  zotera.get("/:version", async (req) => {
     const { identifier, version } = req.params as { identifier: string; version: string };
 
-    debug('identifier lookup %s with version %s', identifier, version);
+    debug("identifier lookup %s with version %s", identifier, version);
     // const manifest = await zotera.storage.getPackageByVersion(identifier, version);
-    return 'vsix identifier version';
+    return "vsix identifier version";
   });
 
-  zotera.get('/versions', async (req) => {
+  zotera.get("/versions", async (req) => {
     const { identifier } = req.params as { identifier: string };
 
-    debug('identifier lookup: %s', identifier);
+    debug("identifier lookup: %s", identifier);
     // const versions = await zotera.storage.getPackageVersions(identifier);
-    return 'vsix identifier versions';
+    return "vsix identifier versions";
   });
 }

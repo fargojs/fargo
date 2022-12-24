@@ -1,6 +1,7 @@
-import { ExtensionContext, Uri, commands, extensions, window } from 'vscode';
+import type { ExtensionContext } from "vscode";
+import { Uri, commands, extensions, window } from "vscode";
 
-import { SidebarProvider } from './providers/SidebarProvider';
+import { SidebarProvider } from "./providers/SidebarProvider";
 
 // const SCHEMA = 'zotera';
 
@@ -38,12 +39,12 @@ export async function activate(context: ExtensionContext) {
   const sidebarProvider = new SidebarProvider(context.extensionUri);
 
   context.subscriptions.push(
-    window.registerWebviewViewProvider('vscode-zotera-view', sidebarProvider)
+    window.registerWebviewViewProvider("vscode-zotera-view", sidebarProvider)
   );
 
   context.subscriptions.push(
-    commands.registerCommand('zotera-vscode.install', () => {
-      window.showInformationMessage('Zotera is installed');
+    commands.registerCommand("zotera-vscode.install", () => {
+      window.showInformationMessage("Zotera is installed");
     })
   );
 

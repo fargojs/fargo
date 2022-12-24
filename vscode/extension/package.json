@@ -1,20 +1,36 @@
 {
   "name": "@zotera/vscode-zotera",
   "displayName": "Zotera Explorer",
-  "description": "Install and manage your Zotera Marketplace Extensions",
   "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.67.0"
+  "description": "Install and manage your Zotera Marketplace Extensions",
+  "author": {
+    "name": "Lucas Norgaard",
+    "email": "lucasnrgaard@gmail.com",
+    "url": "https://luxass.dev"
   },
+  "license": "MIT",
+  "homepage": "https://github.com/zotera/zotera/blob/main/vscode/extension#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zotera/zotera",
+    "directory": "vscode/extension"
+  },
+  "bugs": {
+    "url": "https://github.com/zotera/zotera/issues"
+  },
+  "keywords": [],
   "categories": [
     "Other"
   ],
+  "main": "./dist/extension.js",
+  "engines": {
+    "vscode": "^1.67.0"
+  },
   "activationEvents": [
     "onStartupFinished",
     "onCommand:vscode-zotera.install",
     "onView:vscode-zotera.vscode-zotera-view"
   ],
-  "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
@@ -60,24 +76,10 @@
   },
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch"
+    "dev": "tsup --watch",
+    "test": "vitest --run",
+    "lint": "eslint --cache {src,tests}/**/*.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/zotera/zotera",
-    "directory": "vscode/extension"
-  },
-  "keywords": [],
-  "bugs": {
-    "url": "https://github.com/zotera/zotera/issues"
-  },
-  "homepage": "https://github.com/zotera/zotera/blob/main/vscode/extension#readme",
-  "author": {
-    "name": "Lucas Norgaard",
-    "email": "lucasnrgaard@gmail.com",
-    "url": "https://luxass.dev"
-  },
-  "license": "MIT",
   "devDependencies": {
     "@types/vscode": "1.73.0",
     "typescript": "^4.8.4"

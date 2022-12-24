@@ -1,10 +1,10 @@
-import { Suspense } from 'react';
+import { Suspense } from "react";
 
-import Footer from './components/Footer';
-import Header from './components/Header';
-import LoadingSpinner from './components/LoadingSpinner';
-import WebRoutes from './components/WebRoutes';
-import { useZoteraStore } from './stores/useZoteraStore';
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import LoadingSpinner from "./components/LoadingSpinner";
+import WebRoutes from "./components/WebRoutes";
+import { useZoteraStore } from "./stores/useZoteraStore";
 
 export default function App() {
   const zotera = useZoteraStore();

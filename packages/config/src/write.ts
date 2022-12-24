@@ -1,10 +1,10 @@
-import _debug from 'debug';
-import { mkdir, writeFile } from 'node:fs/promises';
-import { dirname } from 'node:path';
+import _debug from "debug";
+import { mkdir, writeFile } from "node:fs/promises";
+import { dirname } from "node:path";
 
-import defaultConfig from './configs/default-config.json';
+import defaultConfig from "./configs/default-config.json";
 
-const debug = _debug('zotera:config');
+const debug = _debug("zotera:config");
 
 /**
  * Creates a configuration file, if it does not exist.
@@ -15,7 +15,7 @@ export async function writeConfig(loc: string): Promise<string> {
   console.log(loc);
 
   await mkdir(dirname(loc), { recursive: true });
-  debug('Creating config folder at %s', loc);
+  debug("Creating config folder at %s", loc);
   const defaultConfiguration = defaultConfig;
   await writeFile(loc, JSON.stringify(defaultConfiguration, null, 2));
 

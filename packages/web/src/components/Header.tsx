@@ -1,18 +1,18 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
-import { Disclosure } from '@headlessui/react';
-import { Icon } from '@iconify/react';
+import { Disclosure } from "@headlessui/react";
+import { Icon } from "@iconify/react";
 
-import { useZoteraStore } from '../stores/useZoteraStore';
-import Searchbar from './Searchbar';
+import { useZoteraStore } from "../stores/useZoteraStore";
+import Searchbar from "./Searchbar";
 
 const links: { value: string; icon: JSX.Element }[] = [
   {
-    value: 'Extensions',
+    value: "Extensions",
     icon: <Icon icon="ph:package" className="w-6 h-6 inline-block" />
   },
   {
-    value: 'Login',
+    value: "Login",
     icon: <Icon icon="ph:user" className="w-6 h-6 inline-block" />
   }
 ];
@@ -78,7 +78,7 @@ export default function Header() {
               </div>
               <Disclosure.Button className="sm:hidden">
                 <span className="sr-only">Open menu</span>
-                <Icon icon={open ? 'ph:x' : 'ph:list'} className="w-6 h-6" />
+                <Icon icon={open ? "ph:x" : "ph:list"} className="w-6 h-6" />
               </Disclosure.Button>
             </div>
             <Disclosure.Panel className="sm:hidden absolute px-2 pt-2 pb-3 w-full bg-gray-50 dark:bg-gray-900">

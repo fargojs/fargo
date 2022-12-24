@@ -1,41 +1,41 @@
-import { join, resolve } from 'node:path';
+import { join, resolve } from "node:path";
 
-import { NeomanGenerator } from '@luxass/neoman';
+import type { NeomanGenerator } from "@luxass/neoman";
 
 export default function StoragePluginGenerator(ctx: {
-  dirname: string;
-  name: string;
-  esbuild: boolean;
-  git: boolean;
-  vitest: boolean;
-  description: string;
-  dep: (dep: string) => string;
+  dirname: string
+  name: string
+  esbuild: boolean
+  git: boolean
+  vitest: boolean
+  description: string
+  dep: (dep: string) => string
 }): NeomanGenerator {
   return {
     destinationRoot: resolve(ctx.name),
-    sourceRoot: join(ctx.dirname, 'templates/storage'),
+    sourceRoot: join(ctx.dirname, "templates/storage"),
     writing({ copy, templatePath, destinationPath, spawn }) {
-      copy(templatePath('../shared/_package.json'), destinationPath('package.json'), ctx);
+      copy(templatePath("../shared/_package.json"), destinationPath("package.json"), ctx);
 
-      copy(templatePath('../shared/tsconfig.json'), destinationPath('tsconfig.json'));
+      copy(templatePath("../shared/tsconfig.json"), destinationPath("tsconfig.json"));
 
-      copy(templatePath('src/plugin.ts'), destinationPath('src/plugin.ts'));
+      copy(templatePath("src/plugin.ts"), destinationPath("src/plugin.ts"));
 
       if (ctx.git) {
-        copy(templatePath('../shared/_gitignore'), destinationPath('.gitignore'));
+        copy(templatePath("../shared/_gitignore"), destinationPath(".gitignore"));
       }
 
       if (ctx.vitest) {
-        copy(templatePath('../shared/vitest.config.ts'), destinationPath('vitest.config.ts'));
-        copy(templatePath('test'), destinationPath('test'));
+        copy(templatePath("../shared/vitest.config.ts"), destinationPath("vitest.config.ts"));
+        copy(templatePath("test"), destinationPath("test"));
       }
 
-      copy(templatePath('../shared/README.md'), destinationPath('README.md'), {
+      copy(templatePath("../shared/README.md"), destinationPath("README.md"), {
         name: ctx.name
       });
 
       if (ctx.git) {
-        spawn('git', ['init', '--quiet']);
+        spawn("git", ["init", "--quiet"]);
       }
     }
   };

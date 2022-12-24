@@ -1,8 +1,24 @@
 {
   "name": "@zotera/cli",
+  "type": "module",
   "version": "0.0.1",
   "description": "Zotera's CLI",
-  "type": "module",
+  "author": {
+    "name": "Lucas Norgaard",
+    "email": "lucasnrgaard@gmail.com",
+    "url": "https://luxass.dev"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/zotera/zotera/blob/main/packages/cli#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zotera/zotera",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/zotera/zotera/issues"
+  },
+  "keywords": [],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -21,23 +37,9 @@
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/zotera/zotera",
-    "directory": "packages/cli"
-  },
-  "keywords": [],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/zotera/zotera/issues"
-  },
-  "homepage": "https://github.com/zotera/zotera/blob/main/packages/cli#readme",
-  "author": {
-    "name": "Lucas Norgaard",
-    "email": "lucasnrgaard@gmail.com",
-    "url": "https://luxass.dev"
+    "dev": "tsup --watch",
+    "test": "vitest --run",
+    "lint": "eslint --cache {src,tests}/**/*.ts"
   },
   "dependencies": {
     "@luxass/neoman": "0.1.6",

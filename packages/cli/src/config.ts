@@ -1,7 +1,7 @@
-import Conf from 'conf';
+import Conf from "conf";
 
 export const config = new Conf({
-  projectName: 'zotera',
-  projectSuffix: '',
-  configName: 'zotera-cli'
+  projectName: "zotera",
+  projectSuffix: "",
+  configName: "zotera-cli"
 });

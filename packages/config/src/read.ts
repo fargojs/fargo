@@ -1,9 +1,9 @@
-import path from 'node:path';
+import path from "node:path";
 
-import { ZoteraConfig } from '@zotera/types';
+import type { ZoteraConfig } from "@zotera/types";
 
-import { fileExtensions, locate } from './locate';
-import { parseJSON } from './parse';
+import { fileExtensions, locate } from "./locate";
+import { parseJSON } from "./parse";
 
 export async function readConfiguration(config?: string): Promise<ZoteraConfig> {
   const location = await locate(config);

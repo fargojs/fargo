@@ -1,11 +1,11 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
-import Error from './Error';
+import Error from "./Error";
 
 export default function Identifier() {
   const { identifier } = useParams();
 
-  if (!identifier?.includes('.')) {
+  if (!identifier?.includes(".")) {
     return <Error />;
   }
 

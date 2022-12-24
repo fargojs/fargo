@@ -1,23 +1,23 @@
-import { FastifyError, FastifyInstance, FastifyPluginCallback } from 'fastify';
-import fplugin from 'fastify-plugin';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import type { FastifyError, FastifyInstance, FastifyPluginCallback } from "fastify";
+import fplugin from "fastify-plugin";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-import fastifyStatic from '@fastify/static';
-import { loadPlugins } from '@zotera/core';
+import fastifyStatic from "@fastify/static";
+import { loadPlugins } from "@zotera/core";
 
-import { authDecorator } from './decorators/auth';
-import { configDecorator } from './decorators/config';
-import { storageDecorator } from './decorators/storage';
-import { routes } from './routes';
-import { ping } from './routes/ping';
-import { PluginOptions } from './types';
+import { authDecorator } from "./decorators/auth";
+import { configDecorator } from "./decorators/config";
+import { storageDecorator } from "./decorators/storage";
+import { routes } from "./routes";
+import { ping } from "./routes/ping";
+import type { PluginOptions } from "./types";
 
 const plugin: FastifyPluginCallback<PluginOptions> = fplugin(
   async (app: FastifyInstance, options: PluginOptions, next: (error?: FastifyError) => void) => {
     app.register(fastifyStatic, {
-      root: join(dirname(fileURLToPath(import.meta.url)), 'public'),
-      prefix: '/public/'
+      root: join(dirname(fileURLToPath(import.meta.url)), "public"),
+      prefix: "/public/"
     });
 
     app.register(configDecorator, options).after(async () => {
@@ -29,14 +29,14 @@ const plugin: FastifyPluginCallback<PluginOptions> = fplugin(
     app.register(authDecorator);
 
     app.register(ping, {
-      prefix: '/-/ping'
+      prefix: "/-/ping"
     });
 
     app.register(routes);
     next();
   },
   {
-    name: 'zotera'
+    name: "zotera"
   }
 );
 

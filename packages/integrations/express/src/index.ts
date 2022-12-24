@@ -1,10 +1,10 @@
-import express from 'express';
+import express from "express";
 
-import { AuthManager, StorageManager } from '@zotera/core';
-import { ZoteraConfig } from '@zotera/types';
+import { AuthManager, StorageManager } from "@zotera/core";
+import type { ZoteraConfig } from "@zotera/types";
 
-import { ping } from './routes/ping';
-import { MiddlewareOptions } from './types';
+import { ping } from "./routes/ping";
+import type { MiddlewareOptions } from "./types";
 
 const zoteraRouter = async (options: MiddlewareOptions) => {
   const router = express.Router();

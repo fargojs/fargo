@@ -1,10 +1,10 @@
-import { Command } from 'commander';
+import { Command } from "commander";
 
-import { config } from '../../config';
+import { config } from "../../config";
 
-export const login = new Command('login').action(() => {
-  config.set('foo', 'bar');
-  console.log(config.get('foo'));
+export const login = new Command("login").action(() => {
+  config.set("foo", "bar");
+  console.log(config.get("foo"));
 
-  console.log('This is not implemented yet.');
+  console.log("This is not implemented yet.");
 });

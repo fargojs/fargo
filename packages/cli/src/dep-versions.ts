@@ -5,10 +5,10 @@
 
 // This needs to be exported because it's used in update-versions.ts script.
 export const depVersions: Record<string, string> = {
-  esbuild: '0.15.7',
-  vitest: '0.23.1',
-  fastify: '4.5.3',
-  typescript: '4.8.3',
-  '@zotera/types': '0.0.1',
-  '@types/express': '4.17.13'
+  "esbuild": "0.15.7",
+  "vitest": "0.23.1",
+  "fastify": "4.5.3",
+  "typescript": "4.8.3",
+  "@zotera/types": "0.0.1",
+  "@types/express": "4.17.13"
 };

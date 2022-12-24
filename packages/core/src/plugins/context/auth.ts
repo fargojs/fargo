@@ -1,6 +1,7 @@
-import { ZoteraAuthContext, ZoteraStorageContext } from '@zotera/types/api';
+import type { ZoteraAuthContext } from "@zotera/types/api";
+import { ZoteraStorageContext } from "@zotera/types/api";
 
-import { AuthManager } from '../../auth';
+import { AuthManager } from "../../auth";
 
 export const authContext: ZoteraAuthContext = {
   register: (id, auth) => {

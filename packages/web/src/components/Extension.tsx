@@ -1,10 +1,10 @@
 interface ExtensionProps {
-  name: string;
-  version: string;
-  author: string;
-  description: string;
-  license: string;
-  homepage: string;
+  name: string
+  version: string
+  author: string
+  description: string
+  license: string
+  homepage: string
 }
 
 export default function Extension(props: Partial<ExtensionProps>) {

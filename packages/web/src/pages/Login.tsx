@@ -1,6 +1,6 @@
-import { FormEvent } from 'react';
+import type { FormEvent } from "react";
 
-import { useZoteraStore } from '../stores/useZoteraStore';
+import { useZoteraStore } from "../stores/useZoteraStore";
 
 export default function Login() {
   const zotera = useZoteraStore();
