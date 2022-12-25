@@ -15,8 +15,10 @@ import type { PluginOptions } from "./types";
 
 const plugin: FastifyPluginCallback<PluginOptions> = fplugin(
   async (app: FastifyInstance, options: PluginOptions, next: (error?: FastifyError) => void) => {
+    console.log(join(dirname(fileURLToPath(import.meta.url)), "../public"));
+
     app.register(fastifyStatic, {
-      root: join(dirname(fileURLToPath(import.meta.url)), "public"),
+      root: join(dirname(fileURLToPath(import.meta.url)), "../public"),
       prefix: "/public/"
     });
 

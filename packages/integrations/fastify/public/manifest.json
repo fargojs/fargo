@@ -1,0 +1,62 @@
+{
+  "index.html": {
+    "file": "index.js",
+    "src": "index.html",
+    "isEntry": true,
+    "dynamicImports": [
+      "src/pages/Home.tsx",
+      "src/pages/Login.tsx",
+      "src/pages/Extensions.tsx",
+      "src/pages/Identifier.tsx",
+      "src/pages/Error.tsx"
+    ],
+    "css": [
+      "index.css"
+    ]
+  },
+  "src/pages/Home.tsx": {
+    "file": "Home.js",
+    "src": "src/pages/Home.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/pages/Login.tsx": {
+    "file": "Login.js",
+    "src": "src/pages/Login.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/pages/Extensions.tsx": {
+    "file": "Extensions.js",
+    "src": "src/pages/Extensions.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/pages/Identifier.tsx": {
+    "file": "Identifier.js",
+    "src": "src/pages/Identifier.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "src/pages/Error.tsx"
+    ]
+  },
+  "src/pages/Error.tsx": {
+    "file": "Error.js",
+    "src": "src/pages/Error.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "index.css": {
+    "file": "index.css",
+    "src": "index.css"
+  }
+}

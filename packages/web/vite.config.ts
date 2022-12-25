@@ -45,7 +45,7 @@ export default defineConfig(async ({ mode }) => {
       }
     },
     build: {
-      outDir: '../fastify/dist/public',
+      outDir: '../integrations/fastify/public',
       manifest: true,
       rollupOptions: {
         output: {
