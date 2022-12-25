@@ -14,7 +14,10 @@
       "path": "../config"
     },
     {
-      "path": "../fastify"
+      "path": "../integrations/fastify"
+    },
+    {
+      "path": "../logger"
     }
   ]
 }

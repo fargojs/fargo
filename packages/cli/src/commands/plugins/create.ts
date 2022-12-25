@@ -1,36 +1,36 @@
-import { Command, Option } from 'commander';
-import inquirer from 'inquirer';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { Command, Option } from "commander";
+import inquirer from "inquirer";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-import { createEnvironment } from '@luxass/neoman';
+import { createEnvironment } from "@luxass/neoman";
 
-import { depVersions } from '../../dep-versions';
-import AuthPluginGenerator from '../../generators/auth';
-import RoutingPluginGenerator from '../../generators/routing';
-import StoragePluginGenerator from '../../generators/storage';
+import { depVersions } from "../../dep-versions";
+import AuthPluginGenerator from "../../generators/auth";
+import RoutingPluginGenerator from "../../generators/routing";
+import StoragePluginGenerator from "../../generators/storage";
 
-const pluginTypes = ['storage', 'auth', 'routing'];
+const pluginTypes = ["storage", "auth", "routing"];
 
-const typeOption = new Option('-t, --type [type]', 'type of plugin').choices(pluginTypes);
+const typeOption = new Option("-t, --type [type]", "type of plugin").choices(pluginTypes);
 
-export const create = new Command('create')
-  .description('Create a plugin')
+export const create = new Command("create")
+  .description("Create a plugin")
   .addOption(typeOption)
-  .option('-n, --name [name]', 'name of the plugin')
-  .option('--esbuild', 'use esbuild')
-  .option('--git', 'use git')
-  .option('--vitest', 'use vitest')
-  .option('-f, --framework [name]', 'framework for routing')
+  .option("-n, --name [name]", "name of the plugin")
+  .option("--esbuild", "use esbuild")
+  .option("--git", "use git")
+  .option("--vitest", "use vitest")
+  .option("-f, --framework [name]", "framework for routing")
   .action(async () => {
     let { type, name, esbuild, git, vitest, framework } = create.opts();
     if (!type) {
       type = await (
         await inquirer.prompt([
           {
-            type: 'list',
-            name: 'type',
-            message: 'What type of plugin would you like to create?',
+            type: "list",
+            name: "type",
+            message: "What type of plugin would you like to create?",
             choices: pluginTypes
           }
         ])
@@ -40,12 +40,12 @@ export const create = new Command('create')
     if (!name) {
       name = await (
         await inquirer.prompt({
-          name: 'name',
-          message: 'What is the name of the plugin?',
-          type: 'text',
+          name: "name",
+          message: "What is the name of the plugin?",
+          type: "text",
           validate: (input: string) => {
             if (!input || input.trim().length === 0) {
-              return 'Please enter a name';
+              return "Please enter a name";
             }
             return true;
           }
@@ -55,19 +55,19 @@ export const create = new Command('create')
 
     const description = await (
       await inquirer.prompt({
-        name: 'description',
-        message: 'What is the description of your plugin?',
-        type: 'text',
-        default: 'A plugin for zotera'
+        name: "description",
+        message: "What is the description of your plugin?",
+        type: "text",
+        default: "A plugin for zotera"
       })
     ).description;
 
     if (!esbuild) {
       esbuild = await (
         await inquirer.prompt({
-          name: 'esbuild',
-          message: 'Use esbuild as buildtool?',
-          type: 'confirm'
+          name: "esbuild",
+          message: "Use esbuild as buildtool?",
+          type: "confirm"
         })
       ).esbuild;
     }
@@ -75,9 +75,9 @@ export const create = new Command('create')
     if (!git) {
       git = await (
         await inquirer.prompt({
-          name: 'git',
-          message: 'Initialize a git repository?',
-          type: 'confirm'
+          name: "git",
+          message: "Initialize a git repository?",
+          type: "confirm"
         })
       ).git;
     }
@@ -85,20 +85,20 @@ export const create = new Command('create')
     if (!vitest) {
       vitest = await (
         await inquirer.prompt({
-          name: 'vitest',
-          message: 'Use vitest for testing?',
-          type: 'confirm'
+          name: "vitest",
+          message: "Use vitest for testing?",
+          type: "confirm"
         })
       ).vitest;
     }
 
-    if (type === 'routing') {
+    if (type === "routing") {
       framework = await (
         await inquirer.prompt({
-          type: 'list',
-          name: 'framework',
-          message: 'What type of http framework would you like to use?',
-          choices: ['express', 'fastify']
+          type: "list",
+          name: "framework",
+          message: "What type of http framework would you like to use?",
+          choices: ["express", "fastify"]
         })
       ).framework;
     }
@@ -121,9 +121,9 @@ export const create = new Command('create')
       framework
     });
 
-    neomanEnv.register('zotera:plugin:auth', AuthPluginGenerator);
-    neomanEnv.register('zotera:plugin:storage', StoragePluginGenerator);
-    neomanEnv.register('zotera:plugin:routing', RoutingPluginGenerator);
+    neomanEnv.register("zotera:plugin:auth", AuthPluginGenerator);
+    neomanEnv.register("zotera:plugin:storage", StoragePluginGenerator);
+    neomanEnv.register("zotera:plugin:routing", RoutingPluginGenerator);
 
     neomanEnv.run(`zotera:plugin:${type}`);
   });

@@ -2,9 +2,22 @@
   "name": "@zotera/types",
   "version": "0.0.1",
   "description": "zotera type definitions",
-  "main": "./dist/types.d.ts",
-  "module": "./dist/types.d.ts",
-  "types": "./dist/types.d.ts",
+  "author": {
+    "name": "Lucas Norgaard",
+    "email": "lucasnrgaard@gmail.com",
+    "url": "https://luxass.dev"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/zotera/zotera/blob/main/packages/types#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zotera/zotera",
+    "directory": "packages/types"
+  },
+  "bugs": {
+    "url": "https://github.com/zotera/zotera/issues"
+  },
+  "keywords": [],
   "exports": {
     ".": {
       "types": "./dist/types.d.ts",
@@ -17,6 +30,9 @@
       "import": "./dist/api.d.ts"
     }
   },
+  "main": "./dist/types.d.ts",
+  "module": "./dist/types.d.ts",
+  "types": "./dist/types.d.ts",
   "typesVersions": {
     "*": {
       "api": [
@@ -29,18 +45,8 @@
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch"
-  },
-  "repository": "https://github.com/zotera/zotera/blob/main/packages/types",
-  "keywords": [],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/zotera/zotera/issues"
-  },
-  "homepage": "https://github.com/zotera/zotera/blob/main/packages/types#readme",
-  "author": {
-    "name": "Lucas Norgaard",
-    "email": "lucasnrgaard@gmail.com",
-    "url": "https://luxass.dev"
+    "dev": "tsup --watch",
+    "test": "vitest --run",
+    "lint": "eslint --cache {src,tests}/**/*.ts"
   }
 }

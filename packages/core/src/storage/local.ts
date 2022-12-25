@@ -1,4 +1,4 @@
-import { ExtensionManifest, ZoteraStorage } from '@zotera/types';
+import type { ExtensionManifest, ZoteraStorage } from "@zotera/types";
 
 // Used when storage entry point is not set, e.g. default configuration
 export class LocalStorage implements ZoteraStorage {
@@ -7,7 +7,7 @@ export class LocalStorage implements ZoteraStorage {
   async init() {}
 
   async search(): Promise<any> {
-    return '';
+    return "";
   }
 
   getPackages(): Promise<ExtensionManifest[]> {
@@ -19,26 +19,26 @@ export class LocalStorage implements ZoteraStorage {
     version?: string | undefined
   ): Promise<ExtensionManifest | undefined> {
     return {
-      name: '',
-      identifier: '',
-      version: '',
-      description: '',
-      readme: '',
-      displayName: '',
+      name: "",
+      identifier: "",
+      version: "",
+      description: "",
+      readme: "",
+      displayName: "",
       categories: [],
-      icon: '',
-      releasedOn: '',
-      lastUpdated: '',
-      license: '',
-      repository: 'tt'
+      icon: "",
+      releasedOn: "",
+      lastUpdated: "",
+      license: "",
+      repository: "tt"
     };
   }
 
   async getPackageVersions(identifier: string): Promise<string[]> {
-    throw new Error('Method not implemented.');
+    throw new Error("Method not implemented.");
   }
 
   addPackage(identifier: string): Promise<void> {
-    throw new Error('Method not implemented.');
+    throw new Error("Method not implemented.");
   }
 }

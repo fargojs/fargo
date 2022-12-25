@@ -1,30 +1,45 @@
-import _debug from 'debug';
-import envPaths from 'env-paths';
-import path from 'path';
+import _debug from "debug";
+import envPaths from "env-paths";
+import { statSync } from "node:fs";
+import path from "node:path";
 
-import { writeConfig } from './create';
-import { fileExists } from './utils';
+import { writeConfig } from "./write";
 
-const CONFIG_FILE_NAME = 'zotera.yaml';
-const debug = _debug('zotera:config:locate');
+const debug = _debug("zotera:config:locate");
+export const fileExtensions = [".json", ".json5", ".jsonc"];
+function findConfigurationFile(dir: string): string {
+  for (const ext of fileExtensions) {
+    const configPath = path.join(dir, `zotera${ext}`);
+    if (fileExists(configPath)) {
+      return configPath;
+    }
+  }
+}
 
-export function locate(config?: string): string {
+function fileExists(path: string): boolean {
+  try {
+    const stat = statSync(path);
+    return stat.isFile();
+  } catch (err) {
+    return false;
+  }
+}
+
+export async function locate(config?: string): Promise<string> {
   if (config) {
     return path.resolve(config);
   }
 
-  const paths = envPaths('zotera', {
-    suffix: ''
+  const paths = envPaths("zotera", {
+    suffix: ""
   });
 
-  const configPath = path.resolve(paths.config, CONFIG_FILE_NAME);
+  const configPath = findConfigurationFile(paths.config);
 
-  const existingConfig = fileExists(configPath);
-
-  if (existingConfig) {
-    debug('Found config file at %s', configPath);
+  if (configPath) {
+    debug("Found config file at %s", configPath);
     return configPath;
   }
 
-  return writeConfig(configPath);
+  return await writeConfig(path.resolve(paths.config, "zotera.json"));
 }

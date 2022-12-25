@@ -1,8 +1,24 @@
 {
   "name": "@zotera/cli",
-  "version": "0.0.1",
-  "description": "",
   "type": "module",
+  "version": "0.0.1",
+  "description": "Zotera's CLI",
+  "author": {
+    "name": "Lucas Norgaard",
+    "email": "lucasnrgaard@gmail.com",
+    "url": "https://luxass.dev"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/zotera/zotera/blob/main/packages/cli#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zotera/zotera",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/zotera/zotera/issues"
+  },
+  "keywords": [],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -21,36 +37,26 @@
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch"
-  },
-  "repository": "https://github.com/zotera/zotera/blob/main/packages/cli",
-  "keywords": [],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/zotera/zotera/issues"
-  },
-  "homepage": "https://github.com/zotera/zotera/blob/main/packages/cli#readme",
-  "author": {
-    "name": "Lucas Norgaard",
-    "email": "lucasnrgaard@gmail.com",
-    "url": "https://luxass.dev"
+    "dev": "tsup --watch",
+    "test": "vitest --run",
+    "lint": "eslint --cache {src,tests}/**/*.ts"
   },
   "dependencies": {
     "@luxass/neoman": "0.1.6",
     "@zotera/config": "workspace:*",
     "@zotera/core": "workspace:*",
     "@zotera/server": "workspace:*",
-    "commander": "^9.4.0",
+    "commander": "^9.4.1",
     "conf": "^10.2.0",
-    "inquirer": "9.1.0",
+    "inquirer": "9.1.4",
     "joycon": "^3.1.1"
   },
   "devDependencies": {
-    "@types/inquirer": "^9.0.1",
-    "@types/node": "^18.0.3",
-    "@zotera/types": "workspace:^0.0.1",
-    "chalk": "^5.0.1",
-    "esbuild": "^0.14.49",
-    "esbuild-plugin-copy": "^1.3.0"
+    "@types/inquirer": "^9.0.3",
+    "@types/node": "^18.11.9",
+    "@zotera/types": "workspace:*",
+    "chalk": "^5.1.2",
+    "esbuild": "^0.15.13",
+    "esbuild-plugin-copy": "^1.6.0"
   }
 }

@@ -1,6 +1,6 @@
 interface FooterProps {
-  message: string;
-  copyright: string;
+  message: string
+  copyright: string
 }
 
 export default function Footer({ message, copyright }: FooterProps) {

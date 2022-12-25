@@ -1,19 +1,19 @@
-import chalk from 'chalk';
-import { Command } from 'commander';
-import inquirer from 'inquirer';
-import fetch from 'node-fetch';
+import chalk from "chalk";
+import { Command } from "commander";
+import inquirer from "inquirer";
+import fetch from "node-fetch";
 
-import { loadZoteraRC } from '../../rc';
+import { loadZoteraRC } from "../../rc";
 
-export const register = new Command('register')
-  .option('-r, --registry <url>', 'Zotera Registry URL')
-  .description('Register an account to a Zotera Registry')
+export const register = new Command("register")
+  .option("-r, --registry <url>", "Zotera Registry URL")
+  .description("Register an account to a Zotera Registry")
   .action(async () => {
     const rc = await loadZoteraRC();
     let registry = register.opts().registry;
 
     if (!rc && !registry) {
-      console.error('No zotera registry url specified');
+      console.error("No zotera registry url specified");
       return;
     }
 
@@ -22,24 +22,24 @@ export const register = new Command('register')
     }
 
     const { username } = await inquirer.prompt({
-      name: 'username',
-      message: 'Username',
-      type: 'text'
+      name: "username",
+      message: "Username",
+      type: "text"
     });
 
     const { password } = await inquirer.prompt({
-      name: 'password',
-      message: 'Password',
-      type: 'password'
+      name: "password",
+      message: "Password",
+      type: "password"
     });
 
     try {
       const response = await fetch(`${registry}/-/auth/register`, {
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify({ username, password }),
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
+          "Accept": "application/json",
+          "Content-Type": "application/json"
         }
       });
 
@@ -49,10 +49,10 @@ export const register = new Command('register')
         throw new Error(JSON.stringify(data));
       }
 
-      console.log(chalk.green('Successfully registered'));
+      console.log(chalk.green("Successfully registered"));
     } catch (e) {
-      console.error(`\n${chalk.red(chalk.bold(chalk.inverse(' Unhandled Error ')))}`);
+      console.error(`\n${chalk.red(chalk.bold(chalk.inverse(" Unhandled Error ")))}`);
       console.error(e);
-      console.error('\n\n');
+      console.error("\n\n");
     }
   });

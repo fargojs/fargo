@@ -1,17 +1,17 @@
-import AdmZip from 'adm-zip';
-import { promises as fs } from 'fs';
-import path from 'path';
+import AdmZip from "adm-zip";
+import { readFile, stat } from "node:fs/promises";
+import path from "node:path";
 
 interface PluginFile {
-  path: string;
-  localPath: string;
+  path: string
+  localPath: string
 }
 
 interface PluginManifest {
-  name: string;
-  version: string;
-  main?: string;
-  module?: string;
+  name: string
+  version: string
+  main?: string
+  module?: string
 }
 
 /**
@@ -20,17 +20,16 @@ interface PluginManifest {
  * @returns {Promise<PluginManifest>} The plugin manifest
  */
 export async function readManifest(dir: string): Promise<PluginManifest> {
-  const manifestPath = path.join(dir, 'package.json');
+  const manifestPath = path.join(dir, "package.json");
 
-  const manifest = await fs
-    .readFile(manifestPath, 'utf8')
+  const manifest = await readFile(manifestPath, "utf8")
     .catch(() => Promise.reject(new Error(`Could not find manifest at ${manifestPath}`)))
     .then<PluginManifest>((content) => {
       try {
         return Promise.resolve(JSON.parse(content));
       } catch (e) {
         return Promise.reject(
-          // eslint-disable-next-line @typescript-eslint/quotes
+
           new Error("Error parsing 'package.json' manifest file: not a valid JSON file.")
         );
       }
@@ -48,12 +47,12 @@ export async function pack(manifest: PluginManifest, out?: string) {
   const cwd = process.cwd();
   const files: PluginFile[] = [
     {
-      localPath: path.join(cwd, 'package.json'),
-      path: ''
+      localPath: path.join(cwd, "package.json"),
+      path: ""
     },
     {
-      localPath: path.join(cwd, manifest.main || manifest.module || 'dist/plugin.js'),
-      path: '/dist'
+      localPath: path.join(cwd, manifest.main || manifest.module || "dist/plugin.js"),
+      path: "/dist"
     }
   ];
 
@@ -78,7 +77,7 @@ async function getOutput(manifest: PluginManifest, out?: string): Promise<string
   }
 
   try {
-    const _stat = await fs.stat(out);
+    const _stat = await stat(out);
 
     if (_stat.isDirectory()) {
       return path.join(out, `${manifest.name}.zop`);
@@ -95,8 +94,8 @@ async function getOutput(manifest: PluginManifest, out?: string): Promise<string
  * @param {String} location path to the zip file
  */
 export function unpack(file: string, location: string) {
-  if (path.extname(file) !== '.zop') {
-    throw new Error('Not a .zop file');
+  if (path.extname(file) !== ".zop") {
+    throw new Error("Not a .zop file");
   }
   const zip = new AdmZip(file);
   zip.extractAllTo(location);

@@ -1,15 +1,13 @@
-import { readFileSync } from 'fs';
-import YAML from 'js-yaml';
-import JSON5 from 'json5';
+import { readFile } from "node:fs/promises";
+import strip from "strip-json-comments";
 
-import type { ZoteraConfig } from '@zotera/types';
+import type { ZoteraConfig } from "@zotera/types";
 
-export function parseYAML(config: string): ZoteraConfig {
-  const yaml = YAML.load(readFileSync(config, 'utf8')) as ZoteraConfig;
-  return yaml;
-}
-
-export function parseJSON(config: string): ZoteraConfig {
-  const json = JSON5.parse<ZoteraConfig>(readFileSync(config, 'utf8'));
-  return json;
+export async function parseJSON(path: string): Promise<ZoteraConfig> {
+  try {
+    // eslint-disable-next-line no-new-func
+    return new Function(`return ${strip(await readFile(path, "utf8")).trim()}`)();
+  } catch (e) {
+    return {} as ZoteraConfig;
+  }
 }

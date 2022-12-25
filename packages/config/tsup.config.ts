@@ -1,7 +1,5 @@
 import { defineConfig } from 'tsup';
 
-import YAMLPlugin from '@zotera/esbuild-yaml';
-
 export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm'],
@@ -12,10 +10,5 @@ export default defineConfig({
     return {
       js: '.js'
     };
-  },
-  esbuildPlugins: [
-    YAMLPlugin({
-      output: 'text'
-    })
-  ]
+  }
 });

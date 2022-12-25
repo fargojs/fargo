@@ -1,25 +1,20 @@
-import path from 'path';
+import path from "node:path";
 
-import { ZoteraConfig } from '@zotera/types';
+import type { ZoteraConfig } from "@zotera/types";
 
-import { locate } from './locate';
-import { parseJSON, parseYAML } from './parse';
+import { fileExtensions, locate } from "./locate";
+import { parseJSON } from "./parse";
 
-export function readConfiguration(config?: string): ZoteraConfig {
-  let configuration: ZoteraConfig;
-
-  const location = locate(config);
+export async function readConfiguration(config?: string): Promise<ZoteraConfig> {
+  const location = await locate(config);
   const fileType = path.extname(location);
 
-  if (fileType !== '.yaml' && fileType !== '.json') {
+  if (!fileExtensions.includes(fileType)) {
     throw new Error(`Invalid configuration file type: ${fileType}`);
   }
 
-  if (fileType === '.yaml') {
-    configuration = parseYAML(location);
-  } else {
-    configuration = parseJSON(location);
-  }
+  const configuration = await parseJSON(location);
   configuration.__location = path.dirname(location);
+
   return configuration;
 }

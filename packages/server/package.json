@@ -1,48 +1,52 @@
 {
   "name": "@zotera/server",
-  "version": "0.0.1",
-  "description": "Zotera Server",
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "version": "0.0.1",
+  "description": "Zotera standalone server",
+  "author": {
+    "name": "Lucas Norgaard",
+    "email": "lucasnrgaard@gmail.com",
+    "url": "https://luxass.dev"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/zotera/zotera/blob/main/packages/server#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zotera/zotera",
+    "directory": "packages/server"
+  },
+  "bugs": {
+    "url": "https://github.com/zotera/zotera/issues"
+  },
+  "keywords": [],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     }
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "test": "vitest run"
-  },
-  "repository": "https://github.com/zotera/zotera/blob/main/packages/server",
-  "keywords": [],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/zotera/zotera/issues"
-  },
-  "homepage": "https://github.com/zotera/zotera/blob/main/packages/server#readme",
-  "author": {
-    "name": "Lucas Norgaard",
-    "email": "lucasnrgaard@gmail.com",
-    "url": "https://luxass.dev"
+    "test": "vitest --run",
+    "lint": "eslint --cache {src,tests}/**/*.ts"
   },
   "dependencies": {
     "@zotera/config": "workspace:*",
     "@zotera/fastify": "workspace:*",
     "debug": "^4.3.4",
-    "fastify": "^4.2.0",
-    "fastify-plugin": "^4.0.0",
-    "pino": "^8.1.0"
+    "fastify": "^4.9.2",
+    "fastify-plugin": "^4.3.0"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
-    "@types/node": "^18.0.3",
+    "@types/node": "^18.11.9",
     "@zotera/types": "workspace:*"
   }
 }

@@ -1,6 +1,6 @@
-import { debounce } from 'debounce';
+import { debounce } from "debounce";
 
-import { Icon } from '@iconify/react';
+import { Icon } from "@iconify/react";
 
 export default function Searchbar() {
   return (

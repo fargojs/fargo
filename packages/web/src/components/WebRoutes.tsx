@@ -1,11 +1,11 @@
-import { lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { lazy } from "react";
+import { Route, Routes } from "react-router-dom";
 
-const Home = lazy(() => import('../pages/Home'));
-const Login = lazy(() => import('../pages/Login'));
-const Extensions = lazy(() => import('../pages/Extensions'));
-const Identifier = lazy(() => import('../pages/Identifier'));
-const Error = lazy(() => import('../pages/Error'));
+const Home = lazy(() => import("../pages/Home"));
+const Login = lazy(() => import("../pages/Login"));
+const Extensions = lazy(() => import("../pages/Extensions"));
+const Identifier = lazy(() => import("../pages/Identifier"));
+const Error = lazy(() => import("../pages/Error"));
 
 export default function WebRoutes() {
   return (

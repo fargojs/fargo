@@ -1,3 +1,7 @@
-<h1 align="center">Zotera</h1>
+# @zotera/web
 
-A private marketplace for your VSIX extensions
+> Zotera Web Client
+
+## License
+
+MIT
