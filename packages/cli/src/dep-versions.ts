@@ -11,4 +11,5 @@ export const depVersions: Record<string, string> = {
   "typescript": "4.8.3",
   "@zotera/types": "0.0.1",
   "@types/express": "4.17.13"
+  '@zotera/types': '0.0.1',
 };
