@@ -32,14 +32,6 @@
     "zod": "^3.19.1"
   },
   "workspaces": [
-    "apps/*",
-    "packages/*",
-    "vscode/*"
-  ],
-  "pnpm": {
-    "patchedDependencies": {
-      "tsup@6.4.0": "patches/tsup@6.4.0.patch",
-      "vite@3.2.3": "patches/vite@3.2.3.patch"
-    }
-  }
+    "packages/**/*"
+  ]
 }

@@ -1,0 +1,16 @@
+[package]
+name = "zotera_config"
+version = "0.0.1"
+edition = "2021"
+authors = ["Lucas Nørgård"]
+license = "MIT"
+repository = "https://github.com/zotera/zotera"
+description = "Zotera config"
+
+[dependencies]
+log = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.5"
+thiserror = "1.0"
+anyhow = "1.0"

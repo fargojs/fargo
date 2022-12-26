@@ -1,0 +1,23 @@
+[package]
+name = "zotera_server"
+version = "0.0.1"
+edition = "2021"
+authors = ["Lucas Nørgård"]
+license = "MIT"
+repository = "https://github.com/zotera/zotera"
+description = "Zotera server"
+
+[dependencies]
+zotera_config = { path = "../config" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+anyhow = "1.0"
+zotera_actix = { path = "../integrations/actix", optional = true }
+zotera_axum = { path = "../integrations/axum", optional = true }
+
+
+
+[features]
+actix = ["dep:zotera_actix"]
+axum = ["dep:zotera_axum"]

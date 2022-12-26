@@ -1,0 +1,12 @@
+[workspace]
+members = [
+  "crates/core",
+  "crates/server",
+  "crates/config",
+  "crates/api",
+  "crates/cli",
+
+  # Integrations
+  "crates/integrations/actix",
+  "crates/integrations/axum",
+]
