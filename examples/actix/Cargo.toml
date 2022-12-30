@@ -1,0 +1,17 @@
+[package]
+name = "zotera_example_actix"
+
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+
+[[example]]
+name = "actix"
+path = "src/main.rs"
+
+[dependencies]
+zotera_server = { path = "../../crates/zotera-server" }
+actix-web = { version = "4" }

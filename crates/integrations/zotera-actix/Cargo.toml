@@ -1,12 +1,13 @@
 [package]
-name = "zotera_axum"
+name = "zotera_actix"
 version = "0.0.1"
 edition = "2021"
 authors = ["Lucas Nørgård"]
 license = "MIT"
 repository = "https://github.com/zotera/zotera"
-description = "Axum integration for Zotera"
+description = "Actix Web integration for Zotera"
 
 [dependencies]
-axum = {version="0.6", features=["macros"]}
+zotera = { path = "../../zotera" }
+actix-web = "4"
 tokio = { version = "1.0", features = ["full"] }

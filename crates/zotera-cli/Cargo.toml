@@ -17,5 +17,3 @@ clap = { version = "4", features = ["derive"] }
 dialoguer = "0.10"
 log = "0.4"
 env_logger = "0.10"
-zotera_config = { path = "../config" }
-zotera_server = { path = "../server", features = ["axum"] }

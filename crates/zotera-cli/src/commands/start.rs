@@ -1,5 +1,5 @@
 use clap::Parser;
-use zotera_server::create_zotera;
+// use zotera_server::ZoteraServer;
 
 #[derive(Parser)]
 pub struct StartOptions {
@@ -16,14 +16,13 @@ pub struct StartOptions {
 impl super::CommandRunner for StartOptions {
   fn run(&self) -> anyhow::Result<()> {
     log::info!("Starting server on {}:{}", self.host, self.port);
-    let config = if let Some(config_path) = &self.config {
-      zotera_config::Config::from_file(config_path)?
-    } else {
-      zotera_config::Config::new()
-    };
-    log::info!("Config: {:?}", config);
-    let zotera = create_zotera(config);
-    
+    // let config = if let Some(config_path) = &self.config {
+    //   zotera_config::Config::from_file(config_path)?
+    // } else {
+    //   zotera_config::Config::new()
+    // };
+    // log::info!("Config: {:?}", config);
+
     Ok(())
   }
 }

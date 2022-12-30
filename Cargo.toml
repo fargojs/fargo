@@ -1,12 +1,14 @@
 [workspace]
 members = [
-  "crates/core",
-  "crates/server",
+  "crates/zotera",
+  "crates/zotera-server",
   "crates/config",
-  "crates/api",
-  "crates/cli",
+  "crates/zotera-cli",
 
   # Integrations
-  "crates/integrations/actix",
-  "crates/integrations/axum",
+  "crates/integrations/zotera-actix",
+  "crates/integrations/zotera-axum",
+
+  # Examples
+  "examples/actix"
 ]

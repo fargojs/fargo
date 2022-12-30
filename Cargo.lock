@@ -1681,16 +1681,25 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c394b5bd0c6f669e7275d9c20aa90ae064cb22e75a1cad54e1b34088034b149f"
 
 [[package]]
+name = "zotera"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "log",
+ "serde",
+ "serde_json",
+ "thiserror",
+ "toml",
+]
+
+[[package]]
 name = "zotera_actix"
 version = "0.0.1"
 dependencies = [
  "actix-web",
  "tokio",
+ "zotera",
 ]
-
-[[package]]
-name = "zotera_api"
-version = "0.0.1"
 
 [[package]]
 name = "zotera_axum"
@@ -1698,6 +1707,7 @@ version = "0.0.1"
 dependencies = [
  "axum",
  "tokio",
+ "zotera",
 ]
 
 [[package]]
@@ -1709,8 +1719,6 @@ dependencies = [
  "dialoguer",
  "env_logger",
  "log",
- "zotera_config",
- "zotera_server",
 ]
 
 [[package]]
@@ -1726,23 +1734,24 @@ dependencies = [
 ]
 
 [[package]]
-name = "zotera_core"
-version = "0.0.1"
+name = "zotera_example_actix"
+version = "0.1.0"
 dependencies = [
- "zotera_config",
+ "actix-web",
+ "zotera_server",
 ]
 
 [[package]]
 name = "zotera_server"
 version = "0.0.1"
 dependencies = [
+ "actix-web",
  "anyhow",
  "serde",
  "serde_json",
  "thiserror",
+ "tokio",
  "zotera_actix",
- "zotera_axum",
- "zotera_config",
 ]
 
 [[package]]
