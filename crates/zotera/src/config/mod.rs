@@ -33,7 +33,9 @@ pub struct Plugins {}
 
 #[derive(Debug, Deserialize)]
 pub struct Web {
-
+  pub title: Option<String>,
+  pub favicon: Option<String>,
+  pub logo: Option<String>
 }
 
 fn deserialize_log_level<'de, D: Deserializer<'de>>(
