@@ -1,43 +1,73 @@
 name: CI
-
-on:
+'on':
+  workflow_dispatch: null
   push:
     branches:
       - main
   pull_request:
-    types: [opened, synchronize]
-  workflow_dispatch:
-
+    types:
+      - opened
+      - synchronize
 jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install
+      - name: Lint
+        run: pnpm lint
+        
   build:
     runs-on: ubuntu-latest
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
-
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 7
-
-      - name: Install Node.js
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: pnpm
-
       - name: Install dependencies
         run: pnpm install
-
       - name: Build
         run: pnpm build
-
-      - name: Lint
-        run: pnpm lint
-
+      - name: Type check
+        run: pnpm typecheck
+        
+  test:
+    runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install
       - name: Test
         run: pnpm test

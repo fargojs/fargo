@@ -1,1 +1,0 @@
-import{R as e,L as t}from"./index.js";function r(){return e.createElement("div",{className:"flex items-center flex-col justify-center h-full"},e.createElement("h2",{className:"text-center text-7xl"},"404"),e.createElement("p",{className:"mt-4"},"Houston, we have a problem."," ",e.createElement(t,{className:"text-orange-600",to:"/"},"Head back to earth.")))}export{r as default};

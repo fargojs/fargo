@@ -16,5 +16,4 @@ dist/
 .env
 .env.production
 .turbo
-zotera.log
 

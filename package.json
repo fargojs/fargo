@@ -5,41 +5,29 @@
   "engines": {
     "node": ">=16"
   },
-  "packageManager": "pnpm@7.5.0",
+  "packageManager": "pnpm@7.29.0",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "old:lint": "eslint --cache {packages,vscode}/*/src/**/*",
-    "old:build": "pnpm -r --filter=@zotera/* run build",
-    "old:dev": "pnpm -r --parallel --filter=@zotera/* run dev",
-    "old:test": "pnpm -r --parallel --filter=@zotera/* run test",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "test": "turbo run test",
-    "update:dep-versions": "tsx scripts/update-versions.ts",
-    "build:configuration-schema": "echo \"Hello\""
+    "test": "turbo run test"
   },
   "devDependencies": {
-    "@luxass/eslint-config": "^2.2.4",
+    "@luxass/eslint-config": "^3.1.1",
     "@types/node": "^18.11.9",
-    "eslint": "^8.30.0",
+    "eslint": "^8.38.0",
     "node-fetch": "^3.3.0",
-    "tsup": "^6.4.0",
+    "tsup": "^6.7.0",
     "tsx": "^3.12.1",
-    "turbo": "^1.6.3",
-    "typescript": "^4.9.4",
-    "vitest": "^0.25.1",
-    "zod": "^3.19.1"
+    "turbo": "^1.9.0",
+    "typescript": "^4.8.4",
+    "vitest": "^0.30.1",
+    "zod": "^3.21.4"
   },
   "workspaces": [
     "apps/*",
     "packages/*",
     "vscode/*"
-  ],
-  "pnpm": {
-    "patchedDependencies": {
-      "tsup@6.4.0": "patches/tsup@6.4.0.patch",
-      "vite@3.2.3": "patches/vite@3.2.3.patch"
-    }
-  }
+  ]
 }

@@ -1,3 +1,3 @@
 <h1 align="center">Zotera</h1>
 
-A private marketplace for your VSIX extensions
+A self hosted solutin for VSIX extensions for Visual Studio Code.
