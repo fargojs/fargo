@@ -1,22 +1,22 @@
 {
-  "name": "@zotera/vscode-zotera",
-  "displayName": "Zotera Extension",
+  "name": "@solaris/vscode-solaris",
+  "displayName": "solaris Extension",
   "version": "0.0.1",
-  "description": "Install and manage your Zotera Marketplace Extensions",
+  "description": "Install and manage your solaris Marketplace Extensions",
   "author": {
     "name": "Lucas Norgaard",
     "email": "lucasnrgaard@gmail.com",
     "url": "https://luxass.dev"
   },
   "license": "MIT",
-  "homepage": "https://github.com/zotera/zotera/blob/main/packages/vscode/extension#readme",
+  "homepage": "https://github.com/solaris/solaris/blob/main/packages/vscode/extension#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zotera/zotera",
+    "url": "https://github.com/solaris/solaris",
     "directory": "packages/vscode/extension"
   },
   "bugs": {
-    "url": "https://github.com/zotera/zotera/issues"
+    "url": "https://github.com/solaris/solaris/issues"
   },
   "keywords": [],
   "categories": [

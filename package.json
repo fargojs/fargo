@@ -1,5 +1,5 @@
 {
-  "name": "@zotera/monorepo",
+  "name": "@solaris/monorepo",
   "private": true,
   "license": "MIT",
   "engines": {
@@ -26,8 +26,6 @@
     "zod": "^3.21.4"
   },
   "workspaces": [
-    "apps/*",
-    "packages/*",
-    "vscode/*"
+    "packages/**"
   ]
 }
