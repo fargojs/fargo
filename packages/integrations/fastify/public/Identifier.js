@@ -1,1 +1,0 @@
-import{b as t,R as r}from"./index.js";import n from"./Error.js";function o(){const{identifier:e}=t();return e!=null&&e.includes(".")?r.createElement("div",null,"Identifier",e):r.createElement(n,null)}export{o as default};

@@ -1,0 +1,94 @@
+{
+  "name": "@solaris/vscode-solaris",
+  "displayName": "solaris Extension",
+  "version": "0.0.1",
+  "description": "Install and manage your solaris Marketplace Extensions",
+  "author": {
+    "name": "Lucas Norgaard",
+    "email": "lucasnrgaard@gmail.com",
+    "url": "https://luxass.dev"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/solaris/solaris/blob/main/packages/vscode/extension#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/solaris/solaris",
+    "directory": "packages/vscode/extension"
+  },
+  "bugs": {
+    "url": "https://github.com/solaris/solaris/issues"
+  },
+  "keywords": [],
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "engines": {
+    "vscode": "^1.72.0"
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onView:vscode-zotera.vscode-zotera-view"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-zotera.install",
+        "title": "Install Extensions",
+        "category": "Zotera"
+      },
+      {
+        "command": "vscode-zotera.authenticate",
+        "title": "Sign In to Zotera",
+        "category": "Zotera"
+      },
+      {
+        "command": "vscode-zotera.unauthenticate",
+        "title": "Sign Out of Zotera",
+        "category": "Zotera"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "vscode-zotera-view",
+          "title": "Zotera Explorer",
+          "icon": "$(alert)"
+        }
+      ]
+    },
+    "views": {
+      "vscode-zotera-view": [
+        {
+          "type": "webview",
+          "id": "vscode-zotera-view",
+          "name": "Zotera Explorer",
+          "contextualTitle": "Zotera Explorer"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Zotera",
+      "type": "object",
+      "properties": {}
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test:watch": "vitest",
+    "test": "vitest --run",
+    "lint": "eslint --cache .",
+    "lint:fix": "pnpm lint --fix",
+    "package": "pnpm vsce package --no-dependencies",
+    "release": "pnpm vsce publish --no-dependencies",
+    "browser": "vscode-test-web --extensionDevelopmentPath=.",
+    "web:serve": "npx serve --cors -l 5000",
+    "web:tunnel": "npx localtunnel -p 5000"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.72.0",
+    "@vscode/test-web": "^0.0.35",
+    "@vscode/vsce": "^2.18.0"
+  }
+}

@@ -1,0 +1,15 @@
+.vscode/**
+test/**
+src/**
+.gitignore
+**/tsconfig*.json
+**/.eslintrc
+**/.eslintignore
+**/prettier.config.cjs
+.prettierignore
+.eslintcache
+node_modules/**
+*.vsix
+CHANGELOG.md
+.github/**
+pnpm-lock.yaml
